@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "note": "Production mode (AYQYN_TEST unset), same-machine copied-directory/PATH test; not a fresh OS/VM or physical air-gap. Explicit outbound probes rejected by app; no camera opened.",
+  "checks": [
+    "production-mode packaged app launches from copied directory with no Python/Node PATH",
+    "packaged SHA-verified local assets initialize and match exact commit stamp",
+    "real phone detector output from packaged resources",
+    "writable isolated session storage and reload",
+    "packaged deletion succeeds"
+  ],
+  "sourceCommit": "315d7d73aa48f8f4046b87209f4d714c2bdb2386",
+  "initialization": {
+    "ready": true,
+    "phoneClass": 67,
+    "runtime": "ONNX Runtime Web 1.30.0 + MediaPipe WASM 1.0.1",
+    "inputMetadata": [
+      {
+        "name": "images",
+        "isTensor": true,
+        "type": "float32",
+        "shape": [
+          "batch",
+          3,
+          "height",
+          "width"
+        ]
+      }
+    ],
+    "initMs": 934.7999999523163,
+    "provenance": {
+      "type": "local-wasm-v0.2",
+      "runtime": "ONNX Runtime Web 1.30.0 + MediaPipe Tasks Vision 1.0.1; source 315d7d73aa48f8f4046b87209f4d714c2bdb2386",
+      "model": "YOLO11n ONNX: COCO phone 67; MediaPipe float16/1 FaceLandmarker head matrix and iris geometry",
+      "sha256": "e039536b11e0cb68f52fa1af975f94e9c78a1d240ea5abd6c593d193bc11f4d3",
+      "methodology": "SHA256 of complete runtime-manifest.json; YOLO rect640/conf.45/NMS.7; geometric matrix pitch positive nose-down (physical accuracy unvalidated); relative iris proxy; no expression inference"
+    }
+  },
+  "offlineProbe": {
+    "mainRejected": true,
+    "cvRejected": true,
+    "method": "App CSP/session denies outbound HTTP; network interface unchanged, not physical air-gap"
+  },
+  "errors": [],
+  "requests": [
+    "ayqyn://local/style.css",
+    "ayqyn://local/app.js",
+    "ayqyn://local/core.js",
+    "ayqyn://local/sensor.js",
+    "ayqyn://local/schema.js",
+    "ayqyn://local/favicon.svg",
+    "ayqyn://local/cv/host.js",
+    "ayqyn://local/cv/engine.js",
+    "ayqyn://local/runtime/ort/ort.wasm.min.mjs",
+    "ayqyn://local/runtime/mediapipe/vision_bundle.mjs",
+    "ayqyn://local/cv/math.js",
+    "ayqyn://local/runtime/ort/ort-wasm-simd-threaded.mjs",
+    "ayqyn://local/runtime/ort/ort-wasm-simd-threaded.wasm",
+    "ayqyn://local/runtime/models/yolo11n.onnx",
+    "ayqyn://local/runtime/mediapipe/wasm//vision_wasm_internal.js",
+    "ayqyn://local/runtime/mediapipe/wasm//vision_wasm_internal.wasm",
+    "ayqyn://local/runtime/models/face_landmarker.task"
+  ],
+  "network": [],
+  "passed": true
+}

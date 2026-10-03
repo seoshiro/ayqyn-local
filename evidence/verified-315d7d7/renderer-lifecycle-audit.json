@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "method": "Actual app.js in headless browser with synthetic canvas stream and delayed mocked IPC. No CV accuracy claimed.",
+  "results": [
+    {
+      "cancellation": "stop",
+      "active": false,
+      "consent": false,
+      "stream": false,
+      "calls": 1,
+      "status": "ready",
+      "examVisible": false
+    },
+    {
+      "cancellation": "revoke",
+      "active": false,
+      "consent": false,
+      "stream": false,
+      "calls": 1,
+      "status": "ready",
+      "examVisible": false
+    },
+    {
+      "cancellation": "navigation",
+      "active": false,
+      "consent": false,
+      "stream": false,
+      "calls": 1,
+      "status": "ready",
+      "examVisible": false
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

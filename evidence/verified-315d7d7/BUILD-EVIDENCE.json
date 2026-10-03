@@ -1,0 +1,198 @@
+{
+  "schema": 1,
+  "sourceCommit": "315d7d73aa48f8f4046b87209f4d714c2bdb2386",
+  "recordedAt": "2026-10-03T21:32:58.734Z",
+  "package": {
+    "schema": 1,
+    "sourceCommit": "315d7d73aa48f8f4046b87209f4d714c2bdb2386",
+    "packagedAt": "2026-10-03T20:56:18.572Z",
+    "runtimeManifestSha256": "e039536b11e0cb68f52fa1af975f94e9c78a1d240ea5abd6c593d193bc11f4d3",
+    "runtimeAssetCount": 12,
+    "runtimeAssetBytes": 64602761,
+    "runtime": "Official local ONNX Runtime Web and Google MediaPipe WASM; no Python",
+    "signed": false,
+    "executableSha256": "d8a2a1926cba3dc99a2945de005362b262db00dc31f4383e0ba5b992f8740430",
+    "files": 128,
+    "pythonFiles": 0
+  },
+  "verified": {
+    "node": 27,
+    "nativePackaged": 11,
+    "productionPackage": 5,
+    "browser": 7,
+    "wasmFixtures": 6,
+    "wasmHostSafety": 4,
+    "rendererCancellation": 3,
+    "rendererReadiness": 6
+  },
+  "limits": [
+    "Same-machine copied-folder/PATH isolation, not fresh OS",
+    "Outbound requests denied at app level, not physical air-gap",
+    "Native camera is file-backed virtual source; no physical camera opened",
+    "Browser replay contains historical genuine fixture outputs, not current live WASM",
+    "No physical head/gaze accuracy, event-level moving-video accuracy or phone-aim trajectory established",
+    "Unsigned executable; no security policy changes"
+  ],
+  "files": [
+    {
+      "file": "01-overview.png",
+      "bytes": 103433,
+      "sha256": "405d246b046cc72fff9338b0cafbbe4023b57fc6983f0b29f2ce0964a3e34ad5"
+    },
+    {
+      "file": "02-consent.png",
+      "bytes": 108122,
+      "sha256": "db8f62cce5a42560346b9dec1df5ec52b5617cb2a3ab741610e7f432b0299eb8"
+    },
+    {
+      "file": "03-review.png",
+      "bytes": 393742,
+      "sha256": "a6903428ced1764ec596c188ff2295f5f31c50cf25df015de266c037ce8411c9"
+    },
+    {
+      "file": "04-capabilities.png",
+      "bytes": 134596,
+      "sha256": "ff0336a9af6d0e21caae70a2f7c8836e59e6c81226f5629a25fc2a4550975d47"
+    },
+    {
+      "file": "ambiguous-missed-phone.png",
+      "bytes": 395261,
+      "sha256": "3702ce05e09e71d3d2a3d4d00e296bbc24ed63c13cc968375593965dd46f81e8"
+    },
+    {
+      "file": "code-integrity-followup.json",
+      "bytes": 261,
+      "sha256": "971e02902a959b848790ba384efb6cc16833ce7e946ecd164196df1214c7a865"
+    },
+    {
+      "file": "core-audit.txt",
+      "bytes": 2270,
+      "sha256": "a94ec58009f25eb067b15abea5abc100d7abb0884672a1bc90a867982ef05e53"
+    },
+    {
+      "file": "desktop-audit.json",
+      "bytes": 830,
+      "sha256": "960ca01ff0fe13a70bda3f992b52d02dd3c16a89a2f013344d2eb8a1195c26cd"
+    },
+    {
+      "file": "desktop-calibration.png",
+      "bytes": 509948,
+      "sha256": "06203550924f832703fc3cdcbf17f58aa4cdda39a83e2fab4373f07204971d11"
+    },
+    {
+      "file": "desktop-capabilities.png",
+      "bytes": 166257,
+      "sha256": "242cc50aa23cba90ec2955fef12ed71d26652fe5fa93aa1996a518a5eb1f52ac"
+    },
+    {
+      "file": "desktop-exam.png",
+      "bytes": 314251,
+      "sha256": "e1cb70d8e2ad02398a704239fe5983a8a28e0f06740079c1393de5c7cd22f78a"
+    },
+    {
+      "file": "desktop-overview.png",
+      "bytes": 111186,
+      "sha256": "299903a182c3c86016909299071bad954255fa84dd49d0b1a6ebc5df0e6f6ab3"
+    },
+    {
+      "file": "desktop-snapshot-consent-panel.png",
+      "bytes": 57267,
+      "sha256": "43cbcd4959f805adebaa1c7c52ec140c7ad8b9a61782d2bb082a98dc8a12b2f1"
+    },
+    {
+      "file": "desktop-snapshot-consent-viewport.png",
+      "bytes": 111296,
+      "sha256": "956468aa076ecaea8e4c306d5abf8c473e42867a29feaa176742a47349ee14a4"
+    },
+    {
+      "file": "desktop-snapshot-consent.png",
+      "bytes": 137942,
+      "sha256": "09483297dcab07d30d056063409d0eefd4d5f521983fbf96df15042baaeb837c"
+    },
+    {
+      "file": "desktop-worker-interruption.png",
+      "bytes": 109117,
+      "sha256": "36fb2ee25aa81873a9ec94756100e15a2f91181fa57147f34c26cb30eec7b58c"
+    },
+    {
+      "file": "example-report.json",
+      "bytes": 7560,
+      "sha256": "3f98d460174f38ac94e6b107265bae2685cc51b1a8b3a09c247d44766e93a08c"
+    },
+    {
+      "file": "mobile-1440.png",
+      "bytes": 134620,
+      "sha256": "3ba17724e60149ae48bae48b814e39f38df0ddbe574fe99695f8b0d613b2fbba"
+    },
+    {
+      "file": "mobile-390.png",
+      "bytes": 115883,
+      "sha256": "147a19627a49798bfe2e234f43e558bfe251ba0ba4e68a3d98856ac426eafcea"
+    },
+    {
+      "file": "mobile-768.png",
+      "bytes": 123581,
+      "sha256": "62db9eb96b8d6a9d907360ebed3a5d02edfe4310be6e7a505b28e8bc5a8b50f4"
+    },
+    {
+      "file": "mobile-phone-review-saved.png",
+      "bytes": 77615,
+      "sha256": "6b555601522e5521f173300a3dcca73adb6d12fa68b257260a9d40da67460304"
+    },
+    {
+      "file": "mobile-report.json",
+      "bytes": 7560,
+      "sha256": "ea0bd02f5b8a3e72635111eb270e587ba51e0d20893251882d9d574c554bba62"
+    },
+    {
+      "file": "mobile-review-reason.png",
+      "bytes": 80350,
+      "sha256": "03db780adbb3096a7b8c7ef38e5ec1d00d2c1c408b67cfd5bb97bed8d2860dd6"
+    },
+    {
+      "file": "packaged-audit.json",
+      "bytes": 2591,
+      "sha256": "08057edb98aa2679292cce5212ac2c38903ea6dd1bb4a64cc7f9f80b2e93f479"
+    },
+    {
+      "file": "pdf-captures.json",
+      "bytes": 534,
+      "sha256": "a1a267ab57195e3fc2859aca2ec14c8d8e48834d828a7e0197607fcbc7268dc6"
+    },
+    {
+      "file": "phone-review-saved.png",
+      "bytes": 396848,
+      "sha256": "46ad1478648f350458675dc1587927e30418662bdd409f42e86badae6af8305f"
+    },
+    {
+      "file": "readiness-audit.json",
+      "bytes": 834,
+      "sha256": "ad239fa95898c9aff01dd6ee4691e05ea1232668c1dd23924d9b9385add065dd"
+    },
+    {
+      "file": "renderer-lifecycle-audit.json",
+      "bytes": 753,
+      "sha256": "ba8875f168923fba47962bd8d47358cc6bb72a060b5bf5bac15f2e8990055eaf"
+    },
+    {
+      "file": "ui-audit.json",
+      "bytes": 442,
+      "sha256": "cfbe5123383993bd4dda8d04972f65b80fe7fb347c07949c9a3b8f0b3bde8155"
+    },
+    {
+      "file": "wasm-parity.json",
+      "bytes": 22210,
+      "sha256": "f0226fc051b6c59b2759569f190e7b9adec0ed5e1670757cc574406834b564d5"
+    },
+    {
+      "file": "wasm-runtime-audit.json",
+      "bytes": 6156,
+      "sha256": "d33f8ad13d37bb0ee2531425a25fab5c9588613ac7634660b5d74197fe74deea"
+    }
+  ],
+  "publicDistribution": {
+    "metadataOnly": true,
+    "originalManifestSha256": "7b70a38eaa1d97bae7ac46cb90d59f8e14f170b5279991dd1e278cc8fa785881",
+    "note": "Licensed test photographs/virtual source, no students or private camera. Some reports had only local machine paths redacted; checks unchanged."
+  }
+}

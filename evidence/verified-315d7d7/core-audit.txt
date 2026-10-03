@@ -1,0 +1,35 @@
+✔ short benign movements create no attention event (2.4017ms)
+✔ sustained attention event needs healthy single face and calibration (13.9053ms)
+✔ dark frames produce quality observations and never absence (0.6307ms)
+✔ stale gap resets accumulated dwell (0.4741ms)
+✔ phone dwell, debounce and repeated detections are bounded (1.3266ms)
+✔ second face has dwell and requires sensor quality (0.5831ms)
+✔ calibration requires stable usable samples (3.0483ms)
+✔ report always removes raw snapshots and preserves review reasons (1.2865ms)
+✔ invalid policy rejected and time monotonic enforced (0.8533ms)
+✔ user strings escaped and expired data identified (0.9733ms)
+✔ schema rejects null events, rolled dates, unknown nested images, missing and boolean-invalid policy (1.0494ms)
+✔ schema bounds image budgets and finite event times (0.3112ms)
+✔ calibration rejects pitch and iris instability (0.4188ms)
+✔ one continuous phone episode creates one row per observable quantity and finishes after hysteresis (0.5222ms)
+✔ bundled replay preserves updated episode duration, closed times and first evidence asset (2.7789ms)
+✔ prototype-like JSON own keys cannot enter policy or report at any object boundary (2.769ms)
+✔ stop during delayed capture releases stale tracks and never resurrects stream (10.4768ms)
+✔ stop or navigation during model initialization never requests camera (1.356ms)
+✔ revocation while capture pending stops returned track (2.1007ms)
+✔ duplicate clicks cannot request two captures (0.6916ms)
+✔ undecoded stream times out; duplicate frames and frozen detector cannot pass readiness (0.5887ms)
+✔ owned temporary data removed on startup/delete and corrupt or expired records fail closed (31.4517ms)
+✔ rectangular letterbox keeps shape, stride and symmetric pad (3.3275ms)
+✔ explicit RGB/255 NCHW preprocessing and 114 padding (3.9437ms)
+✔ best class filtered before phone NMS; boxes correctly unletterboxed (1.0856ms)
+✔ head pitch from column-major canonical matrix has declared direction and stable degree units (0.9991ms)
+✔ flat/dark frames cannot establish quality-backed absence (0.9109ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 196.6317

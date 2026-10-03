@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.png -text
+*.jpg -text
+*.zip -text
+*.webm -text
+*.onnx -text
+*.task -text
+*.wasm -text

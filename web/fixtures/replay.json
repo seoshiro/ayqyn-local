@@ -1,31 +1,12 @@
 {
   "schema": 1,
   "provenance": {
-    "type": "real_inference_repeated_stills",
-    "models": {
-      "schema": 1,
-      "assets": [
-        {
-          "filename": "yolo11n.pt",
-          "url": "https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11n.pt",
-          "sha256": "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1",
-          "bytes": 5613764,
-          "license": "AGPL-3.0",
-          "licenseSource": "https://www.ultralytics.com/license"
-        },
-        {
-          "filename": "face_landmarker.task",
-          "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
-          "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
-          "bytes": 3758596,
-          "license": "Apache-2.0",
-          "licenseSource": "https://github.com/google-ai-edge/mediapipe/blob/master/LICENSE"
-        }
-      ],
-      "note": "SHA256 pins the downloaded assets for offline verification. Review initial source provenance before setup."
-    },
+    "type": "real_wasm_inference_repeated_stills",
+    "runtime": "ONNX Runtime Web 1.30.0 + MediaPipe Tasks Vision 1.0.1; audited source 315d7d7",
+    "model": "Official YOLO11n ONNX + Google Face Landmarker WASM",
+    "sha256": "e039536b11e0cb68f52fa1af975f94e9c78a1d240ea5abd6c593d193bc11f4d3",
     "attribution": "fixtures/attribution.json",
-    "methodology": "8-image smoke set, repeated 18 times each. Not exam video accuracy; frames are correlated. First frame is cold inference."
+    "methodology": "Six genuine still-image inference outputs, each repeated 18 times to exercise dwell rules. No new inference on repeated rows. Not moving-video, exam or physical head/gaze accuracy. Original audit SHA256 d33f8ad13d37bb0ee2531425a25fab5c9588613ac7634660b5d74197fe74deea"
   },
   "observations": [
     {
@@ -35,33 +16,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 200.08,
-        "timestamp": 200,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -71,33 +57,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 105.35,
-        "timestamp": 400,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -107,33 +98,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 106.11,
-        "timestamp": 600,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -143,33 +139,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 107.94,
-        "timestamp": 800,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -179,33 +180,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 108.12,
+        "latencyMs": 471.1,
         "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -215,33 +221,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 116.12,
-        "timestamp": 1200,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -251,33 +262,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 107.28,
-        "timestamp": 1400,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -287,33 +303,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 110.18,
-        "timestamp": 1600,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -323,33 +344,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 109.35,
-        "timestamp": 1800,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -359,33 +385,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 110.59,
-        "timestamp": 2000,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -395,33 +426,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 109.21,
-        "timestamp": 2200,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -431,33 +467,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 110.03,
-        "timestamp": 2400,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -467,33 +508,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 108.55,
-        "timestamp": 2600,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -503,33 +549,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 106.22,
-        "timestamp": 2800,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -539,33 +590,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 111.44,
-        "timestamp": 3000,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -575,33 +631,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 110.93,
-        "timestamp": 3200,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -611,33 +672,38 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 103.19,
-        "timestamp": 3400,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
@@ -647,38 +713,43 @@
         "faces": 1,
         "faceBoxes": [
           [
-            0.3528948426246643,
-            0.14070454239845276,
-            0.5275758504867554,
-            0.3469775319099426
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
           ]
         ],
         "pose": {
-          "pitch": -33.85,
-          "yaw": -4.69,
-          "roll": 2.13
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
         },
         "eyes": {
-          "x": 0.476,
-          "y": 0.532,
+          "x": 0.478,
+          "y": 0.523,
           "proxy": true
         },
         "phones": [],
         "quality": {
           "usable": true,
           "brightness": 115.4,
-          "sharpness": 872.7,
+          "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 109.35,
-        "timestamp": 3600,
+        "latencyMs": 471.1,
+        "timestamp": 1000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
       }
     },
     {
       "at": 3800,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -687,19 +758,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 123.99,
-        "timestamp": 3800,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 4000,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -708,19 +784,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 89.98,
-        "timestamp": 4000,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 4200,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -729,19 +810,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 88.17,
-        "timestamp": 4200,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 4400,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -750,19 +836,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 86.67,
-        "timestamp": 4400,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 4600,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -771,19 +862,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 89.84,
-        "timestamp": 4600,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 4800,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -792,19 +888,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 99.54,
-        "timestamp": 4800,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 5000,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -813,19 +914,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 90.53,
-        "timestamp": 5000,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 5200,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -834,19 +940,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 84.63,
-        "timestamp": 5200,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 5400,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -855,19 +966,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 85.77,
-        "timestamp": 5400,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 5600,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -876,19 +992,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 87.35,
-        "timestamp": 5600,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 5800,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -897,19 +1018,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 87.09,
-        "timestamp": 5800,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 6000,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -918,19 +1044,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 89.63,
-        "timestamp": 6000,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 6200,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -939,19 +1070,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 90.07,
-        "timestamp": 6200,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 6400,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -960,19 +1096,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 85.62,
-        "timestamp": 6400,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 6600,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -981,19 +1122,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 91.88,
-        "timestamp": 6600,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 6800,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -1002,19 +1148,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 90.57,
-        "timestamp": 6800,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 7000,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -1023,19 +1174,24 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 90.49,
-        "timestamp": 7000,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 7200,
-      "asset": "fixtures/phone-desk.jpg",
+      "asset": "fixtures/phone-hand.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -1044,1621 +1200,1896 @@
         "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 120.3,
-          "sharpness": 1049.6,
+          "brightness": 58.3,
+          "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 85.97,
-        "timestamp": 7200,
+        "latencyMs": 247.3,
+        "timestamp": 1200,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
       }
     },
     {
       "at": 7400,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 118.82,
-        "timestamp": 7400,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 7600,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 85.17,
-        "timestamp": 7600,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 7800,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 89.21,
-        "timestamp": 7800,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 8000,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 86.9,
-        "timestamp": 8000,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 8200,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 87.65,
-        "timestamp": 8200,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 8400,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 93.3,
-        "timestamp": 8400,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 8600,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 92.88,
-        "timestamp": 8600,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 8800,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 96.95,
-        "timestamp": 8800,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 9000,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 92.1,
-        "timestamp": 9000,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 9200,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 86.86,
-        "timestamp": 9200,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 9400,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 93.97,
-        "timestamp": 9400,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 9600,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 87.25,
-        "timestamp": 9600,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 9800,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 92.22,
-        "timestamp": 9800,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 10000,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 88.96,
-        "timestamp": 10000,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 10200,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 88.11,
-        "timestamp": 10200,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 10400,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 91.0,
-        "timestamp": 10400,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 10600,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 87.95,
-        "timestamp": 10600,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 10800,
-      "asset": "fixtures/phone-hand.jpg",
+      "asset": "fixtures/phone-photo.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
         "pose": null,
         "eyes": null,
-        "phones": [],
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
         "quality": {
           "usable": true,
-          "brightness": 58.3,
-          "sharpness": 105.1,
+          "brightness": 114.7,
+          "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 90.75,
-        "timestamp": 10800,
+        "latencyMs": 237.6,
+        "timestamp": 1400,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
       }
     },
     {
       "at": 11000,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 82.42,
-        "timestamp": 11000,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 11200,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 80.57,
-        "timestamp": 11200,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 11400,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 84.33,
-        "timestamp": 11400,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 11600,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 79.58,
-        "timestamp": 11600,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 11800,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 80.0,
-        "timestamp": 11800,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 12000,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 79.84,
-        "timestamp": 12000,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 12200,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 79.29,
-        "timestamp": 12200,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 12400,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 81.91,
-        "timestamp": 12400,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 12600,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 78.16,
-        "timestamp": 12600,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 12800,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 82.7,
-        "timestamp": 12800,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 13000,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 81.08,
-        "timestamp": 13000,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 13200,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 83.83,
-        "timestamp": 13200,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 13400,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 89.06,
-        "timestamp": 13400,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 13600,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 79.9,
-        "timestamp": 13600,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 13800,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 78.27,
-        "timestamp": 13800,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 14000,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 78.44,
-        "timestamp": 14000,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 14200,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 82.47,
-        "timestamp": 14200,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 14400,
-      "asset": "fixtures/phone-photo.jpg",
+      "asset": "fixtures/two-faces.jpg",
       "observation": {
-        "faces": 0,
-        "faceBoxes": [],
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
         "pose": null,
         "eyes": null,
-        "phones": [
-          {
-            "box": [
-              0.2408,
-              0.2806,
-              0.4369,
-              0.8019
-            ],
-            "confidence": 0.932,
-            "raised": true,
-            "rising": false,
-            "label": "cell phone"
-          }
-        ],
+        "phones": [],
         "quality": {
           "usable": true,
-          "brightness": 114.7,
-          "sharpness": 605.8,
+          "brightness": 130.9,
+          "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 77.42,
-        "timestamp": 14400,
+        "latencyMs": 275,
+        "timestamp": 1600,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
       }
     },
     {
       "at": 14600,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.11058813333511353,
-            0.28494277596473694,
-            0.36657223105430603,
-            0.7564990520477295
-          ],
-          [
-            0.6106223464012146,
-            0.28526103496551514,
-            0.8664618134498596,
-            0.7564020752906799
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 132.58,
-        "timestamp": 14600,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 14800,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.10818641632795334,
-            0.275681734085083,
-            0.3705829083919525,
-            0.7614120244979858
-          ],
-          [
-            0.608366847038269,
-            0.2758697271347046,
-            0.8704227209091187,
-            0.7621402144432068
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 97.94,
-        "timestamp": 14800,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 15000,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.10889334976673126,
-            0.27743449807167053,
-            0.3718501031398773,
-            0.760883092880249
-          ],
-          [
-            0.6087348461151123,
-            0.2775423526763916,
-            0.872127890586853,
-            0.7614057064056396
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 97.74,
-        "timestamp": 15000,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 15200,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.10846801102161407,
-            0.2766220271587372,
-            0.372577041387558,
-            0.7615881562232971
-          ],
-          [
-            0.6086416840553284,
-            0.276873379945755,
-            0.8724327087402344,
-            0.7619587182998657
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 108.32,
-        "timestamp": 15200,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 15400,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.10849152505397797,
-            0.2771174907684326,
-            0.3724771738052368,
-            0.761115312576294
-          ],
-          [
-            0.6087517738342285,
-            0.2775171995162964,
-            0.8725327253341675,
-            0.7616210579872131
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 103.66,
-        "timestamp": 15400,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 15600,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.1084531620144844,
-            0.27675193548202515,
-            0.3725999891757965,
-            0.7612513303756714
-          ],
-          [
-            0.6086151003837585,
-            0.27689632773399353,
-            0.8724612593650818,
-            0.7617282271385193
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 99.83,
-        "timestamp": 15600,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 15800,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.10849107056856155,
-            0.27705633640289307,
-            0.3726295530796051,
-            0.7612851858139038
-          ],
-          [
-            0.6087877154350281,
-            0.2773129343986511,
-            0.8724887371063232,
-            0.7617055177688599
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 99.67,
-        "timestamp": 15800,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 16000,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.10845727473497391,
-            0.27679067850112915,
-            0.3726198375225067,
-            0.7612941265106201
-          ],
-          [
-            0.6086505651473999,
-            0.27706632018089294,
-            0.8725577592849731,
-            0.7617844343185425
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 105.56,
-        "timestamp": 16000,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 16200,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.1084609106183052,
-            0.27707961201667786,
-            0.37264782190322876,
-            0.761232316493988
-          ],
-          [
-            0.6087482571601868,
-            0.2772596478462219,
-            0.8725725412368774,
-            0.7616698741912842
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 104.23,
-        "timestamp": 16200,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 16400,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.10846950113773346,
-            0.2767738699913025,
-            0.3726494014263153,
-            0.7612347602844238
-          ],
-          [
-            0.6086689233779907,
-            0.2771018147468567,
-            0.8724830150604248,
-            0.761742889881134
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 100.58,
-        "timestamp": 16400,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 16600,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.10845596343278885,
-            0.27707311511039734,
-            0.37262067198753357,
-            0.7612511515617371
-          ],
-          [
-            0.608701229095459,
-            0.2771484851837158,
-            0.8725362420082092,
-            0.7616839408874512
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 99.4,
-        "timestamp": 16600,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 16800,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.10846228152513504,
-            0.2767818570137024,
-            0.37262222170829773,
-            0.7612577676773071
-          ],
-          [
-            0.6086878776550293,
-            0.2771797776222229,
-            0.8725519180297852,
-            0.7617409825325012
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 102.8,
-        "timestamp": 16800,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 17000,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.10847734659910202,
-            0.2770841121673584,
-            0.3726630210876465,
-            0.7612442970275879
-          ],
-          [
-            0.6086570620536804,
-            0.27715858817100525,
-            0.8726247549057007,
-            0.761741578578949
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 101.35,
-        "timestamp": 17000,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 17200,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.10847064107656479,
-            0.2767485976219177,
-            0.372590035200119,
-            0.7612708806991577
-          ],
-          [
-            0.6087353229522705,
-            0.2771717309951782,
-            0.8725920915603638,
-            0.7617160081863403
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 104.32,
-        "timestamp": 17200,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 17400,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.10849899798631668,
-            0.2771201729774475,
-            0.372605562210083,
-            0.7612164616584778
-          ],
-          [
-            0.6086629629135132,
-            0.27716320753097534,
-            0.8725723028182983,
-            0.7617005109786987
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 100.45,
-        "timestamp": 17400,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 17600,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.10844736546278,
-            0.2766648530960083,
-            0.37262237071990967,
-            0.761293351650238
-          ],
-          [
-            0.6087402105331421,
-            0.2771969437599182,
-            0.872566819190979,
-            0.7617468237876892
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 96.09,
-        "timestamp": 17600,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 17800,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.10853512585163116,
-            0.2772098183631897,
-            0.37262335419654846,
-            0.7611814737319946
-          ],
-          [
-            0.6086729764938354,
-            0.27717211842536926,
-            0.8725950121879578,
-            0.7616307735443115
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 102.41,
-        "timestamp": 17800,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 18000,
-      "asset": "fixtures/two-faces.jpg",
+      "asset": "fixtures/dark.jpg",
       "observation": {
-        "faces": 2,
-        "faceBoxes": [
-          [
-            0.1084550991654396,
-            0.27656424045562744,
-            0.37260010838508606,
-            0.7613012790679932
-          ],
-          [
-            0.6086902618408203,
-            0.2771461606025696,
-            0.8725142478942871,
-            0.7617227435112
-          ]
-        ],
+        "faces": 0,
+        "faceBoxes": [],
         "pose": null,
         "eyes": null,
         "phones": [],
         "quality": {
-          "usable": true,
-          "brightness": 130.9,
-          "sharpness": 175.2,
-          "reason": "ok"
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
         },
-        "latencyMs": 106.26,
-        "timestamp": 18000,
+        "latencyMs": 320.8,
+        "timestamp": 1800,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
       }
     },
     {
       "at": 18200,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
         "faces": 0,
         "faceBoxes": [],
@@ -2667,1382 +3098,461 @@
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 114.91,
-        "timestamp": 18200,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 18400,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 107.32,
-        "timestamp": 18400,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 18600,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 107.45,
-        "timestamp": 18600,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 18800,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 106.51,
-        "timestamp": 18800,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 19000,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 110.06,
-        "timestamp": 19000,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 19200,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 108.46,
-        "timestamp": 19200,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 19400,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 113.4,
-        "timestamp": 19400,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 19600,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 117.28,
-        "timestamp": 19600,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 19800,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 109.23,
-        "timestamp": 19800,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 20000,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 113.88,
-        "timestamp": 20000,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 20200,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 109.56,
-        "timestamp": 20200,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 20400,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 110.6,
-        "timestamp": 20400,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 20600,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 111.12,
-        "timestamp": 20600,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 20800,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 117.02,
-        "timestamp": 20800,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 21000,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 113.79,
-        "timestamp": 21000,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 21200,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 106.85,
-        "timestamp": 21200,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 21400,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
-        ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
         "phones": [],
         "quality": {
           "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
+          "brightness": 115.4,
+          "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 107.38,
-        "timestamp": 21400,
+        "latencyMs": 299.3,
+        "timestamp": 2000,
         "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
       }
     },
     {
       "at": 21600,
-      "asset": "fixtures/dark.jpg",
+      "asset": "fixtures/blur.jpg",
       "observation": {
-        "faces": 1,
-        "faceBoxes": [
-          [
-            0.3508159816265106,
-            0.14007750153541565,
-            0.5283452272415161,
-            0.34526899456977844
-          ]
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
+        "phones": [],
+        "quality": {
+          "usable": false,
+          "brightness": 115.4,
+          "sharpness": 1.9,
+          "reason": "low_light_or_blur"
+        },
+        "latencyMs": 299.3,
+        "timestamp": 2000,
+        "source": "real_inference",
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
         ],
-        "pose": {
-          "pitch": -32.47,
-          "yaw": -4.8,
-          "roll": 2.6
-        },
-        "eyes": {
-          "x": 0.483,
-          "y": 0.522,
-          "proxy": true
-        },
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 13.4,
-          "sharpness": 12.8,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 110.27,
-        "timestamp": 21600,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 21800,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 109.28,
-        "timestamp": 21800,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 22000,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 97.94,
-        "timestamp": 22000,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 22200,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 93.62,
-        "timestamp": 22200,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 22400,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 97.08,
-        "timestamp": 22400,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 22600,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 100.72,
-        "timestamp": 22600,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 22800,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 93.17,
-        "timestamp": 22800,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 23000,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 96.37,
-        "timestamp": 23000,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 23200,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 94.66,
-        "timestamp": 23200,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 23400,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 95.81,
-        "timestamp": 23400,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 23600,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 97.83,
-        "timestamp": 23600,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 23800,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 93.15,
-        "timestamp": 23800,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 24000,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 93.39,
-        "timestamp": 24000,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 24200,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 93.48,
-        "timestamp": 24200,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 24400,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 96.9,
-        "timestamp": 24400,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 24600,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 102.85,
-        "timestamp": 24600,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 24800,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 98.62,
-        "timestamp": 24800,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 25000,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 95.35,
-        "timestamp": 25000,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 25200,
-      "asset": "fixtures/blur.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": false,
-          "brightness": 115.4,
-          "sharpness": 1.9,
-          "reason": "low_light_or_blur"
-        },
-        "latencyMs": 94.54,
-        "timestamp": 25200,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 25400,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 94.68,
-        "timestamp": 25400,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 25600,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 93.76,
-        "timestamp": 25600,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 25800,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 97.92,
-        "timestamp": 25800,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 26000,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 99.46,
-        "timestamp": 26000,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 26200,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 90.71,
-        "timestamp": 26200,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 26400,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 96.75,
-        "timestamp": 26400,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 26600,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 100.32,
-        "timestamp": 26600,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 26800,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 92.91,
-        "timestamp": 26800,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 27000,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 95.32,
-        "timestamp": 27000,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 27200,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 97.62,
-        "timestamp": 27200,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 27400,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 90.08,
-        "timestamp": 27400,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 27600,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 96.78,
-        "timestamp": 27600,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 27800,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 94.41,
-        "timestamp": 27800,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 28000,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 93.53,
-        "timestamp": 28000,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 28200,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 92.82,
-        "timestamp": 28200,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 28400,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 94.61,
-        "timestamp": 28400,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 28600,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 96.11,
-        "timestamp": 28600,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
-      }
-    },
-    {
-      "at": 28800,
-      "asset": "fixtures/empty.jpg",
-      "observation": {
-        "faces": 0,
-        "faceBoxes": [],
-        "pose": null,
-        "eyes": null,
-        "phones": [],
-        "quality": {
-          "usable": true,
-          "brightness": 127.5,
-          "sharpness": 256.0,
-          "reason": "ok"
-        },
-        "latencyMs": 102.45,
-        "timestamp": 28800,
-        "source": "real_inference",
-        "model": "YOLO11n + MediaPipe Face Landmarker"
+        "observationAgeMs": 322.8
       }
     }
   ]

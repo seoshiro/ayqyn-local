@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "consent is off by default and browser live CV unavailable",
+    "actual fixture replay produces review events",
+    "review requires reason and persists on reload",
+    "export excludes raw images",
+    "mobile reviewer preserves draft across event selection and exports without overflow",
+    "responsive 390px, 768px, 1440px without overflow",
+    "deletion clears local state"
+  ],
+  "failures": [],
+  "passed": true
+}

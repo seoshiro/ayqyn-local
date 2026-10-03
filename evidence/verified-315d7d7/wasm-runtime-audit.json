@@ -1,0 +1,235 @@
+{
+  "schema": 1,
+  "note": "Official ONNX/MediaPipe WASM; attributed still fixtures sent through private IPC. No camera opened. Separate malformed-result test patches only test-host LocalVision method after real-fixture checks. Exact XNNPACK INFO line classified as information; other errors fail audit.",
+  "initialization": {
+    "ready": true,
+    "phoneClass": 67,
+    "runtime": "ONNX Runtime Web 1.30.0 + MediaPipe WASM 1.0.1",
+    "inputMetadata": [
+      {
+        "name": "images",
+        "isTensor": true,
+        "type": "float32",
+        "shape": [
+          "batch",
+          3,
+          "height",
+          "width"
+        ]
+      }
+    ],
+    "initMs": 618.3999999761581,
+    "provenance": {
+      "type": "local-wasm-v0.2",
+      "runtime": "ONNX Runtime Web 1.30.0 + MediaPipe Tasks Vision 1.0.1; source development",
+      "model": "YOLO11n ONNX: COCO phone 67; MediaPipe float16/1 FaceLandmarker head matrix and iris geometry",
+      "sha256": "e039536b11e0cb68f52fa1af975f94e9c78a1d240ea5abd6c593d193bc11f4d3",
+      "methodology": "SHA256 of complete runtime-manifest.json; YOLO rect640/conf.45/NMS.7; geometric matrix pitch positive nose-down (physical accuracy unvalidated); relative iris proxy; no expression inference"
+    }
+  },
+  "checks": [
+    "pre-init inference rejected without opening a host",
+    "three concurrent initializations share one isolated host",
+    "main rejects malformed trusted-host observation and never establishes exam freshness",
+    "stop during pending initialization cancels creation and leaves no CV host"
+  ],
+  "results": [
+    {
+      "file": "astronaut.png",
+      "observation": {
+        "faces": 1,
+        "faceBoxes": [
+          [
+            0.35296088457107544,
+            0.14031043648719788,
+            0.527734637260437,
+            0.3465213179588318
+          ]
+        ],
+        "pose": {
+          "yaw": 0.65,
+          "pitch": 14.91,
+          "roll": -3.49
+        },
+        "eyes": {
+          "x": 0.478,
+          "y": 0.523,
+          "proxy": true
+        },
+        "phones": [],
+        "quality": {
+          "usable": true,
+          "brightness": 115.4,
+          "sharpness": 861.9,
+          "reason": "ok"
+        },
+        "latencyMs": 471.1,
+        "timestamp": 1000,
+        "source": "real_inference",
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 556
+      }
+    },
+    {
+      "file": "phone-hand.jpg",
+      "observation": {
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
+        "phones": [],
+        "quality": {
+          "usable": true,
+          "brightness": 58.3,
+          "sharpness": 105.1,
+          "reason": "ok"
+        },
+        "latencyMs": 247.3,
+        "timestamp": 1200,
+        "source": "real_inference",
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 281
+      }
+    },
+    {
+      "file": "phone-photo.jpg",
+      "observation": {
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2829,
+              0.4369,
+              0.8047
+            ],
+            "confidence": 0.934,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
+        "quality": {
+          "usable": true,
+          "brightness": 114.7,
+          "sharpness": 608.4,
+          "reason": "ok"
+        },
+        "latencyMs": 237.6,
+        "timestamp": 1400,
+        "source": "real_inference",
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          960,
+          640
+        ],
+        "observationAgeMs": 272.9
+      }
+    },
+    {
+      "file": "two-faces.jpg",
+      "observation": {
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.11044136434793472,
+            0.2857831120491028,
+            0.3664093613624573,
+            0.7569767832756042
+          ],
+          [
+            0.6106747388839722,
+            0.28511619567871094,
+            0.8665764331817627,
+            0.7564786076545715
+          ]
+        ],
+        "pose": null,
+        "eyes": null,
+        "phones": [],
+        "quality": {
+          "usable": true,
+          "brightness": 130.9,
+          "sharpness": 176.6,
+          "reason": "ok"
+        },
+        "latencyMs": 275,
+        "timestamp": 1600,
+        "source": "real_inference",
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          640,
+          480
+        ],
+        "observationAgeMs": 302.5
+      }
+    },
+    {
+      "file": "dark.jpg",
+      "observation": {
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
+        "phones": [],
+        "quality": {
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
+        },
+        "latencyMs": 320.8,
+        "timestamp": 1800,
+        "source": "real_inference",
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 347.7
+      }
+    },
+    {
+      "file": "blur.jpg",
+      "observation": {
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
+        "phones": [],
+        "quality": {
+          "usable": false,
+          "brightness": 115.4,
+          "sharpness": 1.9,
+          "reason": "low_light_or_blur"
+        },
+        "latencyMs": 299.3,
+        "timestamp": 2000,
+        "source": "real_inference",
+        "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
+        "frameSize": [
+          512,
+          512
+        ],
+        "observationAgeMs": 322.8
+      }
+    }
+  ],
+  "errors": [],
+  "information": [
+    "INFO: Created TensorFlow Lite XNNPACK delegate for CPU."
+  ],
+  "network": [],
+  "passed": true
+}

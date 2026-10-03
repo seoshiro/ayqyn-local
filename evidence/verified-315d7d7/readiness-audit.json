@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "method": "Actual renderer with synthetic canvas tracks, readyState=0 decoder simulation in no-frame case, and explicitly labelled rule-fixture observations. UI/privacy/watchdog verification only; no camera, model or video-accuracy claim.",
+  "results": [
+    {
+      "scenario": "loading-permission",
+      "passed": true
+    },
+    {
+      "scenario": "denied",
+      "passed": true
+    },
+    {
+      "scenario": "no-frames",
+      "passed": true
+    },
+    {
+      "scenario": "frozen",
+      "passed": true
+    },
+    {
+      "scenario": "snapshots-off",
+      "snapshotState": {
+        "permission": false,
+        "images": 0
+      }
+    },
+    {
+      "scenario": "snapshots-on",
+      "snapshotState": {
+        "permission": true,
+        "images": 1
+      }
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

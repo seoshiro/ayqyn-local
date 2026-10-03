@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "actual Electron capabilities",
+    "camera requires checkbox consent and separate snapshots default off",
+    "real CV on file-backed virtual camera and calibration",
+    "preview consent revocation releases capture and prevents exam start",
+    "successful camera recovery clears old consent error and recalibrates",
+    "native copy key blocked and observable guard event",
+    "exam completion releases camera",
+    "atomic desktop session storage and review recovery",
+    "worker crash pauses sensing and releases camera without absence accusation",
+    "native active-exam revocation releases capture and app mode",
+    "native emergency escape exits and recovers interrupted session"
+  ],
+  "errors": [],
+  "packagedExecutable": "[local-project]/release\\AYQYN-win32-x64\\AYQYN.exe",
+  "passed": true
+}

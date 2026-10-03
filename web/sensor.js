@@ -11,7 +11,7 @@ export class CaptureGate {
    this.onStage('permission');const media=await this.getMedia();
    if(!valid()){media.getTracks().forEach(t=>t.stop());return null;}
    this.stream=media;this.onStage('frames');return media;
-  }finally{if(token===this.generation)this.pending=false;}
+  }catch(error){if(!valid())return null;throw error;}finally{if(token===this.generation)this.pending=false;}
  }
  async stop(){++this.generation;this.pending=false;if(this.stream){this.stream.getTracks().forEach(t=>t.stop());this.stream=null;}this.onStage('idle');await this.api.stop();}
 }

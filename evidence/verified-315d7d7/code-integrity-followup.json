@@ -1,0 +1,8 @@
+{
+  "logEnabled": true,
+  "schema": 1,
+  "scope": "Read-only inspection for earlier denied Python extension names; no policy modification",
+  "matchingFailures": [],
+  "inspectedAt": "2026-10-03T21:04:57.6361755Z",
+  "fromUtc": "2026-10-03T19:50:00Z"
+}
