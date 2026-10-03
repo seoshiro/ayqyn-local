@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "id": "1d6eea3f-8e6e-44d5-9cf9-691d2e006671",
+  "id": "b31e4768-1a87-47bd-9454-175cb3e3fd55",
   "title": "Офлайн пример · проверка наблюдений",
-  "createdAt": "2026-10-03T19:17:40.510Z",
+  "createdAt": "2026-10-03T20:31:36.491Z",
   "policy": {
     "dwell": 2500,
     "absence": 3000,
@@ -19,11 +19,11 @@
   "source": "replay",
   "events": [
     {
-      "id": "d206df75-e0bb-42d8-b517-16414978e685",
+      "id": "57ab6d7f-ef93-437c-993a-61462a211f98",
       "kind": "absent",
       "at": 6800,
       "start": 3800,
-      "duration": 3000,
+      "duration": 10600,
       "status": "dismissed",
       "reason": "Открытый тестовый кадр; проверена только видимость устройства.",
       "observation": {
@@ -44,14 +44,15 @@
         "model": "YOLO11n + MediaPipe Face Landmarker"
       },
       "asset": "fixtures/phone-desk.jpg",
-      "resolvedAt": "2026-10-03T19:17:41.273Z"
+      "endedAt": 14400,
+      "resolvedAt": "2026-10-03T20:31:37.550Z"
     },
     {
-      "id": "18f09581-bb5f-4c41-b22b-b48a68ee7bc0",
+      "id": "275c7e25-5c31-4af0-8bd8-88042bd3e6cf",
       "kind": "phone",
       "at": 12000,
       "start": 11000,
-      "duration": 1000,
+      "duration": 3400,
       "status": "pending",
       "reason": "",
       "observation": {
@@ -84,14 +85,15 @@
         "source": "real_inference",
         "model": "YOLO11n + MediaPipe Face Landmarker"
       },
-      "asset": "fixtures/phone-photo.jpg"
+      "asset": "fixtures/phone-photo.jpg",
+      "endedAt": 14400
     },
     {
-      "id": "1ee62848-41ef-4c9d-9d19-1074641e0e8a",
+      "id": "b1176a08-d4f0-43ce-8123-b9e030019028",
       "kind": "phone_raised",
       "at": 12000,
       "start": 11000,
-      "duration": 1000,
+      "duration": 3400,
       "status": "pending",
       "reason": "",
       "observation": {
@@ -124,14 +126,15 @@
         "source": "real_inference",
         "model": "YOLO11n + MediaPipe Face Landmarker"
       },
-      "asset": "fixtures/phone-photo.jpg"
+      "asset": "fixtures/phone-photo.jpg",
+      "endedAt": 14400
     },
     {
-      "id": "6a623163-8612-4c31-806c-4f97c4b45828",
+      "id": "9e59f9c0-897a-4fc9-bac4-3a5f40c5b8c7",
       "kind": "second_face",
       "at": 17200,
       "start": 14600,
-      "duration": 2600,
+      "duration": 3400,
       "status": "pending",
       "reason": "",
       "observation": {
@@ -164,14 +167,15 @@
         "source": "real_inference",
         "model": "YOLO11n + MediaPipe Face Landmarker"
       },
-      "asset": "fixtures/two-faces.jpg"
+      "asset": "fixtures/two-faces.jpg",
+      "endedAt": 18000
     },
     {
-      "id": "ec12f95a-95c6-4548-87ea-bbd9a7c120b1",
+      "id": "4d1fb7f6-296d-4e9c-85d0-dda431fef4c9",
       "kind": "quality",
       "at": 20800,
       "start": 18200,
-      "duration": 2600,
+      "duration": 7000,
       "status": "pending",
       "reason": "",
       "observation": {
@@ -206,14 +210,15 @@
         "source": "real_inference",
         "model": "YOLO11n + MediaPipe Face Landmarker"
       },
-      "asset": "fixtures/dark.jpg"
+      "asset": "fixtures/dark.jpg",
+      "endedAt": 25200
     },
     {
-      "id": "3f95ad36-6e09-4fd8-8b71-8af6cf3c6676",
+      "id": "42818e5f-ee60-4e6d-bfdf-0f5f582b4ee1",
       "kind": "absent",
       "at": 28400,
       "start": 25400,
-      "duration": 3000,
+      "duration": 3400,
       "status": "pending",
       "reason": "",
       "observation": {
@@ -233,7 +238,8 @@
         "source": "real_inference",
         "model": "YOLO11n + MediaPipe Face Landmarker"
       },
-      "asset": "fixtures/empty.jpg"
+      "asset": "fixtures/empty.jpg",
+      "endedAt": 28800
     }
   ],
   "answers": {},
@@ -266,6 +272,6 @@
     "methodology": "8-image smoke set, repeated 18 times each. Not exam video accuracy; frames are correlated. First frame is cold inference."
   },
   "notice": "Наблюдения для проверки человеком. Не оценка и не доказательство нарушения.",
-  "exportedAt": "2026-10-03T19:17:41.854Z",
+  "exportedAt": "2026-10-03T20:31:38.172Z",
   "rawImagesIncluded": false
 }

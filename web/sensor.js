@@ -1,19 +1,19 @@
 /** Capture lifecycle only. Dependencies injected so consent races can be tested without a camera. */
 export class CaptureGate {
- constructor({api,getMedia,allowed}){this.api=api;this.getMedia=getMedia;this.allowed=allowed;this.generation=0;this.stream=null;this.pending=false;}
+ constructor({api,getMedia,allowed,onStage=()=>{}}){this.api=api;this.getMedia=getMedia;this.allowed=allowed;this.onStage=onStage;this.generation=0;this.stream=null;this.pending=false;}
  async start(){
   if(this.pending||this.stream)return null;
   const token=++this.generation;this.pending=true;const valid=()=>token===this.generation&&this.allowed();
   try{
    if(!valid())throw Error('Согласие отозвано');
-   await this.api.init();if(!valid())return null;
+   this.onStage('models');this.initialization=await this.api.init();if(!valid())return null;
    await this.api.consent(true);if(!valid()){await this.api.stop();return null;}
-   const media=await this.getMedia();
+   this.onStage('permission');const media=await this.getMedia();
    if(!valid()){media.getTracks().forEach(t=>t.stop());return null;}
-   this.stream=media;return media;
+   this.stream=media;this.onStage('frames');return media;
   }finally{if(token===this.generation)this.pending=false;}
  }
- async stop(){++this.generation;this.pending=false;if(this.stream){this.stream.getTracks().forEach(t=>t.stop());this.stream=null;}await this.api.stop();}
+ async stop(){++this.generation;this.pending=false;if(this.stream){this.stream.getTracks().forEach(t=>t.stop());this.stream=null;}this.onStage('idle');await this.api.stop();}
 }
 export class FrameHealth {
  constructor(now){this.started=now;this.lastFrame=null;this.lastFrameAt=now;this.lastObservationAt=null;}

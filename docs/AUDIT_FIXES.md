@@ -25,6 +25,9 @@ This records implemented fixes and their verification, not a claim that the comp
 | Replay cloned event before final duration | Preserve event object and finalize engine at replay end | Phone 3400 ms and quality 7000 ms durations, ended times and first asset regression |
 | Prototype-like names bypassed policy validation | Plain/null prototypes and allowed own keys at every boundary | constructor/toString/__proto__ adversarial session/report regressions |
 | Delayed exam IPC resurrected a stopped session | Check generation/session/view/readiness after await; unwind stale mode | 3 actual-renderer Stop/revoke/navigation regressions; duplicate start disabled |
-| Concurrent startup could create two hosts | Shared host/init promise, pre-init inference rejection and main observation schema | Regression added; native rerun pending frozen dependency reinstall |
+| Concurrent startup could create two hosts | Shared host/init promise, pre-init inference rejection and main observation schema | Actual private-host concurrent init/cancel and malformed-output/freshness rejection passed |
+| INFO log incorrectly failed CV report | Preserve exact XNNPACK initialization INFO separately, keep all other errors failing | Refreshed WASM report passed:true; informational line retained |
+| Disabled actions only had tooltips | Visible guidance and distinct model/permission/frame stages | Six actual-renderer synthetic-track scenarios passed |
+| Interruption displayed English internals | Helpful Russian recovery text; technical diagnostic stays on stderr | Refreshed native interruption screenshot |
 
 At v0.2: **27 Node regressions, 7 browser checks, 10 native virtual-camera checks, 3 renderer race checks and 5 packaged checks passed**. Current runtime does not import denied Python extensions. Historical failure is retained in `WINDOWS_RUNTIME_BLOCK.md`; fresh OS and moving-video tests remain open.

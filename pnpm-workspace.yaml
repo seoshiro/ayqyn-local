@@ -1,3 +1,5 @@
 allowBuilds:
   electron: true
   protobufjs: false
+storeDir: .pnpm-store
+packageImportMethod: copy

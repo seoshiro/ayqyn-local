@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "note": "Official ONNX/MediaPipe WASM; attributed still fixtures sent through private IPC. No camera opened.",
+  "note": "Official ONNX/MediaPipe WASM; attributed still fixtures sent through private IPC. No camera opened. Separate malformed-result test patches only test-host LocalVision method after real-fixture checks. Exact XNNPACK INFO line classified as information; other errors fail audit.",
   "initialization": {
     "ready": true,
     "phoneClass": 67,
@@ -18,8 +18,21 @@
         ]
       }
     ],
-    "initMs": 666.2999999523163
+    "initMs": 618.3999999761581,
+    "provenance": {
+      "type": "local-wasm-v0.2",
+      "runtime": "ONNX Runtime Web 1.30.0 + MediaPipe Tasks Vision 1.0.1; source development",
+      "model": "YOLO11n ONNX: COCO phone 67; MediaPipe float16/1 FaceLandmarker head matrix and iris geometry",
+      "sha256": "e039536b11e0cb68f52fa1af975f94e9c78a1d240ea5abd6c593d193bc11f4d3",
+      "methodology": "SHA256 of complete runtime-manifest.json; YOLO rect640/conf.45/NMS.7; geometric matrix pitch positive nose-down (physical accuracy unvalidated); relative iris proxy; no expression inference"
+    }
   },
+  "checks": [
+    "pre-init inference rejected without opening a host",
+    "three concurrent initializations share one isolated host",
+    "main rejects malformed trusted-host observation and never establishes exam freshness",
+    "stop during pending initialization cancels creation and leaves no CV host"
+  ],
   "results": [
     {
       "file": "astronaut.png",
@@ -35,7 +48,7 @@
         ],
         "pose": {
           "yaw": 0.65,
-          "pitch": -14.91,
+          "pitch": 14.91,
           "roll": -3.49
         },
         "eyes": {
@@ -50,7 +63,7 @@
           "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 481.6,
+        "latencyMs": 471.1,
         "timestamp": 1000,
         "source": "real_inference",
         "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
@@ -58,7 +71,7 @@
           512,
           512
         ],
-        "observationAgeMs": 563
+        "observationAgeMs": 556
       }
     },
     {
@@ -75,7 +88,7 @@
           "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 252.7,
+        "latencyMs": 247.3,
         "timestamp": 1200,
         "source": "real_inference",
         "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
@@ -83,7 +96,7 @@
           960,
           640
         ],
-        "observationAgeMs": 288.1
+        "observationAgeMs": 281
       }
     },
     {
@@ -113,7 +126,7 @@
           "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 237,
+        "latencyMs": 237.6,
         "timestamp": 1400,
         "source": "real_inference",
         "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
@@ -121,7 +134,7 @@
           960,
           640
         ],
-        "observationAgeMs": 273.2
+        "observationAgeMs": 272.9
       }
     },
     {
@@ -151,7 +164,7 @@
           "sharpness": 176.6,
           "reason": "ok"
         },
-        "latencyMs": 298.6,
+        "latencyMs": 275,
         "timestamp": 1600,
         "source": "real_inference",
         "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
@@ -159,7 +172,7 @@
           640,
           480
         ],
-        "observationAgeMs": 326.5
+        "observationAgeMs": 302.5
       }
     },
     {
@@ -176,7 +189,7 @@
           "sharpness": 12.8,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 326.6,
+        "latencyMs": 320.8,
         "timestamp": 1800,
         "source": "real_inference",
         "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
@@ -184,7 +197,7 @@
           512,
           512
         ],
-        "observationAgeMs": 356.1
+        "observationAgeMs": 347.7
       }
     },
     {
@@ -201,7 +214,7 @@
           "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 311.9,
+        "latencyMs": 299.3,
         "timestamp": 2000,
         "source": "real_inference",
         "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
@@ -209,13 +222,14 @@
           512,
           512
         ],
-        "observationAgeMs": 334.9
+        "observationAgeMs": 322.8
       }
     }
   ],
-  "errors": [
+  "errors": [],
+  "information": [
     "INFO: Created TensorFlow Lite XNNPACK delegate for CPU."
   ],
   "network": [],
-  "passed": false
+  "passed": true
 }
