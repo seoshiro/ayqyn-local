@@ -2,12 +2,12 @@
 import os
 os.environ['YOLO_OFFLINE'] = 'true'
 os.environ['YOLO_AUTOINSTALL'] = 'false'
-os.environ['YOLO_CONFIG_DIR'] = os.path.join(os.path.dirname(__file__), '..', 'data', 'yolo')
+os.environ['YOLO_CONFIG_DIR'] = os.path.join(os.environ.get('AYQYN_RUNTIME_DATA',os.path.join(os.path.dirname(__file__),'..','data')), 'yolo')
 import sys, json, base64, time, hashlib, contextlib
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-os.environ['MPLCONFIGDIR']=str(ROOT/'data'/'matplotlib')
+ROOT = Path(os.environ.get('AYQYN_ASSET_DIR',Path(__file__).resolve().parents[1]))
+os.environ['MPLCONFIGDIR']=str(Path(os.environ.get('AYQYN_RUNTIME_DATA',ROOT/'data'))/'matplotlib')
 Path(os.environ['YOLO_CONFIG_DIR']).mkdir(parents=True,exist_ok=True)
 Path(os.environ['MPLCONFIGDIR']).mkdir(parents=True,exist_ok=True)
 

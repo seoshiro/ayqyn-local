@@ -1,0 +1,1089 @@
+{
+  "phoneLabel": "cell phone",
+  "exportParity": "Not applicable: .pt inference only, no exported model in production.",
+  "records": [
+    {
+      "fixture": "phone-desk.jpg",
+      "dimensions": [
+        960,
+        721
+      ],
+      "imgsz": 640,
+      "letterboxDimensions": [
+        640,
+        640
+      ],
+      "aspectPreserved": true,
+      "phoneAllClasses": [],
+      "phoneFiltered": [],
+      "allClasses": [
+        {
+          "class": "person",
+          "score": 0.8436,
+          "xyxy": [
+            415.7,
+            185.7,
+            709.9,
+            634.1
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.7124,
+          "xyxy": [
+            82.6,
+            438.9,
+            375.9,
+            644.2
+          ]
+        },
+        {
+          "class": "backpack",
+          "score": 0.4424,
+          "xyxy": [
+            678.3,
+            336.3,
+            767.6,
+            474.5
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.3353,
+          "xyxy": [
+            908.3,
+            264.3,
+            959.7,
+            380.5
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.3334,
+          "xyxy": [
+            110.0,
+            332.9,
+            771.7,
+            654.6
+          ]
+        },
+        {
+          "class": "dining table",
+          "score": 0.3172,
+          "xyxy": [
+            267.1,
+            341.0,
+            542.4,
+            551.4
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.2544,
+          "xyxy": [
+            509.3,
+            440.7,
+            774.2,
+            648.7
+          ]
+        },
+        {
+          "class": "handbag",
+          "score": 0.2533,
+          "xyxy": [
+            678.7,
+            336.8,
+            767.0,
+            474.3
+          ]
+        },
+        {
+          "class": "clock",
+          "score": 0.2261,
+          "xyxy": [
+            872.0,
+            260.9,
+            918.2,
+            331.3
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.1436,
+          "xyxy": [
+            266.6,
+            338.4,
+            536.6,
+            555.6
+          ]
+        },
+        {
+          "class": "dining table",
+          "score": 0.1226,
+          "xyxy": [
+            264.9,
+            337.9,
+            514.6,
+            434.6
+          ]
+        },
+        {
+          "class": "chair",
+          "score": 0.1203,
+          "xyxy": [
+            153.2,
+            204.9,
+            208.7,
+            304.8
+          ]
+        },
+        {
+          "class": "dining table",
+          "score": 0.1024,
+          "xyxy": [
+            265.9,
+            335.8,
+            497.1,
+            372.7
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.094,
+          "xyxy": [
+            844.9,
+            258.6,
+            959.4,
+            381.3
+          ]
+        },
+        {
+          "class": "bottle",
+          "score": 0.0833,
+          "xyxy": [
+            749.4,
+            435.4,
+            773.9,
+            504.5
+          ]
+        },
+        {
+          "class": "dining table",
+          "score": 0.0739,
+          "xyxy": [
+            260.8,
+            320.8,
+            529.1,
+            375.2
+          ]
+        },
+        {
+          "class": "chair",
+          "score": 0.0716,
+          "xyxy": [
+            792.4,
+            227.8,
+            876.8,
+            362.0
+          ]
+        },
+        {
+          "class": "dining table",
+          "score": 0.0673,
+          "xyxy": [
+            263.2,
+            307.3,
+            539.7,
+            431.5
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.0645,
+          "xyxy": [
+            880.6,
+            254.3,
+            959.9,
+            379.0
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.0571,
+          "xyxy": [
+            809.9,
+            245.9,
+            959.2,
+            375.8
+          ]
+        },
+        {
+          "class": "bottle",
+          "score": 0.057,
+          "xyxy": [
+            773.6,
+            14.0,
+            788.6,
+            62.6
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.0546,
+          "xyxy": [
+            265.7,
+            339.4,
+            770.3,
+            574.2
+          ]
+        },
+        {
+          "class": "dining table",
+          "score": 0.0533,
+          "xyxy": [
+            267.9,
+            296.8,
+            500.6,
+            369.1
+          ]
+        },
+        {
+          "class": "bottle",
+          "score": 0.0508,
+          "xyxy": [
+            761.5,
+            277.0,
+            778.1,
+            353.0
+          ]
+        },
+        {
+          "class": "dining table",
+          "score": 0.0504,
+          "xyxy": [
+            266.9,
+            334.1,
+            803.4,
+            555.7
+          ]
+        }
+      ],
+      "elapsedMs": 206.21
+    },
+    {
+      "fixture": "phone-desk.jpg",
+      "dimensions": [
+        960,
+        721
+      ],
+      "imgsz": 960,
+      "letterboxDimensions": [
+        960,
+        960
+      ],
+      "aspectPreserved": true,
+      "phoneAllClasses": [],
+      "phoneFiltered": [],
+      "allClasses": [
+        {
+          "class": "person",
+          "score": 0.8652,
+          "xyxy": [
+            420.1,
+            187.2,
+            707.1,
+            624.2
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.7915,
+          "xyxy": [
+            500.4,
+            439.4,
+            774.4,
+            652.3
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.7153,
+          "xyxy": [
+            82.7,
+            443.7,
+            377.3,
+            646.8
+          ]
+        },
+        {
+          "class": "backpack",
+          "score": 0.4602,
+          "xyxy": [
+            680.5,
+            337.3,
+            765.5,
+            476.6
+          ]
+        },
+        {
+          "class": "dining table",
+          "score": 0.4425,
+          "xyxy": [
+            266.2,
+            338.2,
+            544.9,
+            564.6
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.377,
+          "xyxy": [
+            266.4,
+            339.8,
+            542.6,
+            560.6
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.3442,
+          "xyxy": [
+            841.7,
+            253.3,
+            959.9,
+            379.3
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.3197,
+          "xyxy": [
+            791.8,
+            230.2,
+            959.5,
+            369.7
+          ]
+        },
+        {
+          "class": "handbag",
+          "score": 0.3195,
+          "xyxy": [
+            679.4,
+            338.7,
+            765.0,
+            477.7
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.1576,
+          "xyxy": [
+            379.2,
+            302.6,
+            468.6,
+            345.0
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.138,
+          "xyxy": [
+            792.1,
+            229.9,
+            878.5,
+            362.7
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.1262,
+          "xyxy": [
+            379.8,
+            300.4,
+            504.6,
+            338.9
+          ]
+        },
+        {
+          "class": "clock",
+          "score": 0.1188,
+          "xyxy": [
+            871.8,
+            260.7,
+            917.1,
+            330.6
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.1168,
+          "xyxy": [
+            82.2,
+            369.3,
+            370.8,
+            634.6
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.1112,
+          "xyxy": [
+            910.2,
+            264.1,
+            959.8,
+            381.3
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.0823,
+          "xyxy": [
+            871.1,
+            266.1,
+            959.7,
+            381.9
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.0705,
+          "xyxy": [
+            199.2,
+            370.9,
+            299.5,
+            469.9
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.0532,
+          "xyxy": [
+            85.8,
+            375.2,
+            300.1,
+            490.3
+          ]
+        },
+        {
+          "class": "bench",
+          "score": 0.053,
+          "xyxy": [
+            85.1,
+            370.2,
+            303.6,
+            609.0
+          ]
+        }
+      ],
+      "elapsedMs": 281.95
+    },
+    {
+      "fixture": "phone-hand.jpg",
+      "dimensions": [
+        960,
+        640
+      ],
+      "imgsz": 640,
+      "letterboxDimensions": [
+        640,
+        640
+      ],
+      "aspectPreserved": true,
+      "phoneAllClasses": [],
+      "phoneFiltered": [],
+      "allClasses": [
+        {
+          "class": "person",
+          "score": 0.771,
+          "xyxy": [
+            50.4,
+            119.7,
+            671.9,
+            630.1
+          ]
+        },
+        {
+          "class": "remote",
+          "score": 0.7573,
+          "xyxy": [
+            374.9,
+            103.9,
+            636.8,
+            528.2
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.5288,
+          "xyxy": [
+            3.4,
+            0.0,
+            748.7,
+            627.7
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.3144,
+          "xyxy": [
+            33.4,
+            156.2,
+            903.3,
+            629.4
+          ]
+        },
+        {
+          "class": "potted plant",
+          "score": 0.1479,
+          "xyxy": [
+            516.2,
+            1.0,
+            958.3,
+            416.3
+          ]
+        },
+        {
+          "class": "dining table",
+          "score": 0.0555,
+          "xyxy": [
+            24.8,
+            174.1,
+            960.0,
+            629.2
+          ]
+        }
+      ],
+      "elapsedMs": 136.32
+    },
+    {
+      "fixture": "phone-hand.jpg",
+      "dimensions": [
+        960,
+        640
+      ],
+      "imgsz": 960,
+      "letterboxDimensions": [
+        960,
+        960
+      ],
+      "aspectPreserved": true,
+      "phoneAllClasses": [
+        {
+          "class": "cell phone",
+          "score": 0.7202,
+          "xyxy": [
+            374.0,
+            106.1,
+            634.5,
+            528.4
+          ]
+        }
+      ],
+      "phoneFiltered": [
+        0.7202
+      ],
+      "allClasses": [
+        {
+          "class": "person",
+          "score": 0.7472,
+          "xyxy": [
+            44.5,
+            164.6,
+            653.9,
+            638.9
+          ]
+        },
+        {
+          "class": "cell phone",
+          "score": 0.7202,
+          "xyxy": [
+            374.0,
+            106.1,
+            634.5,
+            528.4
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.2762,
+          "xyxy": [
+            282.3,
+            158.4,
+            952.2,
+            638.2
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.2594,
+          "xyxy": [
+            2.2,
+            0.2,
+            631.0,
+            551.6
+          ]
+        },
+        {
+          "class": "potted plant",
+          "score": 0.141,
+          "xyxy": [
+            514.5,
+            1.4,
+            959.1,
+            398.6
+          ]
+        },
+        {
+          "class": "dining table",
+          "score": 0.0741,
+          "xyxy": [
+            327.0,
+            181.3,
+            958.0,
+            638.2
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.0639,
+          "xyxy": [
+            2.0,
+            0.9,
+            405.3,
+            637.5
+          ]
+        }
+      ],
+      "elapsedMs": 246.26
+    },
+    {
+      "fixture": "phone-photo.jpg",
+      "dimensions": [
+        960,
+        640
+      ],
+      "imgsz": 640,
+      "letterboxDimensions": [
+        640,
+        640
+      ],
+      "aspectPreserved": true,
+      "phoneAllClasses": [
+        {
+          "class": "cell phone",
+          "score": 0.9332,
+          "xyxy": [
+            231.2,
+            179.6,
+            419.5,
+            513.4
+          ]
+        }
+      ],
+      "phoneFiltered": [
+        0.9332
+      ],
+      "allClasses": [
+        {
+          "class": "cell phone",
+          "score": 0.9332,
+          "xyxy": [
+            231.2,
+            179.6,
+            419.5,
+            513.4
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.8606,
+          "xyxy": [
+            0.1,
+            8.6,
+            625.3,
+            628.9
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.2749,
+          "xyxy": [
+            507.3,
+            420.5,
+            682.1,
+            635.8
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.0905,
+          "xyxy": [
+            507.3,
+            421.7,
+            644.3,
+            597.4
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.0886,
+          "xyxy": [
+            602.3,
+            266.0,
+            830.3,
+            635.2
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.0738,
+          "xyxy": [
+            2.7,
+            285.1,
+            628.7,
+            631.5
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.0517,
+          "xyxy": [
+            397.8,
+            0.0,
+            957.8,
+            629.0
+          ]
+        }
+      ],
+      "elapsedMs": 123.23
+    },
+    {
+      "fixture": "phone-photo.jpg",
+      "dimensions": [
+        960,
+        640
+      ],
+      "imgsz": 960,
+      "letterboxDimensions": [
+        960,
+        960
+      ],
+      "aspectPreserved": true,
+      "phoneAllClasses": [
+        {
+          "class": "cell phone",
+          "score": 0.9282,
+          "xyxy": [
+            230.1,
+            182.7,
+            419.0,
+            510.0
+          ]
+        }
+      ],
+      "phoneFiltered": [
+        0.9282
+      ],
+      "allClasses": [
+        {
+          "class": "cell phone",
+          "score": 0.9282,
+          "xyxy": [
+            230.1,
+            182.7,
+            419.0,
+            510.0
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.6228,
+          "xyxy": [
+            1.6,
+            81.1,
+            562.2,
+            640.0
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.5981,
+          "xyxy": [
+            180.6,
+            299.6,
+            628.9,
+            639.5
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.2891,
+          "xyxy": [
+            1.1,
+            22.1,
+            368.1,
+            639.0
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.2006,
+          "xyxy": [
+            194.2,
+            7.3,
+            721.9,
+            633.7
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.1494,
+          "xyxy": [
+            489.1,
+            1.0,
+            959.0,
+            635.2
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.1283,
+          "xyxy": [
+            1.1,
+            2.1,
+            233.2,
+            490.8
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.1222,
+          "xyxy": [
+            272.6,
+            349.8,
+            287.4,
+            383.2
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.1025,
+          "xyxy": [
+            0.7,
+            4.6,
+            515.8,
+            560.3
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.0799,
+          "xyxy": [
+            1.1,
+            2.6,
+            263.1,
+            640.0
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.0791,
+          "xyxy": [
+            329.1,
+            329.1,
+            349.2,
+            372.6
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.0686,
+          "xyxy": [
+            300.5,
+            340.3,
+            311.3,
+            381.8
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.0548,
+          "xyxy": [
+            332.1,
+            379.1,
+            344.5,
+            404.5
+          ]
+        }
+      ],
+      "elapsedMs": 227.94
+    },
+    {
+      "fixture": "astronaut.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "imgsz": 640,
+      "letterboxDimensions": [
+        640,
+        640
+      ],
+      "aspectPreserved": true,
+      "phoneAllClasses": [],
+      "phoneFiltered": [],
+      "allClasses": [
+        {
+          "class": "person",
+          "score": 0.8989,
+          "xyxy": [
+            13.3,
+            16.9,
+            364.3,
+            512.0
+          ]
+        },
+        {
+          "class": "sports ball",
+          "score": 0.6769,
+          "xyxy": [
+            275.3,
+            343.4,
+            508.5,
+            511.8
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.1256,
+          "xyxy": [
+            276.0,
+            343.4,
+            508.7,
+            511.6
+          ]
+        },
+        {
+          "class": "umbrella",
+          "score": 0.0749,
+          "xyxy": [
+            0.4,
+            1.1,
+            96.3,
+            325.4
+          ]
+        },
+        {
+          "class": "clock",
+          "score": 0.0509,
+          "xyxy": [
+            277.9,
+            339.0,
+            330.4,
+            378.3
+          ]
+        }
+      ],
+      "elapsedMs": 190.44
+    },
+    {
+      "fixture": "astronaut.png",
+      "dimensions": [
+        512,
+        512
+      ],
+      "imgsz": 960,
+      "letterboxDimensions": [
+        960,
+        960
+      ],
+      "aspectPreserved": true,
+      "phoneAllClasses": [],
+      "phoneFiltered": [],
+      "allClasses": [
+        {
+          "class": "person",
+          "score": 0.5256,
+          "xyxy": [
+            11.7,
+            140.9,
+            350.6,
+            497.7
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.5085,
+          "xyxy": [
+            76.0,
+            16.5,
+            365.6,
+            412.7
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.3906,
+          "xyxy": [
+            4.8,
+            18.5,
+            320.6,
+            419.8
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.0692,
+          "xyxy": [
+            139.8,
+            154.4,
+            507.8,
+            511.8
+          ]
+        },
+        {
+          "class": "person",
+          "score": 0.0684,
+          "xyxy": [
+            272.3,
+            179.9,
+            510.4,
+            512.0
+          ]
+        },
+        {
+          "class": "baseball bat",
+          "score": 0.0623,
+          "xyxy": [
+            395.3,
+            0.2,
+            439.0,
+            193.8
+          ]
+        },
+        {
+          "class": "frisbee",
+          "score": 0.0609,
+          "xyxy": [
+            276.1,
+            343.9,
+            498.8,
+            512.0
+          ]
+        },
+        {
+          "class": "backpack",
+          "score": 0.0519,
+          "xyxy": [
+            276.6,
+            344.7,
+            496.2,
+            512.0
+          ]
+        }
+      ],
+      "elapsedMs": 376.7
+    }
+  ]
+}

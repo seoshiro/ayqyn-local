@@ -1,0 +1,668 @@
+{
+  "collectedUTC": "2026-10-03T19:22:50.8473761Z",
+  "remainingOwnedBuildProcesses": 0,
+  "source": "Windows Code Integrity Operational log",
+  "records": [
+    {
+      "utc": "2026-10-03T19:22:46.7110433Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:22:46.0824047Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:22:42.1689646Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:22:41.5349229Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:22:38.0768580Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:22:37.4585400Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:22:33.5148710Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:22:32.8878672Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:22:29.4157870Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:22:28.7837862Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:22:24.8733219Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:22:24.2464073Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:22:20.8674204Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:22:20.2452922Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:22:16.1118128Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:22:15.4888830Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:22:12.1382055Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:22:11.5056520Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:22:07.0895425Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:22:06.4494054Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:22:02.5520296Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:22:01.9295393Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:21:57.9263487Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:21:57.2997850Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:21:53.0571964Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:21:52.4274818Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:21:48.5218464Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:21:47.8828834Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:21:44.3978931Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:21:43.7030827Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:21:40.1796433Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:21:39.5221295Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:21:35.2636555Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:21:34.6108878Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:21:30.1778672Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:21:29.5057905Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:21:26.0507171Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:21:25.4258478Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:21:21.5480075Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:21:20.9145670Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:21:17.5553226Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:21:16.9271942Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:21:12.9503589Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:21:12.3090976Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:21:08.3397029Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:21:07.7139452Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:21:03.5177382Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:21:02.8953839Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:20:58.6869651Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:20:58.0575264Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:20:54.1441064Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:20:53.5180404Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:20:50.1041030Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:20:49.4577976Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:20:45.5054547Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:20:44.8571520Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:20:41.3477031Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:20:40.7192442Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:20:36.8286151Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:20:36.1971396Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:20:31.9522775Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:20:31.3228869Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:20:27.3399616Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:20:26.6941582Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:20:22.3660036Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:20:21.7323699Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:20:17.6065496Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:20:16.9672960Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:20:12.8148074Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:20:12.1809568Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:20:08.1280621Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:20:07.4278312Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:20:03.3181439Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:20:02.6305419Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:19:58.3109381Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:19:57.6353981Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:19:53.0999046Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:19:52.4403791Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:19:48.0941110Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:19:47.1328859Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:19:42.4819026Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:19:41.6606047Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:19:37.2637429Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:19:36.5198917Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:19:31.9320153Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:19:31.0776397Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:19:26.9879891Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:19:26.3467424Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:19:22.3557982Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:19:21.7016383Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:19:17.6116361Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:19:16.9575990Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:19:12.7811064Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:19:12.1458509Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:19:08.2213714Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:19:07.5798182Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:19:03.5940867Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:19:02.9579021Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:18:58.9602094Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:18:58.2954321Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:18:54.2713250Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:18:53.6311227Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:18:49.2120150Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:18:48.5603295Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:18:44.1686131Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:18:43.5305896Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:18:35.3342546Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:18:34.6907108Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_polars_runtime.pyd",
+      "eventId": 3033
+    },
+    {
+      "utc": "2026-10-03T19:18:08.1941034Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_contourpy.cp312-win_amd64.pyd",
+      "eventId": 3077
+    },
+    {
+      "utc": "2026-10-03T19:18:08.1917545Z",
+      "message": "Module did not meet signing level / code integrity policy. Original paths and policy identifiers omitted.",
+      "module": "_contourpy.cp312-win_amd64.pyd",
+      "eventId": 3033
+    }
+  ],
+  "schema": 1
+}

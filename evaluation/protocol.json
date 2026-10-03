@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "candidateFrozenBeforeHeldoutInference": true,
+  "baseline": {"model": "yolo11n.pt", "imgsz": 640, "confidence": 0.45, "iou": 0.7},
+  "candidate": {"model": "yolo11n.pt", "imgsz": 960, "confidence": 0.45, "iou": 0.7},
+  "reason": "Development fixtures exposed resolution-dependent back-phone miss; label metadata and class-filter parity correct. Keep confidence unchanged.",
+  "sampling": "First sorted non-depiction Open Images validation IDs: 16 Mobile phone and up to 4 each Remote control/Book/Wallet/Calculator/Camera, excluding annotated phones from negatives. Manual label review before model execution.",
+  "metrics": "Per-image TP/FN/FP/TN with denominators; positive localization requires IoU >= .3 against dataset phone boxes. Report visibility and raise-position proxies separately. No exam-video generalization claim.",
+  "eventTesting": "Image-derived motion test video and timing labels, distinctly synthetic transformations; no claims of real participant event precision/recall.",
+  "noRetuning": "Do not change confidence, choose a model or add class remapping to improve heldout outcomes. Further iterations need a new independent split."
+}

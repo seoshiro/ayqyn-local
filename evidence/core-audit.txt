@@ -1,0 +1,28 @@
+✔ short benign movements create no attention event (2.6691ms)
+✔ sustained attention event needs healthy single face and calibration (8.5919ms)
+✔ dark frames produce quality observations and never absence (0.5487ms)
+✔ stale gap resets accumulated dwell (0.568ms)
+✔ phone dwell, debounce and repeated detections are bounded (1.1007ms)
+✔ second face has dwell and requires sensor quality (0.5216ms)
+✔ calibration requires stable usable samples (2.5513ms)
+✔ report always removes raw snapshots and preserves review reasons (1.1561ms)
+✔ invalid policy rejected and time monotonic enforced (0.4588ms)
+✔ user strings escaped and expired data identified (0.7796ms)
+✔ schema rejects null events, rolled dates, unknown nested images, missing and boolean-invalid policy (1.2136ms)
+✔ schema bounds image budgets and finite event times (0.6186ms)
+✔ calibration rejects pitch and iris instability (0.4613ms)
+✔ one continuous phone episode creates one row per observable quantity and finishes after hysteresis (0.5048ms)
+✔ stop during delayed capture releases stale tracks and never resurrects stream (4.478ms)
+✔ stop or navigation during model initialization never requests camera (0.5203ms)
+✔ revocation while capture pending stops returned track (1.9895ms)
+✔ duplicate clicks cannot request two captures (0.4641ms)
+✔ undecoded stream times out; duplicate frames and frozen detector cannot pass readiness (0.6941ms)
+✔ owned temporary data removed on startup/delete and corrupt or expired records fail closed (24.8369ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 203.5771

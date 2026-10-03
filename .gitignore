@@ -12,6 +12,8 @@ evidence/*.webm
 evidence/*.log
 evidence/*.y4m
 artifacts/
+evaluation/heldout/*.jpg
+evidence/heldout-contact-*.jpg
 __pycache__/
 .pytest_cache/
 .sites-runtime/

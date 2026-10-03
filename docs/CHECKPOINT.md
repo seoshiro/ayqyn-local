@@ -1,52 +1,48 @@
-# Resumable first vertical slice — 2026-10-03
+# AYQYN resumable audited checkpoint — 2026-10-03
+The local prototype and static review demo are implemented. This is a second checkpoint for independent review, **not a competition release**. Native packaging is blocked by verified Windows application control; see `WINDOWS_RUNTIME_BLOCK.md`.
 
-The first local slice is working. This checkpoint is intentionally before the larger competition package so the captain/parent can review and continue immediately.
-
-## Evidence measured on this machine
-
-| Check | Result |
+## Current measured evidence
+| Scope | Result |
 |---|---|
-| Event/privacy unit tests | 10/10 passed |
-| Browser end-to-end | 6/6 checks, no page errors; 390/768/1440 px without overflow |
-| Native Electron end-to-end | 8/8 passed, virtual camera only |
-| CV observation count | 144; 8 scenes × 18 repeated correlated frames |
-| Warm CPU inference p50 / p95 | 96.37 / 113.87 ms, excludes first cold frame |
-| Cold inference / initialization | 200.08 / 3928.36 ms |
-| Peak worker RSS | 476.7 MB; includes Python/models, not Electron |
-| Hardware | Windows 11 build 26200, AMD64 Family 25 Model 68, 12 logical CPUs, 15.3 GiB RAM |
-| Phone photograph outcomes | TP 1/3 positives, FP 0/1 negative; not general accuracy |
-| Face smoke observations | One face detected; two-face enlarged portrait collage detected; original small-face collage failed before fixture adjustment |
-| Quality gating | Dark/blur flagged unusable; absence not generated on those rule-test inputs |
+| Node rule/schema/camera lifecycle/storage regressions | 20/20 passed; `evidence/core-audit.txt` |
+| Browser E2E | 7 checks passed; consent defaults, replay, review/reload, image-free export, mobile drafts/export, responsive widths, confirmed deletion |
+| Native Electron E2E | 10 checks passed on file-backed virtual camera; no physical camera or fullscreen activated |
+| Independent photo selection | 32 Open Images validation scenes selected by sorted IDs before inference; original license/author/boxes/hash in manifest |
+| YOLO11n 640, conf .45 | 9/10 manually verified physical-phone photographs detected; 12/16 dataset-labelled positives localized (IoU ≥.3); 3/16 negative scenes falsely detected |
+| YOLO11n 960, conf .45 | 7/10 verified physical photos; 10/16 dataset positives localized; 3/16 negative scenes falsely detected; rejected |
+| YOLO11s 640 comparison on reused set | 9/10 verified physical photos; 13/16 dataset positives localized; 3/16 negative scenes falsely detected; no demonstrated overall improvement |
+| Detector decision | Keep YOLO11n 640/.45. Do not tune threshold or re-label remotes as phones to improve this set |
+| Portable/clean-machine installation | NOT passed: PyInstaller packaging stopped after unsigned Polars/Contourpy Code Integrity failures |
+| Public repository / CI / deployment | Not published in this checkpoint |
 
-Native checks: capability states, consent checkbox, real CV+calibration from Y4M, Ctrl+C native guard, camera cleanup, atomic storage/recovery, deliberately killed **own** CV worker safely pauses without absence accusation then reconnects, and native emergency exit. No real camera, audio, global hooks, security settings or lock mode used.
+Photo scene-level detection is not mAP, exam-video precision/recall, phone-raising trajectory accuracy or a benign false-event rate. Four dataset positives are product graphics and two ambiguous device examples; ten are manually verified physical-phone photographs. Manual visual review was by Codex, not an independent human. YOLO11s used the already-inspected set as a development comparison; a new held-out set is required before any model change. Its timing was measured while dependency packaging analysis also ran, so no controlled speedup/slowdown claim is made.
 
-Initial Electron test caused the user's crash dialog: exact test process exit `0xC0000005` before app window. No recent matching Application log entry was available. Isolated permitted launch with local userData and disabled hardware acceleration succeeded; exact faulting module remains unknown. Crash dialogs were suppressed only for the isolated test process via inherited process error mode, not a global Windows setting. Do not diagnose defective RAM.
+Pipeline diagnostics checked class map (`cell phone` = 67), class-filter parity, NMS/default IoU, native aspect-preserving letterbox, confidence diagnostics and 640/960 sizes. The desktop renderer's aspect-ratio stretch was fixed. There is no exported model in the current pipeline; export parity is therefore not claimed. Native screenshots and JSON show real inference on licensed fixtures, with conspicuous virtual-source labels.
 
-## Files for parent deck and resume
+## Independent audit fixes
+Read `AUDIT_FIXES.md` for each finding and disposition. Key fixes: asynchronous capture cancellation, consent revocation, frame/readiness watchdogs, main-process freshness gate, strict bounded session/report schema, owned temp cleanup, pitch/iris calibration stability, continuous event episodes, preserved consent/calibration segments, separate snapshot consent, source labels, reviewer draft retention, replacement export/deletion confirmations, darker secondary text and distinct capture-age measurement.
 
-- `evidence/desktop-calibration.png`, `desktop-exam.png`: actual native app with real model on public-domain fixture; no human camera session.
-- `evidence/01-overview.png`, `02-consent.png`, `03-review.png`, `04-capabilities.png`, `mobile-390.png`: actual browser pixels.
-- `evidence/cv-metrics.json`, `desktop-audit.json`, `ui-audit.json`, `example-report.json`: raw supporting evidence.
-- `docs/ARCHITECTURE.md`: requirement/capability matrix and diagram.
-- `docs/THREAT_MODEL.md`: fixes and limitations.
-- `docs/DEMO_AND_DEFENSE.md`: 3-minute pitch timing and Q&A.
-- `web/fixtures/replay.json`: actual detector outputs, hashes and source attribution. Repeated still images are clearly labelled.
-- Browser walkthrough video: largest `evidence/page@*.webm` (~706 kB); original generated file name retained locally.
+Actual screenshots:
+- `evidence/desktop-calibration.png`, `desktop-exam.png`, `desktop-worker-interruption.png`.
+- `evidence/03-review.png`, `mobile-review-reason.png`, `04-capabilities.png`.
+- Original browser walkthrough was an automated short test recording, not a judge-ready demo. It is not included as a final demo video.
 
-## Remaining work before competition release
+## Runtime security notice
+The installed Polars binary is unsigned and Windows Code Integrity denied loading it during packaging analysis. Exact package/hash and redacted event evidence are documented. Build stopped; no protection was disabled and no alternate execution of the denied binary attempted. A separate Contourpy plotting module was also denied. Do not restart broad Python dependency scanning or native packaging until an inference-only dependency graph omits these modules, or a supported minimal runtime has been chosen. No malware/false-positive assertion or RAM diagnosis.
 
-1. Phone back view is predicted as **remote**, .757, rather than phone in the nano model. Compare a free larger model/alternative and test hard negatives; do not simply report a remote as confirmed phone. Tiny occluded phone also missed. Need raised/aimed-position event video and independent annotations.
-2. Head/eye proxy sign conventions, glasses, occlusion, real down/side sequences, physical camera permission denial and actual CPU dropped-frame/age need validation. No event precision/recall or benign real-video false-event rate yet. Rule tests alone are not CV validation.
-3. Add appropriate hysteresis, evidence provenance, explicit persisted consent, protected examiner role and better one-current-session overwrite UX. Calibration now resets on stopping the sensor.
-4. Test true network-denied offline run, clean-machine setup, corrupt/missing models and persistence failure. Python lockfile is frozen from this environment; portable wheelhouse and unsigned installer not yet built.
-5. Publish a new public source repository and run CI there. Connected GitHub login verified as `seoshiro`; current callable GitHub tools lack a create-repository action, and `gh` is not installed. No auth tokens were read or minted. Local git repo exists, not remote publication.
-6. Publish a free static replay demo from `dist/` after `node scripts/build-demo.mjs` and Python `scripts/redact-demo.py`. This redacts detected face regions in public display while retaining provenance from originals. Site registration/deployment not started; no paid services.
-7. Final presentation handled by parent. No submission, registration or organizer contact performed.
+## Remaining case gaps
+1. Actual consented, annotated moving phone/head/eye clips, phone aimed toward screen, glasses/occlusion and benign movements. Current repeated stills and transformed composites are explicitly labelled; real video quality is not established.
+2. An inference runtime compatible with current Windows policy, offline asset verification, clean installation and actual packaged release. Prefer eliminating unused training/tabular/plotting dependencies; investigate reproducible official YOLO ONNX + minimal inference only with output parity.
+3. Native active-exam revocation, no-decoded-frame/frozen-track cases, camera denied/loading screenshots, repeated cold starts, sustained resource measurements and storage permission/disk-failure E2E.
+4. Separate snapshot-checkbox E2E, complete keyboard/screen-reader/contrast audit and trustworthy examiner authentication. One-current-session only; explicit replacement export/deletion confirmation exists, archive/undo does not.
+5. True network-denied offline test, package attribution/license inventory, signed integrity provenance if institution needs it. Local administrator can still tamper with files. No real institutional exam claim.
+6. New public repository/free redacted static demo, exact remote commits/CI/deployment verification. Connected GitHub user was verified earlier, but available API tools do not create repositories and no shell-auth credential was obtained. Parent can resolve this tooling without reusing earlier repos.
+7. Parent pitch/PDF package after these gaps are accurately scoped.
 
-## Resume execution
+## Resume
+Source directory is `ayqyn/` in the delegated workspace. Current CV venv is adjacent at `../.venv/Scripts/python.exe`; normal setup creates `.venv` inside the project. Node and pnpm dependencies are installed. Static preview: `node scripts/serve.mjs` on 127.0.0.1:4173.
 
-Working path: `C:\Users\gokusen\Documents\Codex\2026-10-03\task\ayqyn`.
+Do not run `pnpm package` as a working release: the old simple packaging command excludes Python and the new bundled-worker path is not yet populated. The aborted PyInstaller work is under ignored `data/pyinstaller`; no usable release directory exists. The test virtual video is ignored `evidence/virtual-camera.y4m` and contains a repeated public-domain NASA photograph, not participant capture.
 
-Current CV interpreter is `..\.venv\Scripts\python.exe`; dependencies/models installed. Node/pnpm are task runtime binaries; pnpm CLI path: `C:\Users\gokusen\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\node_modules\pnpm\bin\pnpm.cjs`. Use Node to invoke it. Source setup creates `.venv` inside repository on a fresh machine. Electron installed at `node_modules/.pnpm/electron@44.5.1/node_modules/electron/dist/electron.exe`.
+No native audit/build is intentionally running at checkpoint. The original static HTTP server may still be running (local port 4173). No camera, microphone, global keyboard hook, OS lock or organizer communication was activated.
 
-Preview server: `node scripts/serve.mjs`, `http://127.0.0.1:4173`. Do not auto-start a physical camera. Native audit is `node scripts/audit-desktop.mjs` with isolated execution permissions; it always sets fake-device/file capture and local data paths, and does not opt into fullscreen.

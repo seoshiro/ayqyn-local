@@ -1,0 +1,125 @@
+{
+  "note": "8-image smoke set, repeated 18 times each. Not exam video accuracy; frames are correlated. First frame is cold inference.",
+  "frames": 144,
+  "p50Ms": 96.37,
+  "p95Ms": 113.87,
+  "coldInferenceMs": 200.08,
+  "initMs": 3928.36,
+  "workerPeakRssMB": 476.7,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+  "logicalCpu": 12,
+  "ramGB": 15.3,
+  "phonePhotoTP": 1,
+  "phonePhotoPositiveDenominator": 3,
+  "phonePhotoFP": 0,
+  "phonePhotoNegativeDenominator": 1,
+  "fixtures": [
+    {
+      "fixture": "astronaut.png",
+      "kind": "original photograph",
+      "sha256": "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+      "expectedFaces": 1,
+      "observedFaces": 1,
+      "expectedPhone": false,
+      "observedPhone": false,
+      "phoneConfidence": [],
+      "qualityUsable": true,
+      "pose": {
+        "pitch": -33.85,
+        "yaw": -4.69,
+        "roll": 2.13
+      }
+    },
+    {
+      "fixture": "phone-desk.jpg",
+      "kind": "original photograph resized",
+      "sha256": "affd62d383092c340bab6e45bdfb07085faabeb4e2a214e798629179a17aa2fc",
+      "expectedFaces": null,
+      "observedFaces": 0,
+      "expectedPhone": true,
+      "observedPhone": false,
+      "phoneConfidence": [],
+      "qualityUsable": true,
+      "pose": null
+    },
+    {
+      "fixture": "phone-hand.jpg",
+      "kind": "original photograph resized",
+      "sha256": "ce1a4b20840c374e073a7c378680b9ce49b523ba3fdcfae15e2d1d951c94f546",
+      "expectedFaces": 0,
+      "observedFaces": 0,
+      "expectedPhone": true,
+      "observedPhone": false,
+      "phoneConfidence": [],
+      "qualityUsable": true,
+      "pose": null
+    },
+    {
+      "fixture": "phone-photo.jpg",
+      "kind": "original photograph resized",
+      "sha256": "129d9dbb3ede72942a9a081580b97ea0a4bfcecc5e1c665ac44640103630d672",
+      "expectedFaces": null,
+      "observedFaces": 0,
+      "expectedPhone": true,
+      "observedPhone": true,
+      "phoneConfidence": [
+        0.932
+      ],
+      "qualityUsable": true,
+      "pose": null
+    },
+    {
+      "fixture": "two-faces.jpg",
+      "kind": "composite of two copies; derived test",
+      "sha256": "953f3131e34da580c409a8d8d8511c0600bb288643633a2d438a5d7f8ffa02bf",
+      "expectedFaces": 2,
+      "observedFaces": 2,
+      "expectedPhone": false,
+      "observedPhone": false,
+      "phoneConfidence": [],
+      "qualityUsable": true,
+      "pose": null
+    },
+    {
+      "fixture": "dark.jpg",
+      "kind": "photograph darkened; derived quality test",
+      "sha256": "3d8af63097790e89b1ba35eccf3f7f737ccca342b33fd5be234f4e8cdf6c3621",
+      "expectedFaces": null,
+      "observedFaces": 1,
+      "expectedPhone": false,
+      "observedPhone": false,
+      "phoneConfidence": [],
+      "qualityUsable": false,
+      "pose": {
+        "pitch": -32.47,
+        "yaw": -4.8,
+        "roll": 2.6
+      }
+    },
+    {
+      "fixture": "blur.jpg",
+      "kind": "photograph blurred; derived quality test",
+      "sha256": "dfb9017d3a27e79d680e55abf6b36127dc5c6ff66ae992efad5d2e8d83e3e8cc",
+      "expectedFaces": null,
+      "observedFaces": 0,
+      "expectedPhone": false,
+      "observedPhone": false,
+      "phoneConfidence": [],
+      "qualityUsable": false,
+      "pose": null
+    },
+    {
+      "fixture": "empty.jpg",
+      "kind": "synthetic ramp; sensor healthy absence test",
+      "sha256": "13b0e27b857c45f1853b497cabf0ba2db335ff994bd88a5b6e491468c26e10ee",
+      "expectedFaces": 0,
+      "observedFaces": 0,
+      "expectedPhone": false,
+      "observedPhone": false,
+      "phoneConfidence": [],
+      "qualityUsable": true,
+      "pose": null
+    }
+  ]
+}

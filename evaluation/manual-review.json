@@ -1,0 +1,26 @@
+{
+ "reviewer":"Codex visual inspection before detector evaluation, not an independent human annotator",
+ "reviewedBeforeInference":true,
+ "source":"evidence/heldout-contact-0.jpg and heldout-contact-16.jpg",
+ "labels":"Dataset Mobile phone label retained for dataset-label metrics; source-image contents and exam relevance separately qualified.",
+ "items":[
+ {"imageId":"012dc31b561d4214","verifiedPhone":true,"kind":"photograph","notes":"Large handheld front phone"},
+ {"imageId":"043f3655deab6e7c","verifiedPhone":true,"kind":"photograph","notes":"Handheld front phone"},
+ {"imageId":"0c5dc73c4cb7559b","verifiedPhone":true,"kind":"product_graphic","notes":"Two rendered front phones; not a live camera scene"},
+ {"imageId":"0d4d1169ecf7e56e","verifiedPhone":true,"kind":"photograph","notes":"Physical keyboard phone in retail display"},
+ {"imageId":"10dda8b9e1534f15","verifiedPhone":true,"kind":"photograph","notes":"iPhone next to iPod; do not label the iPod as a phone"},
+ {"imageId":"12e529ac3ceecdb3","verifiedPhone":null,"kind":"ambiguous_device","notes":"Boxes identify iPod touch; dataset Mobile phone annotation is not strict cell-phone truth"},
+ {"imageId":"14dc34954fe89fc2","verifiedPhone":true,"kind":"photograph","notes":"Front Nokia E-series phone"},
+ {"imageId":"169e92cc01e9e571","verifiedPhone":true,"kind":"product_graphic","notes":"Phone shown in marketing graphic; not a camera scene"},
+ {"imageId":"17c496b766f8b5ef","verifiedPhone":true,"kind":"photograph","notes":"Handheld physical keyboard phone"},
+ {"imageId":"183025437834c0e0","verifiedPhone":true,"kind":"photograph","notes":"Older antenna phone, not representative smartphone"},
+ {"imageId":"1893009e751e6d21","verifiedPhone":true,"kind":"photograph","notes":"Phone edge view, annotation retained; difficult pose"},
+ {"imageId":"1a08289e9fcda126","verifiedPhone":true,"kind":"photograph","notes":"Handheld front phone; one face also visible"},
+ {"imageId":"1f3915bdd8737cd8","verifiedPhone":true,"kind":"photograph","notes":"Older physical keyboard phone charging on desk"},
+ {"imageId":"21b65b2f5e02521c","verifiedPhone":null,"kind":"ambiguous_device","notes":"Navigation-device product render; cannot establish phone capability from image"},
+ {"imageId":"27b01a51a7b0538c","verifiedPhone":true,"kind":"product_graphic","notes":"Rendered pair of phones; duplicated-looking graphic retained, separate from photo metrics"},
+ {"imageId":"288d0619abeb57ed","verifiedPhone":true,"kind":"product_graphic","notes":"Rendered app screens on phones"}
+ ],
+ "negativesVerifiedNoVisibleSmartphone": ["4fe2fb3816b91c44","6347108949f5cbe2","8357a23d186680d7","c48ad3322299db3e","04311ae05c027377","0a3873442ad329c2","0b19fbf13f8296d6","0dbd358b804cdc0d","13fc51f84ffc7bcf","4cd9c9c8979311e1","8a43be187b9708ba","8c26b7a2c9a203d6","01284dd8eaad0569","022881fd81a5a8f7","02dfa3e35b58bdb7","05544d84d21af1c1"],
+ "negativeNotes":"Includes remotes, calculators, books, laptop case/bag, standalone cameras, and a cordless landline handset. No visible smartphone in contact-sheet review. Further human review encouraged."
+}

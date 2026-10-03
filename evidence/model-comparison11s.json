@@ -1,0 +1,814 @@
+{
+  "schema": 1,
+  "model": "yolo11s.pt",
+  "modelSHA256": "85a76fe86dd8afe384648546b56a7a78580c7cb7b404fc595f97969322d502d5",
+  "protocol": {
+    "schema": 1,
+    "candidateFrozenBeforeHeldoutInference": true,
+    "baseline": {
+      "model": "yolo11n.pt",
+      "imgsz": 640,
+      "confidence": 0.45,
+      "iou": 0.7
+    },
+    "candidate": {
+      "model": "yolo11n.pt",
+      "imgsz": 960,
+      "confidence": 0.45,
+      "iou": 0.7
+    },
+    "reason": "Development fixtures exposed resolution-dependent back-phone miss; label metadata and class-filter parity correct. Keep confidence unchanged.",
+    "sampling": "First sorted non-depiction Open Images validation IDs: 16 Mobile phone and up to 4 each Remote control/Book/Wallet/Calculator/Camera, excluding annotated phones from negatives. Manual label review before model execution.",
+    "metrics": "Per-image TP/FN/FP/TN with denominators; positive localization requires IoU >= .3 against dataset phone boxes. Report visibility and raise-position proxies separately. No exam-video generalization claim.",
+    "eventTesting": "Image-derived motion test video and timing labels, distinctly synthetic transformations; no claims of real participant event precision/recall.",
+    "noRetuning": "Do not change confidence, choose a model or add class remapping to improve heldout outcomes. Further iterations need a new independent split."
+  },
+  "review": {
+    "reviewer": "Codex visual inspection before detector evaluation, not an independent human annotator",
+    "reviewedBeforeInference": true,
+    "source": "evidence/heldout-contact-0.jpg and heldout-contact-16.jpg",
+    "labels": "Dataset Mobile phone label retained for dataset-label metrics; source-image contents and exam relevance separately qualified.",
+    "items": [
+      {
+        "imageId": "012dc31b561d4214",
+        "verifiedPhone": true,
+        "kind": "photograph",
+        "notes": "Large handheld front phone"
+      },
+      {
+        "imageId": "043f3655deab6e7c",
+        "verifiedPhone": true,
+        "kind": "photograph",
+        "notes": "Handheld front phone"
+      },
+      {
+        "imageId": "0c5dc73c4cb7559b",
+        "verifiedPhone": true,
+        "kind": "product_graphic",
+        "notes": "Two rendered front phones; not a live camera scene"
+      },
+      {
+        "imageId": "0d4d1169ecf7e56e",
+        "verifiedPhone": true,
+        "kind": "photograph",
+        "notes": "Physical keyboard phone in retail display"
+      },
+      {
+        "imageId": "10dda8b9e1534f15",
+        "verifiedPhone": true,
+        "kind": "photograph",
+        "notes": "iPhone next to iPod; do not label the iPod as a phone"
+      },
+      {
+        "imageId": "12e529ac3ceecdb3",
+        "verifiedPhone": null,
+        "kind": "ambiguous_device",
+        "notes": "Boxes identify iPod touch; dataset Mobile phone annotation is not strict cell-phone truth"
+      },
+      {
+        "imageId": "14dc34954fe89fc2",
+        "verifiedPhone": true,
+        "kind": "photograph",
+        "notes": "Front Nokia E-series phone"
+      },
+      {
+        "imageId": "169e92cc01e9e571",
+        "verifiedPhone": true,
+        "kind": "product_graphic",
+        "notes": "Phone shown in marketing graphic; not a camera scene"
+      },
+      {
+        "imageId": "17c496b766f8b5ef",
+        "verifiedPhone": true,
+        "kind": "photograph",
+        "notes": "Handheld physical keyboard phone"
+      },
+      {
+        "imageId": "183025437834c0e0",
+        "verifiedPhone": true,
+        "kind": "photograph",
+        "notes": "Older antenna phone, not representative smartphone"
+      },
+      {
+        "imageId": "1893009e751e6d21",
+        "verifiedPhone": true,
+        "kind": "photograph",
+        "notes": "Phone edge view, annotation retained; difficult pose"
+      },
+      {
+        "imageId": "1a08289e9fcda126",
+        "verifiedPhone": true,
+        "kind": "photograph",
+        "notes": "Handheld front phone; one face also visible"
+      },
+      {
+        "imageId": "1f3915bdd8737cd8",
+        "verifiedPhone": true,
+        "kind": "photograph",
+        "notes": "Older physical keyboard phone charging on desk"
+      },
+      {
+        "imageId": "21b65b2f5e02521c",
+        "verifiedPhone": null,
+        "kind": "ambiguous_device",
+        "notes": "Navigation-device product render; cannot establish phone capability from image"
+      },
+      {
+        "imageId": "27b01a51a7b0538c",
+        "verifiedPhone": true,
+        "kind": "product_graphic",
+        "notes": "Rendered pair of phones; duplicated-looking graphic retained, separate from photo metrics"
+      },
+      {
+        "imageId": "288d0619abeb57ed",
+        "verifiedPhone": true,
+        "kind": "product_graphic",
+        "notes": "Rendered app screens on phones"
+      }
+    ],
+    "negativesVerifiedNoVisibleSmartphone": [
+      "4fe2fb3816b91c44",
+      "6347108949f5cbe2",
+      "8357a23d186680d7",
+      "c48ad3322299db3e",
+      "04311ae05c027377",
+      "0a3873442ad329c2",
+      "0b19fbf13f8296d6",
+      "0dbd358b804cdc0d",
+      "13fc51f84ffc7bcf",
+      "4cd9c9c8979311e1",
+      "8a43be187b9708ba",
+      "8c26b7a2c9a203d6",
+      "01284dd8eaad0569",
+      "022881fd81a5a8f7",
+      "02dfa3e35b58bdb7",
+      "05544d84d21af1c1"
+    ],
+    "negativeNotes": "Includes remotes, calculators, books, laptop case/bag, standalone cameras, and a cordless landline handset. No visible smartphone in contact-sheet review. Further human review encouraged."
+  },
+  "note": "32 preselected independent Open Images scenes. No threshold retuning. Dataset-label and physically verified photo metrics differ. Not exam-video accuracy; manual review by Codex, not independent human.",
+  "summaries": [
+    {
+      "imgsz": 640,
+      "confidence": 0.45,
+      "datasetPositiveTP": 13,
+      "datasetPositiveDenominator": 16,
+      "verifiedPhotoTP": 9,
+      "verifiedPhotoPositiveDenominator": 10,
+      "negativeFP": 3,
+      "negativeDenominator": 16,
+      "p50Ms": 139.87,
+      "p95Ms": 200.43
+    }
+  ],
+  "records": [
+    {
+      "imageId": "012dc31b561d4214",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": true,
+      "kind": "photograph",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 333.34,
+      "sha256": "63271fd4d75a503c800e24f299be062588f786957dfce59a18980166b7fcf863"
+    },
+    {
+      "imageId": "043f3655deab6e7c",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": true,
+      "kind": "photograph",
+      "foundPhone": true,
+      "localizedPhone": true,
+      "detections": [
+        {
+          "box": [
+            0.3087635040283203,
+            0.06897994390143172,
+            0.6886824369430542,
+            0.9428399039785242
+          ],
+          "confidence": 0.9395
+        }
+      ],
+      "latencyMs": 203.14,
+      "sha256": "15f0597b1f7e41a40b2b3016bc87cc82f9f05f26de4b406e9f7a6606a3f3ec01"
+    },
+    {
+      "imageId": "0c5dc73c4cb7559b",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": true,
+      "kind": "product_graphic",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 195.98,
+      "sha256": "7b5aba75989abcf7ce7bb96e9dbf9fdc35aeb0a5678367218c306a96a5d3d089"
+    },
+    {
+      "imageId": "0d4d1169ecf7e56e",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": true,
+      "kind": "photograph",
+      "foundPhone": true,
+      "localizedPhone": true,
+      "detections": [
+        {
+          "box": [
+            0.0171037670224905,
+            0.00011233660130718954,
+            0.8773595690727234,
+            0.8332407832924836
+          ],
+          "confidence": 0.9155
+        }
+      ],
+      "latencyMs": 144.0,
+      "sha256": "142d84a74585e0dfac9be2f5b880c62626611919865ac2a69170099c0a93f0be"
+    },
+    {
+      "imageId": "10dda8b9e1534f15",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": true,
+      "kind": "photograph",
+      "foundPhone": true,
+      "localizedPhone": true,
+      "detections": [
+        {
+          "box": [
+            0.0,
+            0.0,
+            0.48851650953292847,
+            0.9974391460418701
+          ],
+          "confidence": 0.9721
+        },
+        {
+          "box": [
+            0.5888303518295288,
+            0.09262755513191223,
+            0.9223920702934265,
+            0.9995301564534506
+          ],
+          "confidence": 0.8264
+        }
+      ],
+      "latencyMs": 139.87,
+      "sha256": "f1fb753dad919effaf7d19f6e745355cd606de14e36d8bdaa61c0157c759ddc0"
+    },
+    {
+      "imageId": "12e529ac3ceecdb3",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": null,
+      "kind": "ambiguous_device",
+      "foundPhone": true,
+      "localizedPhone": true,
+      "detections": [
+        {
+          "box": [
+            0.14859050512313843,
+            0.22013982137044272,
+            0.46908220648765564,
+            0.948834498723348
+          ],
+          "confidence": 0.9682
+        },
+        {
+          "box": [
+            0.5509974360466003,
+            0.22729015350341797,
+            0.8468969464302063,
+            0.9436152776082357
+          ],
+          "confidence": 0.9641
+        },
+        {
+          "box": [
+            0.018923914059996605,
+            0.22500421603520712,
+            0.16561321914196014,
+            0.5721458594004313
+          ],
+          "confidence": 0.8946
+        },
+        {
+          "box": [
+            0.8620902895927429,
+            0.2290982405344645,
+            0.9995654821395874,
+            0.5787737369537354
+          ],
+          "confidence": 0.8811
+        }
+      ],
+      "latencyMs": 140.91,
+      "sha256": "4e4c3d47f72636a21ffefc0ccce39955b0136757f77e0f6f450281024ce189ca"
+    },
+    {
+      "imageId": "14dc34954fe89fc2",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": true,
+      "kind": "photograph",
+      "foundPhone": true,
+      "localizedPhone": true,
+      "detections": [
+        {
+          "box": [
+            0.06488213688135147,
+            0.0019971211440861225,
+            0.6460911631584167,
+            0.9983210563659668
+          ],
+          "confidence": 0.8045
+        }
+      ],
+      "latencyMs": 146.38,
+      "sha256": "525eec2a11fa97969f884d73226cd789c0dfb77f3f752cc41df02cd4ebec9d2a"
+    },
+    {
+      "imageId": "169e92cc01e9e571",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": true,
+      "kind": "product_graphic",
+      "foundPhone": true,
+      "localizedPhone": true,
+      "detections": [
+        {
+          "box": [
+            0.30865465671526465,
+            0.20272095501422882,
+            0.6925179324166141,
+            0.7189456224441528
+          ],
+          "confidence": 0.9593
+        }
+      ],
+      "latencyMs": 150.38,
+      "sha256": "1ca6b142368da4dce06dc3dbcd66de4d29536f08a810379058ce4e28410f9bdf"
+    },
+    {
+      "imageId": "17c496b766f8b5ef",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": true,
+      "kind": "photograph",
+      "foundPhone": true,
+      "localizedPhone": true,
+      "detections": [
+        {
+          "box": [
+            0.30026549100875854,
+            0.07030804951985677,
+            0.7275457382202148,
+            1.0
+          ],
+          "confidence": 0.9132
+        }
+      ],
+      "latencyMs": 145.43,
+      "sha256": "ea477f933ba90b893545bfda60ae3e2bb74531dedbf6f427b399218c53cfe564"
+    },
+    {
+      "imageId": "183025437834c0e0",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": true,
+      "kind": "photograph",
+      "foundPhone": true,
+      "localizedPhone": true,
+      "detections": [
+        {
+          "box": [
+            0.02835342527806074,
+            0.139363095164299,
+            0.9974673917923851,
+            0.9939041137695312
+          ],
+          "confidence": 0.9451
+        }
+      ],
+      "latencyMs": 97.94,
+      "sha256": "acca50741625f6f51ae5c891d083e1427e4af6218c07a6d5073e73e93b1ffc78"
+    },
+    {
+      "imageId": "1893009e751e6d21",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": true,
+      "kind": "photograph",
+      "foundPhone": true,
+      "localizedPhone": true,
+      "detections": [
+        {
+          "box": [
+            0.0,
+            0.011212027401005456,
+            0.9931876063346863,
+            0.8448608585089354
+          ],
+          "confidence": 0.7205
+        }
+      ],
+      "latencyMs": 101.47,
+      "sha256": "61154b6d9cfd476b947b0e73220797ddb733b15042fa797d9635c98e3ddaed3d"
+    },
+    {
+      "imageId": "1a08289e9fcda126",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": true,
+      "kind": "photograph",
+      "foundPhone": true,
+      "localizedPhone": true,
+      "detections": [
+        {
+          "box": [
+            0.3603164553642273,
+            0.00020554859656840563,
+            0.9287006258964539,
+            0.9988265832265218
+          ],
+          "confidence": 0.9637
+        }
+      ],
+      "latencyMs": 134.08,
+      "sha256": "f0e0e30f8481b97d2d0ae40449487bdeb8c8029ea82a751ede0c3d305dfb2d7b"
+    },
+    {
+      "imageId": "1f3915bdd8737cd8",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": true,
+      "kind": "photograph",
+      "foundPhone": true,
+      "localizedPhone": true,
+      "detections": [
+        {
+          "box": [
+            0.48085910081863403,
+            0.30462150517878384,
+            0.9114178419113159,
+            0.6942861174420067
+          ],
+          "confidence": 0.9555
+        },
+        {
+          "box": [
+            0.060447800904512405,
+            0.23533947610924918,
+            0.4362890124320984,
+            0.6618990583964358
+          ],
+          "confidence": 0.8524
+        }
+      ],
+      "latencyMs": 131.13,
+      "sha256": "341eac507406ea35c10d6b8e8a018b20b8c1320550bd22fca3f1c5c4850b6cc6"
+    },
+    {
+      "imageId": "21b65b2f5e02521c",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": null,
+      "kind": "ambiguous_device",
+      "foundPhone": true,
+      "localizedPhone": true,
+      "detections": [
+        {
+          "box": [
+            0.43468809127807617,
+            0.017380763144388685,
+            0.9932861328125,
+            0.9681960057168111
+          ],
+          "confidence": 0.7254
+        }
+      ],
+      "latencyMs": 127.14,
+      "sha256": "9076bbf552ef32bea404e41e2c890bdecb7a06a0ae0f04213028fc0ee0af424d"
+    },
+    {
+      "imageId": "27b01a51a7b0538c",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": true,
+      "kind": "product_graphic",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 213.54,
+      "sha256": "7bf4a626610419e90af470ff622bad9384f16477dad5fc52d0bb897601ccb216"
+    },
+    {
+      "imageId": "288d0619abeb57ed",
+      "category": "Mobile phone",
+      "imgsz": 640,
+      "datasetPositive": true,
+      "verifiedPhone": true,
+      "kind": "product_graphic",
+      "foundPhone": true,
+      "localizedPhone": true,
+      "detections": [
+        {
+          "box": [
+            0.550815664172846,
+            0.06474119921525319,
+            0.9098336257503531,
+            0.9166324933369955
+          ],
+          "confidence": 0.8573
+        },
+        {
+          "box": [
+            0.09276944607664636,
+            0.0695602794488271,
+            0.4522512317377295,
+            0.9174325466156006
+          ],
+          "confidence": 0.8561
+        }
+      ],
+      "latencyMs": 176.27,
+      "sha256": "44637fec1be28836b614cc50fd73ee541b56004077465773aefdf3cac65ef026"
+    },
+    {
+      "imageId": "4fe2fb3816b91c44",
+      "category": "Remote control",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 193.55,
+      "sha256": "6f59b621c9375b3c4b29dbcc8d6bed342f25baa5bbb6c805d1a470ab5b1ef06d"
+    },
+    {
+      "imageId": "6347108949f5cbe2",
+      "category": "Remote control",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 134.79,
+      "sha256": "c179079bdc5b099fd7c98f63913ea6d5796fcd7a75535cc15d3cf2dfd27ef69e"
+    },
+    {
+      "imageId": "8357a23d186680d7",
+      "category": "Remote control",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 181.26,
+      "sha256": "61bc38353ec0438dddd1bada5eaccbc802f7508241b3d682ddc540510506f218"
+    },
+    {
+      "imageId": "c48ad3322299db3e",
+      "category": "Remote control",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 124.2,
+      "sha256": "5b7741c97266ee3d606aa3a3544bc87f1530dac3f18589bda89e0ab42393e09b"
+    },
+    {
+      "imageId": "04311ae05c027377",
+      "category": "Book",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 131.74,
+      "sha256": "0018521c9f4de248486c1ba36422a27fed78cc1d719e9dbdd7b86f282d22cdd6"
+    },
+    {
+      "imageId": "0a3873442ad329c2",
+      "category": "Book",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 130.14,
+      "sha256": "9b1d5a74d1fbbb27b44653853336d0b9329be3ebcc2a0cf1ec5c8dfdb2d99191"
+    },
+    {
+      "imageId": "0b19fbf13f8296d6",
+      "category": "Book",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 127.63,
+      "sha256": "321919828230ca5970af8a621acd1e6f12d0427e99bab9f7d4808d350e9f2421"
+    },
+    {
+      "imageId": "0dbd358b804cdc0d",
+      "category": "Book",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 129.34,
+      "sha256": "a2cb038e474b2d8ae21dd8a1bfcb0be64ee84637ae95d09943cafea26d79f8fb"
+    },
+    {
+      "imageId": "13fc51f84ffc7bcf",
+      "category": "Calculator",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 158.39,
+      "sha256": "078b7f4fb2de8115ca6b61fe1ccfbe82d09ed45b5911ed6317a81232d18d0413"
+    },
+    {
+      "imageId": "4cd9c9c8979311e1",
+      "category": "Calculator",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": true,
+      "localizedPhone": false,
+      "detections": [
+        {
+          "box": [
+            0.16828756034374237,
+            0.03082345426082611,
+            0.821099579334259,
+            0.9827437400817871
+          ],
+          "confidence": 0.6796
+        }
+      ],
+      "latencyMs": 137.76,
+      "sha256": "7f0ecf13add81cf2a6792ce334e8ab1b540151b72ccdbf6eee03ec9eb4d27f36"
+    },
+    {
+      "imageId": "8a43be187b9708ba",
+      "category": "Calculator",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": true,
+      "localizedPhone": false,
+      "detections": [
+        {
+          "box": [
+            0.05792035907506943,
+            0.20749282836914062,
+            0.32206225395202637,
+            0.8121267159779867
+          ],
+          "confidence": 0.7276
+        },
+        {
+          "box": [
+            0.3593537211418152,
+            0.20155932505925497,
+            0.6196081042289734,
+            0.7945319811503092
+          ],
+          "confidence": 0.6885
+        },
+        {
+          "box": [
+            0.673258900642395,
+            0.1830334266026815,
+            0.9397513270378113,
+            0.7975658575693766
+          ],
+          "confidence": 0.5803
+        }
+      ],
+      "latencyMs": 135.71,
+      "sha256": "847e41fdf62afe963e5e83cccd25a3f5e7030208862ffbf594fb74257ade3c42"
+    },
+    {
+      "imageId": "8c26b7a2c9a203d6",
+      "category": "Calculator",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 130.41,
+      "sha256": "b732e81c81efe9c2939abcacc46b3df0cca452898b75ecbcb70b87b313857bfd"
+    },
+    {
+      "imageId": "01284dd8eaad0569",
+      "category": "Camera",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": true,
+      "localizedPhone": false,
+      "detections": [
+        {
+          "box": [
+            0.6857753992080688,
+            0.05251174047589302,
+            0.8749732971191406,
+            0.2771812379360199
+          ],
+          "confidence": 0.6892
+        }
+      ],
+      "latencyMs": 197.73,
+      "sha256": "29e8284ad7ea3756d280a618732a8ee9062b8c969c67ede7cf609498437a6751"
+    },
+    {
+      "imageId": "022881fd81a5a8f7",
+      "category": "Camera",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 172.07,
+      "sha256": "fe880b504bfd1e4b7cb262ce80b60625abaadb1373345d9d0e3669f8bd6b5e82"
+    },
+    {
+      "imageId": "02dfa3e35b58bdb7",
+      "category": "Camera",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 146.56,
+      "sha256": "864070f07504be8b8bb1ccf33ede265ac1f6f5fc16f2011a739ebe68606cc2b5"
+    },
+    {
+      "imageId": "05544d84d21af1c1",
+      "category": "Camera",
+      "imgsz": 640,
+      "datasetPositive": false,
+      "verifiedPhone": false,
+      "kind": "photograph_negative",
+      "foundPhone": false,
+      "localizedPhone": false,
+      "detections": [],
+      "latencyMs": 133.64,
+      "sha256": "0b34132fe074455acbe151d37b8b06129bf7eac52b50e8b40dfa1cd3fa015687"
+    }
+  ]
+}
