@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "actual Electron capabilities",
+    "camera requires checkbox consent",
+    "real CV on file-backed virtual camera and calibration",
+    "native copy key blocked and observable guard event",
+    "exam completion releases camera",
+    "atomic desktop session storage and review recovery",
+    "worker crash pauses sensing and releases camera without absence accusation",
+    "native emergency escape exits and recovers interrupted session"
+  ],
+  "errors": [],
+  "passed": true
+}

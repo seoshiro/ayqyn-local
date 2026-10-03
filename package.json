@@ -1,0 +1,7 @@
+{
+  "name": "ayqyn-local", "version": "0.1.0", "private": true,
+  "description": "Local proctoring observations with human review",
+  "license": "AGPL-3.0-only", "type": "module", "main": "desktop/main.cjs",
+  "scripts": {"start": "electron .", "demo": "node scripts/serve.mjs", "test": "node --test tests/*.test.mjs", "test:ui": "node scripts/audit-ui.mjs", "build:demo": "node scripts/build-demo.mjs", "package": "electron-packager . AYQYN --platform=win32 --arch=x64 --out=release --overwrite --ignore=^/(data|evidence|release|tests|.venv|.git)$"},
+  "devDependencies": {"electron": "44.5.1", "@electron/packager": "18.4.4", "@playwright/test": "1.63.0"}
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "filename": "astronaut.png",
+    "url": "https://raw.githubusercontent.com/scikit-image/scikit-image/v0.25.2/skimage/data/astronaut.png",
+    "sha256": "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5",
+    "author": "NASA",
+    "license": "Public domain",
+    "source": "https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.astronaut",
+    "modifications": "phone resized, EXIF stripped; astronaut unchanged",
+    "note": "Test photograph, no association with exams or misconduct; no endorsement."
+  },
+  {
+    "filename": "phone-desk.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/A_Guy_is_use_of_smart_phone_on_the_desk.jpg",
+    "sha256": "affd62d383092c340bab6e45bdfb07085faabeb4e2a214e798629179a17aa2fc",
+    "author": "Peachyeung316",
+    "license": "CC-BY-SA-4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:A_Guy_is_use_of_smart_phone_on_the_desk.jpg",
+    "modifications": "phone resized, EXIF stripped; astronaut unchanged",
+    "note": "Test photograph, no association with exams or misconduct; no endorsement."
+  },
+  {
+    "filename": "phone-hand.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Black_smartphone_in_hand_%28Unsplash%29.jpg",
+    "sha256": "ce1a4b20840c374e073a7c378680b9ce49b523ba3fdcfae15e2d1d951c94f546",
+    "author": "Dennis Cort\u00e9s",
+    "license": "CC0-1.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Black_smartphone_in_hand_(Unsplash).jpg",
+    "modifications": "phone resized, EXIF stripped; astronaut unchanged",
+    "note": "Test photograph, no association with exams or misconduct; no endorsement."
+  },
+  {
+    "filename": "phone-photo.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Smartphone_photographer_%28Unsplash%29.jpg",
+    "sha256": "129d9dbb3ede72942a9a081580b97ea0a4bfcecc5e1c665ac44640103630d672",
+    "author": "James Sutton",
+    "license": "CC0-1.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Smartphone_photographer_(Unsplash).jpg",
+    "modifications": "phone resized, EXIF stripped; astronaut unchanged",
+    "note": "Test photograph, no association with exams or misconduct; no endorsement."
+  }
+]

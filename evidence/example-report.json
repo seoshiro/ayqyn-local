@@ -1,0 +1,311 @@
+{
+  "schema": 1,
+  "id": "1ca98aef-4d6c-4bc6-874d-44c603b96f54",
+  "title": "Офлайн пример · проверка наблюдений",
+  "createdAt": "2026-10-03T18:39:01.722Z",
+  "policy": {
+    "dwell": 2500,
+    "absence": 3000,
+    "phone": 900,
+    "cooldown": 5000,
+    "yaw": 24,
+    "pitch": 18,
+    "eye": 0.18,
+    "retention": 24,
+    "evidence": false,
+    "attention": false
+  },
+  "status": "complete",
+  "source": "replay",
+  "events": [
+    {
+      "id": "ddae77b9-9cfa-4f54-b6ca-481495b5f0be",
+      "kind": "absent",
+      "at": 6800,
+      "start": 3800,
+      "duration": 3000,
+      "status": "dismissed",
+      "reason": "Открытый тестовый кадр; проверена только видимость устройства.",
+      "observation": {
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
+        "phones": [],
+        "quality": {
+          "usable": true,
+          "brightness": 120.3,
+          "sharpness": 1049.6,
+          "reason": "ok"
+        },
+        "latencyMs": 90.57,
+        "timestamp": 6800,
+        "source": "real_inference",
+        "model": "YOLO11n + MediaPipe Face Landmarker"
+      },
+      "asset": "fixtures/phone-desk.jpg",
+      "resolvedAt": "2026-10-03T18:39:02.106Z"
+    },
+    {
+      "id": "1bfa7a28-58e9-4587-9e5d-dbcc316a2116",
+      "kind": "absent",
+      "at": 11800,
+      "start": 3800,
+      "duration": 8000,
+      "status": "pending",
+      "reason": "",
+      "observation": {
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2806,
+              0.4369,
+              0.8019
+            ],
+            "confidence": 0.932,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
+        "quality": {
+          "usable": true,
+          "brightness": 114.7,
+          "sharpness": 605.8,
+          "reason": "ok"
+        },
+        "latencyMs": 80,
+        "timestamp": 11800,
+        "source": "real_inference",
+        "model": "YOLO11n + MediaPipe Face Landmarker"
+      },
+      "asset": "fixtures/phone-photo.jpg"
+    },
+    {
+      "id": "73603987-84b9-4c29-8fbc-2f4469ea6342",
+      "kind": "phone",
+      "at": 12000,
+      "start": 11000,
+      "duration": 1000,
+      "status": "pending",
+      "reason": "",
+      "observation": {
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2806,
+              0.4369,
+              0.8019
+            ],
+            "confidence": 0.932,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
+        "quality": {
+          "usable": true,
+          "brightness": 114.7,
+          "sharpness": 605.8,
+          "reason": "ok"
+        },
+        "latencyMs": 79.84,
+        "timestamp": 12000,
+        "source": "real_inference",
+        "model": "YOLO11n + MediaPipe Face Landmarker"
+      },
+      "asset": "fixtures/phone-photo.jpg"
+    },
+    {
+      "id": "8eb960be-4344-4e5d-a53b-76ada95ba584",
+      "kind": "phone_raised",
+      "at": 12000,
+      "start": 11000,
+      "duration": 1000,
+      "status": "pending",
+      "reason": "",
+      "observation": {
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
+        "phones": [
+          {
+            "box": [
+              0.2408,
+              0.2806,
+              0.4369,
+              0.8019
+            ],
+            "confidence": 0.932,
+            "raised": true,
+            "rising": false,
+            "label": "cell phone"
+          }
+        ],
+        "quality": {
+          "usable": true,
+          "brightness": 114.7,
+          "sharpness": 605.8,
+          "reason": "ok"
+        },
+        "latencyMs": 79.84,
+        "timestamp": 12000,
+        "source": "real_inference",
+        "model": "YOLO11n + MediaPipe Face Landmarker"
+      },
+      "asset": "fixtures/phone-photo.jpg"
+    },
+    {
+      "id": "7253c5b1-e8c0-4354-b6b3-00bfdb987185",
+      "kind": "second_face",
+      "at": 17200,
+      "start": 14600,
+      "duration": 2600,
+      "status": "pending",
+      "reason": "",
+      "observation": {
+        "faces": 2,
+        "faceBoxes": [
+          [
+            0.10847064107656479,
+            0.2767485976219177,
+            0.372590035200119,
+            0.7612708806991577
+          ],
+          [
+            0.6087353229522705,
+            0.2771717309951782,
+            0.8725920915603638,
+            0.7617160081863403
+          ]
+        ],
+        "pose": null,
+        "eyes": null,
+        "phones": [],
+        "quality": {
+          "usable": true,
+          "brightness": 130.9,
+          "sharpness": 175.2,
+          "reason": "ok"
+        },
+        "latencyMs": 104.32,
+        "timestamp": 17200,
+        "source": "real_inference",
+        "model": "YOLO11n + MediaPipe Face Landmarker"
+      },
+      "asset": "fixtures/two-faces.jpg"
+    },
+    {
+      "id": "0d77ea63-823f-4b79-84de-71d0342275d7",
+      "kind": "quality",
+      "at": 20800,
+      "start": 18200,
+      "duration": 2600,
+      "status": "pending",
+      "reason": "",
+      "observation": {
+        "faces": 1,
+        "faceBoxes": [
+          [
+            0.3508159816265106,
+            0.14007750153541565,
+            0.5283452272415161,
+            0.34526899456977844
+          ]
+        ],
+        "pose": {
+          "pitch": -32.47,
+          "yaw": -4.8,
+          "roll": 2.6
+        },
+        "eyes": {
+          "x": 0.483,
+          "y": 0.522,
+          "proxy": true
+        },
+        "phones": [],
+        "quality": {
+          "usable": false,
+          "brightness": 13.4,
+          "sharpness": 12.8,
+          "reason": "low_light_or_blur"
+        },
+        "latencyMs": 117.02,
+        "timestamp": 20800,
+        "source": "real_inference",
+        "model": "YOLO11n + MediaPipe Face Landmarker"
+      },
+      "asset": "fixtures/dark.jpg"
+    },
+    {
+      "id": "468c39a0-9cbb-4036-97b5-6b9b4f5847d7",
+      "kind": "absent",
+      "at": 28400,
+      "start": 25400,
+      "duration": 3000,
+      "status": "pending",
+      "reason": "",
+      "observation": {
+        "faces": 0,
+        "faceBoxes": [],
+        "pose": null,
+        "eyes": null,
+        "phones": [],
+        "quality": {
+          "usable": true,
+          "brightness": 127.5,
+          "sharpness": 256,
+          "reason": "ok"
+        },
+        "latencyMs": 94.61,
+        "timestamp": 28400,
+        "source": "real_inference",
+        "model": "YOLO11n + MediaPipe Face Landmarker"
+      },
+      "asset": "fixtures/empty.jpg"
+    }
+  ],
+  "answers": {},
+  "elapsed": 28800,
+  "provenance": {
+    "type": "real_inference_repeated_stills",
+    "models": {
+      "schema": 1,
+      "assets": [
+        {
+          "filename": "yolo11n.pt",
+          "url": "https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11n.pt",
+          "sha256": "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1",
+          "bytes": 5613764,
+          "license": "AGPL-3.0",
+          "licenseSource": "https://www.ultralytics.com/license"
+        },
+        {
+          "filename": "face_landmarker.task",
+          "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
+          "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
+          "bytes": 3758596,
+          "license": "Apache-2.0",
+          "licenseSource": "https://github.com/google-ai-edge/mediapipe/blob/master/LICENSE"
+        }
+      ],
+      "note": "SHA256 pins the downloaded assets for offline verification. Review initial source provenance before setup."
+    },
+    "attribution": "fixtures/attribution.json",
+    "methodology": "8-image smoke set, repeated 18 times each. Not exam video accuracy; frames are correlated. First frame is cold inference."
+  },
+  "notice": "Наблюдения для проверки человеком. Не оценка, не доказательство намерения.",
+  "exportedAt": "2026-10-03T18:39:02.622Z",
+  "rawImagesIncluded": false
+}
