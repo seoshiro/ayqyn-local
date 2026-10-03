@@ -21,6 +21,10 @@ This records implemented fixes and their verification, not a claim that the comp
 | Session silently replaced/deleted | Replacement requires exporting current report; explicit deletion confirmation | Browser E2E; only one session retained, deletion undo/archive not implemented |
 | Low secondary-text contrast | Darker paragraph/status/neutral-badge/observation text | Actual pixels inspected; automated full WCAG/keyboard/screen-reader audit still pending |
 | Worker latency labelled end-to-end | UI measures canvas capture → received observation; separate worker processing timings retained | Capture age metric excludes physical exposure and display paint; do not label true sensor-to-overlay latency |
-| Portable package omitted Python | Main now has a packaged worker location and writable runtime cache | Build blocked by Windows application control; no portable release or clean-machine pass |
+| Portable package omitted inference | Official ONNX Runtime Web + MediaPipe WASM with local assets | 5 packaged real-inference/storage checks; fresh OS test remains open |
+| Replay cloned event before final duration | Preserve event object and finalize engine at replay end | Phone 3400 ms and quality 7000 ms durations, ended times and first asset regression |
+| Prototype-like names bypassed policy validation | Plain/null prototypes and allowed own keys at every boundary | constructor/toString/__proto__ adversarial session/report regressions |
+| Delayed exam IPC resurrected a stopped session | Check generation/session/view/readiness after await; unwind stale mode | 3 actual-renderer Stop/revoke/navigation regressions; duplicate start disabled |
+| Concurrent startup could create two hosts | Shared host/init promise, pre-init inference rejection and main observation schema | Regression added; native rerun pending frozen dependency reinstall |
 
-At this checkpoint: **20 Node regressions, 7 browser checks and 10 native virtual-camera checks passed**. Native package compatibility remains blocked as described in `WINDOWS_RUNTIME_BLOCK.md`.
+At v0.2: **27 Node regressions, 7 browser checks, 10 native virtual-camera checks, 3 renderer race checks and 5 packaged checks passed**. Current runtime does not import denied Python extensions. Historical failure is retained in `WINDOWS_RUNTIME_BLOCK.md`; fresh OS and moving-video tests remain open.

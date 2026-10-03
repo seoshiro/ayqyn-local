@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "note": "Same-machine isolated copied-directory/PATH test, not a fresh OS/VM or air-gap. Outbound CV URLs denied by application; no physical camera opened.",
+  "checks": [
+    "packaged app launches from isolated copied directory with no Python/Node PATH",
+    "packaged offline models/WASM initialize",
+    "real phone detector output from packaged resources",
+    "writable isolated session storage",
+    "packaged deletion succeeds"
+  ],
+  "initialization": {
+    "ready": true,
+    "phoneClass": 67,
+    "runtime": "ONNX Runtime Web 1.30.0 + MediaPipe WASM 1.0.1",
+    "inputMetadata": [
+      {
+        "name": "images",
+        "isTensor": true,
+        "type": "float32",
+        "shape": [
+          "batch",
+          3,
+          "height",
+          "width"
+        ]
+      }
+    ],
+    "initMs": 692
+  },
+  "errors": [],
+  "network": [],
+  "passed": true
+}

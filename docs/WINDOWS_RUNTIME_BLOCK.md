@@ -28,3 +28,6 @@ Browser/static-demo and Node rule/schema/lifecycle/storage tests do not load Pyt
 4. Preserve the current prototype and measured results until parity is demonstrated. A replacement runtime must continue performing real inference.
 
 Primary references: [Ultralytics project](https://github.com/ultralytics/ultralytics), [Polars](https://github.com/pola-rs/polars), [PyInstaller packaging](https://pyinstaller.org/en/stable/usage.html), [Ultralytics prediction](https://docs.ultralytics.com/modes/predict/).
+# Current disposition — v0.2
+
+Historical Python packaging below remains stopped. Current app genuinely replaces it with official ONNX Runtime Web + Google MediaPipe WASM; no Python/Polars/Contourpy/PyTorch in the package. Native/package real inference passed here under unchanged protection. See `RUNTIME_WASM.md` for provenance, parity and limits. No denied binary was renamed or permitted. Other institution policies remain unverified.

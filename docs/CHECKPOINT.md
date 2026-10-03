@@ -1,48 +1,46 @@
-# AYQYN resumable audited checkpoint — 2026-10-03
-The local prototype and static review demo are implemented. This is a second checkpoint for independent review, **not a competition release**. Native packaging is blocked by verified Windows application control; see `WINDOWS_RUNTIME_BLOCK.md`.
+# AYQYN v0.2 audited checkpoint — 2026-10-03
 
-## Current measured evidence
-| Scope | Result |
+Working local desktop prototype and review console. This is a resumable implementation checkpoint, not a complete competition release. New repository; provisional project/team name AYQYN.
+
+## Verified current evidence
+
+| Scope | Result and evidence |
 |---|---|
-| Node rule/schema/camera lifecycle/storage regressions | 20/20 passed; `evidence/core-audit.txt` |
-| Browser E2E | 7 checks passed; consent defaults, replay, review/reload, image-free export, mobile drafts/export, responsive widths, confirmed deletion |
-| Native Electron E2E | 10 checks passed on file-backed virtual camera; no physical camera or fullscreen activated |
-| Independent photo selection | 32 Open Images validation scenes selected by sorted IDs before inference; original license/author/boxes/hash in manifest |
-| YOLO11n 640, conf .45 | 9/10 manually verified physical-phone photographs detected; 12/16 dataset-labelled positives localized (IoU ≥.3); 3/16 negative scenes falsely detected |
-| YOLO11n 960, conf .45 | 7/10 verified physical photos; 10/16 dataset positives localized; 3/16 negative scenes falsely detected; rejected |
-| YOLO11s 640 comparison on reused set | 9/10 verified physical photos; 13/16 dataset positives localized; 3/16 negative scenes falsely detected; no demonstrated overall improvement |
-| Detector decision | Keep YOLO11n 640/.45. Do not tune threshold or re-label remotes as phones to improve this set |
-| Portable/clean-machine installation | NOT passed: PyInstaller packaging stopped after unsigned Polars/Contourpy Code Integrity failures |
-| Public repository / CI / deployment | Not published in this checkpoint |
+| Rules, schemas, capture lifecycle, storage and vision math | 27/27 Node regressions; `evidence/core-audit.txt` |
+| Browser review flow | 7 E2E checks: consent defaults, real-result fixture replay, reason-required review/reload, image-free export, mobile drafts/export, responsive widths and deletion |
+| Native desktop flow | 10 E2E checks with explicitly labelled file-backed virtual camera, no physical camera or fullscreen activation |
+| Renderer race regression | 3 actual-renderer delayed-exam-IPC checks: Stop, revoke and navigation cannot resurrect an exam |
+| Current real CV | Official YOLO11n ONNX + MediaPipe WASM, six licensed original/derived still fixtures; `evidence/wasm-runtime-audit.json` |
+| Runtime parity | 32/32 scene phone-presence and 32/32 localization decisions match frozen PyTorch baseline; min paired box IoU .99056, max confidence delta .0325 |
+| Small photo benchmark | 9/10 verified physical-phone photos detected; 12/16 dataset-labelled positives localized at IoU ≥.3; 3/16 negatives falsely detected |
+| Current processing timing | Single-thread WASM p50/p95 233.4/322.5 ms on those 32 scenes; excludes capture/IPC; initialization about .67–.69 s |
+| Windows package | Unsigned `release/AYQYN-win32-x64/AYQYN.exe` starts and performs real inference; 5 packaged checks from copied folder without Python/Node in PATH |
+| Fresh OS and network disconnected run | Not performed; copied-folder test is on this same machine |
+| Remote repository, CI, public deployment | Not published; local git source exists |
 
-Photo scene-level detection is not mAP, exam-video precision/recall, phone-raising trajectory accuracy or a benign false-event rate. Four dataset positives are product graphics and two ambiguous device examples; ten are manually verified physical-phone photographs. Manual visual review was by Codex, not an independent human. YOLO11s used the already-inspected set as a development comparison; a new held-out set is required before any model change. Its timing was measured while dependency packaging analysis also ran, so no controlled speedup/slowdown claim is made.
+Photo detection is not mAP, video accuracy or benign false-event rate. Selection, authors, image licenses, hashes and boxes are retained in evaluation manifests. Four positives are product graphics, two ambiguous devices; ten physical-phone photographs were visually checked by Codex, not an independent human. No threshold was tuned on this set. YOLO11s/960 experiments did not justify replacing YOLO11n 640/.45.
 
-Pipeline diagnostics checked class map (`cell phone` = 67), class-filter parity, NMS/default IoU, native aspect-preserving letterbox, confidence diagnostics and 640/960 sizes. The desktop renderer's aspect-ratio stretch was fixed. There is no exported model in the current pipeline; export parity is therefore not claimed. Native screenshots and JSON show real inference on licensed fixtures, with conspicuous virtual-source labels.
+## Windows runtime and audit fixes
 
-## Independent audit fixes
-Read `AUDIT_FIXES.md` for each finding and disposition. Key fixes: asynchronous capture cancellation, consent revocation, frame/readiness watchdogs, main-process freshness gate, strict bounded session/report schema, owned temp cleanup, pitch/iris calibration stability, continuous event episodes, preserved consent/calibration segments, separate snapshot consent, source labels, reviewer draft retention, replacement export/deletion confirmations, darker secondary text and distinct capture-age measurement.
+The previous Python packaging attempt stopped after Windows Code Integrity denied unsigned Polars and Contourpy modules. No protection changed and no denied binary was renamed or executed elsewhere. The **current deployed path is a genuine replacement** using official ONNX Runtime Web and Google MediaPipe WASM; it contains no Python or `.pyd` extensions. See `WINDOWS_RUNTIME_BLOCK.md` for the historical finding and `RUNTIME_WASM.md` for exact current provenance and measurements.
 
-Actual screenshots:
-- `evidence/desktop-calibration.png`, `desktop-exam.png`, `desktop-worker-interruption.png`.
-- `evidence/03-review.png`, `mobile-review-reason.png`, `04-capabilities.png`.
-- Original browser walkthrough was an automated short test recording, not a judge-ready demo. It is not included as a final demo video.
+Implemented fixes include capture cancellation after every await, main-process consent/freshness gates, duplicate-start prevention, complete replay episode durations, own-key/prototype validation at nested report boundaries, serialized storage cleanup, independent snapshot consent, immutable calibration context, continuous-event debounce, preserved reviewer drafts and transparent source labels. Final source additionally deduplicates private CV host/model initialization and validates observations in main; these final two additions await native rerun after dependency setup. See `AUDIT_FIXES.md`.
 
-## Runtime security notice
-The installed Polars binary is unsigned and Windows Code Integrity denied loading it during packaging analysis. Exact package/hash and redacted event evidence are documented. Build stopped; no protection was disabled and no alternate execution of the denied binary attempted. A separate Contourpy plotting module was also denied. Do not restart broad Python dependency scanning or native packaging until an inference-only dependency graph omits these modules, or a supported minimal runtime has been chosen. No malware/false-positive assertion or RAM diagnosis.
+Screenshots: `evidence/desktop-calibration.png`, `desktop-exam.png`, `desktop-worker-interruption.png`, `03-review.png`, `mobile-review-reason.png`, `04-capabilities.png`. The original short automated browser recording is not a judge-ready demonstration video.
 
-## Remaining case gaps
-1. Actual consented, annotated moving phone/head/eye clips, phone aimed toward screen, glasses/occlusion and benign movements. Current repeated stills and transformed composites are explicitly labelled; real video quality is not established.
-2. An inference runtime compatible with current Windows policy, offline asset verification, clean installation and actual packaged release. Prefer eliminating unused training/tabular/plotting dependencies; investigate reproducible official YOLO ONNX + minimal inference only with output parity.
-3. Native active-exam revocation, no-decoded-frame/frozen-track cases, camera denied/loading screenshots, repeated cold starts, sustained resource measurements and storage permission/disk-failure E2E.
-4. Separate snapshot-checkbox E2E, complete keyboard/screen-reader/contrast audit and trustworthy examiner authentication. One-current-session only; explicit replacement export/deletion confirmation exists, archive/undo does not.
-5. True network-denied offline test, package attribution/license inventory, signed integrity provenance if institution needs it. Local administrator can still tamper with files. No real institutional exam claim.
-6. New public repository/free redacted static demo, exact remote commits/CI/deployment verification. Connected GitHub user was verified earlier, but available API tools do not create repositories and no shell-auth credential was obtained. Parent can resolve this tooling without reusing earlier repos.
-7. Parent pitch/PDF package after these gaps are accurately scoped.
+## Remaining acceptance gaps
 
-## Resume
-Source directory is `ayqyn/` in the delegated workspace. Current CV venv is adjacent at `../.venv/Scripts/python.exe`; normal setup creates `.venv` inside the project. Node and pnpm dependencies are installed. Static preview: `node scripts/serve.mjs` on 127.0.0.1:4173.
+1. Consented annotated moving phone/head/eye clips; physical direction/sign accuracy, glasses, occlusion, benign movement false-event rate and phone aimed toward screen. Upper-position phone proxy is not a raising trajectory or intent detector.
+2. Native active-exam revocation, undecoded/frozen tracks, storage failure and repeated cold-start/resource E2E; separate snapshot consent and complete keyboard/screen-reader/contrast checks. Some deterministic regressions pass; full realistic-device coverage remains open.
+3. Fresh Windows/VM installation, actual network-denied testing, institution policy compatibility, release license inventory and final judge-ready demo recording. Package is unsigned; no certification claim.
+4. Examiner authentication and multi-session archive/undo; current prototype keeps one session with explicit replacement/export and deletion confirmation. OS-account access is its storage boundary.
+5. Authorized new public repository, remote CI/commit verification and free redacted static deployment. Connected GitHub account is `seoshiro`; exposed tools cannot create an empty repository. No credentials were extracted or minted; no earlier repo was reused.
+6. Parent's final presentation, pitch and defense package after these limits are scoped honestly.
 
-Do not run `pnpm package` as a working release: the old simple packaging command excludes Python and the new bundled-worker path is not yet populated. The aborted PyInstaller work is under ignored `data/pyinstaller`; no usable release directory exists. The test virtual video is ignored `evidence/virtual-camera.y4m` and contains a repeated public-domain NASA photograph, not participant capture.
+## Resume and run
 
-No native audit/build is intentionally running at checkpoint. The original static HTTP server may still be running (local port 4173). No camera, microphone, global keyboard hook, OS lock or organizer communication was activated.
+Source directory: `ayqyn/` in this workspace. Node 24 and pnpm 11; `./scripts/setup.ps1` installs pinned dependencies and verified official models. Initial downloads need internet. `pnpm start` runs desktop; `pnpm package` builds the inference-inclusive Windows folder. Runtime assets are excluded from source ZIP and reconstructed with SHA checks. Historical Python benchmark files are not part of default setup or desktop execution.
 
+Run existing packaged `AYQYN.exe` without installing Python. Camera stays off until explicit participant consent and button action. No microphone, global key hook, OS lock, organizer contact or real student data was used. Alt+Tab/Win/PrtScn are honestly marked unavailable as OS-wide enforcement. App clipboard/navigation blocking is scoped to active exam; emergency exit releases resources.
+
+No native build or audit is intentionally left running. Static server on 127.0.0.1:4173 remains. A frozen pnpm reinstall was started after moving its cache inside the task; it recreated node_modules and is pending at handoff. Do not run concurrent installs. Existing release and runtime assets are preserved. Session ID 37261 can be polled; if it fails, rerun the frozen install with the task-local cache in an allowed process. The final startup hardening and updated disabled-camera/mobile-screenshot E2E require rerun. Recorded native/package/7-browser results precede those last additions; source and package are therefore not yet identical. Do not present the package as an exact-commit release.

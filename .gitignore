@@ -1,5 +1,7 @@
 node_modules/
 .venv/
+.venv-cv-minimal/
+web/runtime/
 models/*
 !models/.gitkeep
 !models/manifest.json

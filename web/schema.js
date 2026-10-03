@@ -1,4 +1,4 @@
-const keys=(o,allowed,label)=>{if(!o||typeof o!=='object'||Array.isArray(o)||Object.keys(o).some(k=>!allowed.includes(k)))throw Error('Invalid '+label);};
+const keys=(o,allowed,label)=>{if(!o||typeof o!=='object'||Array.isArray(o)||![Object.prototype,null].includes(Object.getPrototypeOf(o))||Object.keys(o).some(k=>!allowed.includes(k)))throw Error('Invalid '+label);};
 const str=(s,max,label)=>{if(typeof s!=='string'||s.length>max)throw Error('Invalid '+label);};
 const num=(v,min,max,label)=>{if(!Number.isFinite(v)||v<min||v>max)throw Error('Invalid '+label);};
 const bool=(v,label)=>{if(typeof v!=='boolean')throw Error('Invalid '+label);};

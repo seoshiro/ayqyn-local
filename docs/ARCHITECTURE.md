@@ -1,43 +1,47 @@
-# AYQYN architecture checkpoint
+# AYQYN architecture v0.2
 
-New project for Case 3. Working name AYQYN; no final team identity asserted.
+New local project for Case 3; AYQYN is a provisional name.
 
 ```mermaid
 flowchart LR
-    Consent[Participant consent] --> Camera[Renderer video only]
-    Camera --> Latest[One in-flight frame]
+    Consent[Participant consent] --> Camera[Visible renderer video]
+    Camera --> Latest[One frame in flight]
     Latest --> IPC[Validated private IPC]
-    IPC --> Worker[Python child over stdio]
-    Worker --> YOLO[YOLO11n phone boxes]
-    Worker --> Face[MediaPipe landmarks: max 2 faces]
-    YOLO --> Quality[Quality + calibrated observations]
+    IPC --> Host[Isolated sandboxed CV renderer]
+    Host --> YOLO[Official YOLO11n ONNX / CPU WASM]
+    Host --> Face[Google Face Landmarker / max 2 faces]
+    YOLO --> Quality[Quality and calibrated observations]
     Face --> Quality
-    Quality --> Rules[Monotonic dwell + debounce rules]
+    Quality --> Rules[Monotonic dwell and debounce]
     Rules --> Journal[Local session journal]
-    Guard[Electron app input / blur] --> Journal
-    Journal --> Review[Human confirms or dismisses with reason]
-    Review --> Export[JSON report without images]
+    Guard[Scoped Electron guard / focus loss] --> Journal
+    Journal --> Review[Human reason-required review]
+    Review --> Export[Strict JSON report without images]
 ```
 
-Electron main owns process lifecycle, permissions, app guard and atomic file saves. Renderer has no Node access, uses context isolation and sandbox, and receives a narrow IPC bridge. Custom secure local protocol serves packaged assets; remote navigation, popups and webviews are denied. Python never opens a camera and never listens on a network port. Models are checked against the asset manifest on startup. Runtime download is disabled. No microphone, face identity database, emotion or demographic inference.
+Electron main owns permissions, lifecycle, window guard and atomic storage. Neither renderer has Node access. Both use context isolation and sandbox; CV renderer has a separate session, no media permission and no network endpoint. Secure custom protocol serves local files. Remote navigation, new windows and webviews are denied. Main verifies all 12 JS/WASM/model assets against frozen SHA256 and size pins before startup. No runtime downloads, Python subprocesses or CV server.
 
-The camera starts only after the checkbox and button action. Optional event snapshots need a separate policy option and participant consent. Stop, emergency exit, worker failure and app close release the camera and worker. Native keys are scoped to the application. OS-wide restrictions are neither installed nor activated.
+Main deduplicates host/model initialization; stop invalidates pending work by generation and destroys CV host. Only the visible trusted main frame can invoke the narrow bridge. Inference requires consent, initialized models, bounded JPEG payload and monotonic timestamp. Returned observations pass finite bounded schema validation before establishing exam freshness.
 
-## Case fit and honest boundaries
+YOLO preprocessing uses original aspect ratio, rectangular stride-32 letterbox at 640, RGB/255 NCHW, padding 114, phone class 67, confidence .45 and IoU .7 NMS. MediaPipe provides geometric landmarks/head matrix; relative iris position is a coarse proxy. No blendshapes, identity, emotion or demographic inference. Dwell rules require healthy observations and stable individual calibration. Main requires a fresh observation before exam mode.
 
-| Requirement | Implementation | Evidence / remaining gap |
+Camera starts after participant consent and explicit action. Optional snapshots need a separate policy option and participant checkbox; export strips images by strict schema. Stop, revocation, sensor failure, close and Ctrl+Shift+Esc release capture/restrictions. No global hooks or OS policies are changed.
+
+## Case capability and evidence
+
+| Requirement | Current behavior | Evidence / limit |
 |---|---|---|
-| Phone visible in hand / near screen | COCO `cell phone` class resolved by model metadata | Real attributed photos; retain misses. No guarantee for occlusion or back-facing phones. |
-| Phone raised / aimed | Box in upper frame, size threshold; rising trajectory logged | Raised-position proxy only. Camera orientation or intention not established. |
-| Head / eye direction | solvePnP from face landmarks + relative iris location | Individual median calibration; coarse proxies. Physical sign and eyeglasses validation pending. |
-| Sustained down / side look | Configurable dwell, quality gating and cooldown | Deterministic rule tests. Real labelled exam sequences still needed. |
-| Presence / second face | MediaPipe max 2, explicit pose smoothing | Real face photo and derived composites; small faces may be missed. |
-| Ctrl+C/V, navigation | Electron native before-input-event + renderer clipboard guard | Scoped active-exam integration test. |
-| Alt+Tab / other window | Window blur / tab visibility event | Observed, not OS-blocked. |
-| Win / PrtScn | Capability UI shows unavailable enforcement | Requires supported managed Windows policy; not configured. |
-| Human review | Timeline, contextual metrics, reason-required resolution | E2E persistence and export. No scoring/discipline. |
-| Local/offline | Private pipes; local models and assets | No CV server or remote camera uploads; cache dependencies once. |
+| Phone in hand / near screen | Real COCO phone boxes | Attributed photos and 32-scene parity; occluded/back-facing phones may be missed |
+| Raised / aimed phone | Upper-frame position/size proxy | No validated trajectory, orientation or intention claim |
+| Head / eye direction | Geometric head matrix and relative iris proxy | Stable calibration; physical accuracy/sign pending labelled clips |
+| Sustained down / side look | Configurable dwell, quality gate and debounce | Rule tests; real exam-video precision/recall pending |
+| Presence / second face | Face Landmarker, max two faces | Original still plus derived composite; small/occluded faces may be missed |
+| Ctrl+C/V and navigation | Scoped active-exam Electron input guard | Actual native Ctrl+C E2E; OS-wide shortcuts remain available |
+| Alt+Tab / other window | Focus/visibility observation | Observed, not OS-blocked |
+| Win / PrtScn | Enforcement exposed as unavailable | Managed Windows guidance only; not configured |
+| Human review | Timestamped timeline, context and reasons | Review/reload/export E2E; no scores or discipline |
+| Local / offline | Packaged WASM and models | Copied-folder real inference; air-gap/fresh-OS verification pending |
 
-Windows Keyboard Filter is edition-dependent and requires administrator deployment. Ordinary single-app Assigned Access does not universally accept arbitrary Electron apps. The prototype's bounded app mode must not be presented as a managed secure testing workstation.
+Windows Keyboard Filter is edition-dependent and requires administrator deployment. Single-app Assigned Access does not universally accept arbitrary Electron applications. Bounded app mode must not be presented as a managed secure exam workstation.
 
-Primary implementation references: [Electron security](https://www.electronjs.org/docs/latest/tutorial/security), [before-input-event](https://www.electronjs.org/docs/latest/api/web-contents#event-before-input-event), [MediaPipe Face Landmarker](https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker/python), [YOLO11](https://docs.ultralytics.com/models/yolo11), [Ultralytics license](https://www.ultralytics.com/license), [Windows Keyboard Filter](https://learn.microsoft.com/en-us/windows/configuration/keyboard-filter/).
+References: [Electron security](https://www.electronjs.org/docs/latest/tutorial/security), [before-input-event](https://www.electronjs.org/docs/latest/api/web-contents#event-before-input-event), [Face Landmarker Web](https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker/web_js), [ONNX Runtime Web](https://onnxruntime.ai/docs/tutorials/web/), [Ultralytics licensing](https://www.ultralytics.com/license), [Windows Keyboard Filter](https://learn.microsoft.com/en-us/windows/configuration/keyboard-filter/).

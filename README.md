@@ -1,11 +1,11 @@
 # AYQYN — локальный прокторинг с проверкой человеком
 
-> **Текущий Windows-блокер:** сборка автономного приложения остановлена после отказа Code Integrity загрузить неподписанный Polars runtime; также отмечен Contourpy. Защиту не отключайте и неизвестные модули не разрешайте. Проверенный исходный прототип не означает готовый установочный пакет. [Диагностика](docs/WINDOWS_RUNTIME_BLOCK.md), [новый checkpoint](docs/CHECKPOINT.md), [исправления аудита](docs/AUDIT_FIXES.md).
+> **Версия 0.2:** локальный CV переведён на официальные ONNX Runtime Web и MediaPipe WebAssembly в отдельном изолированном процессе Electron. Python и заблокированные Polars/Contourpy в приложении не используются. Реальный инференс и запуск собранного Windows-приложения без Python проверены на этом компьютере. [Проверки и точные границы](docs/RUNTIME_WASM.md). Полноценная проверка на чистой ОС и реальном экзаменационном видео ещё требуется.
 
 
 Новый прототип для **Qostanai AI Industry Hackathon 2026, Case 3**. Рабочее название, без утверждённого названия команды. Обработка камеры на CPU этого устройства; интернет после установки и загрузки моделей не требуется.
 
-**Статус 0.1:** рабочий вертикальный срез на Windows. 20 Node-проверок правил/схемы/согласия/хранения, 7 browser E2E и 10 native Electron E2E пройдены. Native E2E использовал только file-backed virtual camera: реальный CV, калибровка, экзамен, app-Ctrl+C, review/recovery, освобождение камеры, crash/reconnect worker и аварийный выход. Системные клавиши не блокируются. Реальная физическая камера не проверялась.
+**Статус 0.2:** рабочий вертикальный срез и Windows-пакет. 27 Node-проверок, 7 browser E2E, 10 native Electron E2E, 3 проверки отмены отложенного экзамена и 5 проверок пакета. Native E2E использовал только file-backed virtual camera: реальный CV, калибровка, экзамен, app-Ctrl+C, review/recovery, освобождение камеры, crash/reconnect и аварийный выход. Системные клавиши не блокируются. Физическая камера не проверялась. Подробные ограничения — в docs/CHECKPOINT.md.
 
 ## Быстрый просмотр без камеры
 
@@ -17,28 +17,16 @@ node scripts/serve.mjs
 
 ## Локальная установка
 
-Требуется Python **3.12**, Node **24** (22+ предполагается, отдельно не проверен), pnpm **11**. Бесплатные зависимости. Первая установка требует интернета.
+Готовая Windows-папка: запустите AYQYN.exe. Камера выключена до согласия участника. Приложение содержит все модели и WASM; Python не нужен.
 
-Windows PowerShell:
+Из исходников нужны Node **24** и pnpm **11**. Первичная бесплатная установка требует интернет:
 
-```powershell
+~~~powershell
 ./scripts/setup.ps1
 pnpm start
-```
+~~~
 
-Ручная установка:
-
-```sh
-python -m venv .venv
-.venv/Scripts/python -m pip install -r requirements.lock.txt
-pnpm install --frozen-lockfile
-python scripts/download-models.py
-pnpm start
-```
-
-Для Unix замените `Scripts/python` на `bin/python`. Linux/macOS не проверены. Если worker в другом venv, задайте `AYQYN_PYTHON` полным путём к его Python. Запуск в текущей среде разработки использует `../.venv/Scripts/python.exe`.
-
-Модели: `models/yolo11n.pt` и `models/face_landmarker.task`. Их SHA256 проверяется перед инференсом. Не используйте файл модели из непроверенного источника: PyTorch-модель — доверенный исполняемый формат. `download-models.py` — явный setup; runtime ничего не скачивает.
+После установки приложение работает локально без скачивания моделей. Хеши всех компонентов проверяются до загрузки. Исторические Python-скрипты оставлены для происхождения старых измерений; текущий runtime их не вызывает. Не запускайте старую Python-сборку с зависимостями Polars/Contourpy.
 
 ## Что реализовано
 
@@ -53,7 +41,8 @@ pnpm start
 ```sh
 pnpm test
 pnpm test:ui
-.venv/Scripts/python scripts/evaluate-cv.py
+node scripts/audit-wasm.mjs
+node scripts/audit-wasm-parity.mjs
 node scripts/audit-desktop.mjs
 ```
 

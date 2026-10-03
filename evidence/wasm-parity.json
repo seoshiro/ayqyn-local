@@ -1,0 +1,970 @@
+{
+  "schema": 1,
+  "model": "official YOLO11n ONNX 634279b4; conf .45, rect640, IoU .7",
+  "note": "Same 32 frozen images compared with stored PyTorch baseline, no blocked Python execution. Browser JPEG decode/bilinear rounding may differ; not raw-tensor equality or exam accuracy.",
+  "initialized": {
+    "ready": true,
+    "phoneClass": 67,
+    "runtime": "ONNX Runtime Web 1.30.0 + MediaPipe WASM 1.0.1",
+    "inputMetadata": [
+      {
+        "name": "images",
+        "isTensor": true,
+        "type": "float32",
+        "shape": [
+          "batch",
+          3,
+          "height",
+          "width"
+        ]
+      }
+    ],
+    "initMs": 656.6000000238419
+  },
+  "records": [
+    {
+      "imageId": "012dc31b561d4214",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": true,
+      "localizedPhone": true,
+      "baselineFound": true,
+      "baselineLocalized": true,
+      "phones": [
+        {
+          "box": [
+            0.2434,
+            0.0034,
+            0.8541,
+            1
+          ],
+          "confidence": 0.909,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.9950650727760533,
+          "confidenceDelta": 0.015100000000000002
+        }
+      ],
+      "latencyMs": 377.9,
+      "quality": {
+        "usable": true,
+        "brightness": 82,
+        "sharpness": 303.2,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "043f3655deab6e7c",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": true,
+      "localizedPhone": true,
+      "baselineFound": true,
+      "baselineLocalized": true,
+      "phones": [
+        {
+          "box": [
+            0.3087,
+            0.0693,
+            0.6879,
+            0.9503
+          ],
+          "confidence": 0.948,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.9995420288152383,
+          "confidenceDelta": 0.00010000000000010001
+        }
+      ],
+      "latencyMs": 231.7,
+      "quality": {
+        "usable": true,
+        "brightness": 56.3,
+        "sharpness": 21.3,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "0c5dc73c4cb7559b",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 290.6,
+      "quality": {
+        "usable": true,
+        "brightness": 229.9,
+        "sharpness": 1059.3,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "0d4d1169ecf7e56e",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": true,
+      "localizedPhone": true,
+      "baselineFound": true,
+      "baselineLocalized": true,
+      "phones": [
+        {
+          "box": [
+            0.0184,
+            0.0003,
+            0.8787,
+            0.8453
+          ],
+          "confidence": 0.545,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.9982669486525323,
+          "confidenceDelta": 0.0030999999999999917
+        }
+      ],
+      "latencyMs": 248.8,
+      "quality": {
+        "usable": true,
+        "brightness": 135.5,
+        "sharpness": 1713.3,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "10dda8b9e1534f15",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": true,
+      "localizedPhone": true,
+      "baselineFound": true,
+      "baselineLocalized": true,
+      "phones": [
+        {
+          "box": [
+            0,
+            0,
+            0.4924,
+            0.979
+          ],
+          "confidence": 0.948,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        },
+        {
+          "box": [
+            0.588,
+            0.0961,
+            0.9196,
+            0.9996
+          ],
+          "confidence": 0.83,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.9999607993618247,
+          "confidenceDelta": 0.000200000000000089
+        },
+        {
+          "iou": 0.9996666933312428,
+          "confidenceDelta": 0.00009999999999998899
+        }
+      ],
+      "latencyMs": 233.5,
+      "quality": {
+        "usable": true,
+        "brightness": 139.4,
+        "sharpness": 303.3,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "12e529ac3ceecdb3",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": true,
+      "localizedPhone": true,
+      "baselineFound": true,
+      "baselineLocalized": true,
+      "phones": [
+        {
+          "box": [
+            0.5506,
+            0.2355,
+            0.8478,
+            0.9469
+          ],
+          "confidence": 0.931,
+          "raised": false,
+          "rising": false,
+          "label": "cell phone"
+        },
+        {
+          "box": [
+            0.1498,
+            0.2204,
+            0.4671,
+            0.9506
+          ],
+          "confidence": 0.92,
+          "raised": false,
+          "rising": false,
+          "label": "cell phone"
+        },
+        {
+          "box": [
+            0.8626,
+            0.2288,
+            0.9999,
+            0.5593
+          ],
+          "confidence": 0.487,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.9995581116921771,
+          "confidenceDelta": 0.0005999999999999339
+        },
+        {
+          "iou": 0.9988310968806047,
+          "confidenceDelta": 0.0017000000000000348
+        },
+        {
+          "iou": 0.9993881803157528,
+          "confidenceDelta": 0.0005999999999999894
+        }
+      ],
+      "latencyMs": 236,
+      "quality": {
+        "usable": true,
+        "brightness": 119.5,
+        "sharpness": 505.7,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "14dc34954fe89fc2",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": true,
+      "localizedPhone": true,
+      "baselineFound": true,
+      "baselineLocalized": true,
+      "phones": [
+        {
+          "box": [
+            0.0643,
+            0.0026,
+            0.6408,
+            0.9951
+          ],
+          "confidence": 0.622,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.9995236542593725,
+          "confidenceDelta": 0.011700000000000044
+        }
+      ],
+      "latencyMs": 225.9,
+      "quality": {
+        "usable": true,
+        "brightness": 57.4,
+        "sharpness": 68.8,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "169e92cc01e9e571",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": true,
+      "localizedPhone": true,
+      "baselineFound": true,
+      "baselineLocalized": true,
+      "phones": [
+        {
+          "box": [
+            0.3069,
+            0.2031,
+            0.6926,
+            0.72
+          ],
+          "confidence": 0.794,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.9996722488491816,
+          "confidenceDelta": 0.0010000000000000009
+        }
+      ],
+      "latencyMs": 200.3,
+      "quality": {
+        "usable": true,
+        "brightness": 226.5,
+        "sharpness": 120.5,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "17c496b766f8b5ef",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": true,
+      "localizedPhone": true,
+      "baselineFound": true,
+      "baselineLocalized": true,
+      "phones": [
+        {
+          "box": [
+            0.3024,
+            0.0686,
+            0.7251,
+            1
+          ],
+          "confidence": 0.93,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.9997408063396888,
+          "confidenceDelta": 0.00039999999999995595
+        }
+      ],
+      "latencyMs": 233.4,
+      "quality": {
+        "usable": true,
+        "brightness": 120,
+        "sharpness": 91.6,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "183025437834c0e0",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": true,
+      "localizedPhone": true,
+      "baselineFound": true,
+      "baselineLocalized": true,
+      "phones": [
+        {
+          "box": [
+            0.0278,
+            0.1265,
+            0.9986,
+            0.9947
+          ],
+          "confidence": 0.939,
+          "raised": false,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.99925651041776,
+          "confidenceDelta": 0.00009999999999998899
+        }
+      ],
+      "latencyMs": 112,
+      "quality": {
+        "usable": true,
+        "brightness": 94.2,
+        "sharpness": 130.6,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "1893009e751e6d21",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 108.5,
+      "quality": {
+        "usable": true,
+        "brightness": 70.3,
+        "sharpness": 330.8,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "1a08289e9fcda126",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": true,
+      "localizedPhone": true,
+      "baselineFound": true,
+      "baselineLocalized": true,
+      "phones": [
+        {
+          "box": [
+            0.3568,
+            0.0017,
+            0.9186,
+            0.9951
+          ],
+          "confidence": 0.882,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.9997573664898675,
+          "confidenceDelta": 0.000500000000000056
+        }
+      ],
+      "latencyMs": 247.2,
+      "quality": {
+        "usable": true,
+        "brightness": 87.6,
+        "sharpness": 28.2,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "1f3915bdd8737cd8",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": true,
+      "localizedPhone": true,
+      "baselineFound": true,
+      "baselineLocalized": true,
+      "phones": [
+        {
+          "box": [
+            0.482,
+            0.3035,
+            0.9111,
+            0.6962
+          ],
+          "confidence": 0.921,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        },
+        {
+          "box": [
+            0.0599,
+            0.2343,
+            0.4371,
+            0.6819
+          ],
+          "confidence": 0.527,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.9983501617649648,
+          "confidenceDelta": 0.0005999999999999339
+        },
+        {
+          "iou": 0.9905599363664077,
+          "confidenceDelta": 0.03249999999999997
+        }
+      ],
+      "latencyMs": 226.8,
+      "quality": {
+        "usable": true,
+        "brightness": 128.7,
+        "sharpness": 148.9,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "21b65b2f5e02521c",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 170.8,
+      "quality": {
+        "usable": true,
+        "brightness": 171.7,
+        "sharpness": 83.2,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "27b01a51a7b0538c",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 332.3,
+      "quality": {
+        "usable": true,
+        "brightness": 224.5,
+        "sharpness": 1106.8,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "288d0619abeb57ed",
+      "category": "Mobile phone",
+      "datasetPositive": true,
+      "foundPhone": true,
+      "localizedPhone": true,
+      "baselineFound": true,
+      "baselineLocalized": true,
+      "phones": [
+        {
+          "box": [
+            0.5529,
+            0.0713,
+            0.9175,
+            0.9212
+          ],
+          "confidence": 0.815,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        },
+        {
+          "box": [
+            0.0921,
+            0.0691,
+            0.4519,
+            0.9144
+          ],
+          "confidence": 0.684,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.9996173537240973,
+          "confidenceDelta": 0.0013000000000000789
+        },
+        {
+          "iou": 0.9997599513802434,
+          "confidenceDelta": 0.0029000000000000137
+        }
+      ],
+      "latencyMs": 322.5,
+      "quality": {
+        "usable": true,
+        "brightness": 158.7,
+        "sharpness": 506.8,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "4fe2fb3816b91c44",
+      "category": "Remote control",
+      "datasetPositive": false,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 271.4,
+      "quality": {
+        "usable": true,
+        "brightness": 127.5,
+        "sharpness": 12.2,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "6347108949f5cbe2",
+      "category": "Remote control",
+      "datasetPositive": false,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 227.1,
+      "quality": {
+        "usable": true,
+        "brightness": 159.9,
+        "sharpness": 23,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "8357a23d186680d7",
+      "category": "Remote control",
+      "datasetPositive": false,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 268.2,
+      "quality": {
+        "usable": true,
+        "brightness": 192.1,
+        "sharpness": 104.5,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "c48ad3322299db3e",
+      "category": "Remote control",
+      "datasetPositive": false,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 226.7,
+      "quality": {
+        "usable": true,
+        "brightness": 115.6,
+        "sharpness": 276.5,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "04311ae05c027377",
+      "category": "Book",
+      "datasetPositive": false,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 239.9,
+      "quality": {
+        "usable": true,
+        "brightness": 127.2,
+        "sharpness": 994.4,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "0a3873442ad329c2",
+      "category": "Book",
+      "datasetPositive": false,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 217.3,
+      "quality": {
+        "usable": true,
+        "brightness": 96.2,
+        "sharpness": 404.7,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "0b19fbf13f8296d6",
+      "category": "Book",
+      "datasetPositive": false,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 225.6,
+      "quality": {
+        "usable": true,
+        "brightness": 116.7,
+        "sharpness": 935.4,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "0dbd358b804cdc0d",
+      "category": "Book",
+      "datasetPositive": false,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 223.7,
+      "quality": {
+        "usable": false,
+        "brightness": 78.7,
+        "sharpness": 2564.5,
+        "reason": "face_too_small"
+      }
+    },
+    {
+      "imageId": "13fc51f84ffc7bcf",
+      "category": "Calculator",
+      "datasetPositive": false,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 260.6,
+      "quality": {
+        "usable": true,
+        "brightness": 97.5,
+        "sharpness": 56.7,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "4cd9c9c8979311e1",
+      "category": "Calculator",
+      "datasetPositive": false,
+      "foundPhone": true,
+      "localizedPhone": false,
+      "baselineFound": true,
+      "baselineLocalized": false,
+      "phones": [
+        {
+          "box": [
+            0.1697,
+            0.0325,
+            0.812,
+            0.9925
+          ],
+          "confidence": 0.87,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.9997166817909567,
+          "confidenceDelta": 0.00039999999999995595
+        }
+      ],
+      "latencyMs": 230.6,
+      "quality": {
+        "usable": true,
+        "brightness": 111.4,
+        "sharpness": 77,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "8a43be187b9708ba",
+      "category": "Calculator",
+      "datasetPositive": false,
+      "foundPhone": true,
+      "localizedPhone": false,
+      "baselineFound": true,
+      "baselineLocalized": false,
+      "phones": [
+        {
+          "box": [
+            0.3593,
+            0.2034,
+            0.6185,
+            0.8
+          ],
+          "confidence": 0.548,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.9994688521950522,
+          "confidenceDelta": 0.0038999999999999035
+        }
+      ],
+      "latencyMs": 224.3,
+      "quality": {
+        "usable": true,
+        "brightness": 158.1,
+        "sharpness": 313.4,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "8c26b7a2c9a203d6",
+      "category": "Calculator",
+      "datasetPositive": false,
+      "foundPhone": true,
+      "localizedPhone": false,
+      "baselineFound": true,
+      "baselineLocalized": false,
+      "phones": [
+        {
+          "box": [
+            0.27,
+            0.0307,
+            0.6813,
+            0.9843
+          ],
+          "confidence": 0.512,
+          "raised": true,
+          "rising": false,
+          "label": "cell phone"
+        }
+      ],
+      "paired": [
+        {
+          "iou": 0.9989895806449811,
+          "confidenceDelta": 0.0031999999999999806
+        }
+      ],
+      "latencyMs": 231,
+      "quality": {
+        "usable": true,
+        "brightness": 166.9,
+        "sharpness": 23.3,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "01284dd8eaad0569",
+      "category": "Camera",
+      "datasetPositive": false,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 312.7,
+      "quality": {
+        "usable": true,
+        "brightness": 83.6,
+        "sharpness": 519.3,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "022881fd81a5a8f7",
+      "category": "Camera",
+      "datasetPositive": false,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 254.4,
+      "quality": {
+        "usable": true,
+        "brightness": 111.8,
+        "sharpness": 677.4,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "02dfa3e35b58bdb7",
+      "category": "Camera",
+      "datasetPositive": false,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 241.4,
+      "quality": {
+        "usable": true,
+        "brightness": 99.6,
+        "sharpness": 85.2,
+        "reason": "ok"
+      }
+    },
+    {
+      "imageId": "05544d84d21af1c1",
+      "category": "Camera",
+      "datasetPositive": false,
+      "foundPhone": false,
+      "localizedPhone": false,
+      "baselineFound": false,
+      "baselineLocalized": false,
+      "phones": [],
+      "paired": [],
+      "latencyMs": 240.3,
+      "quality": {
+        "usable": true,
+        "brightness": 108.9,
+        "sharpness": 167.4,
+        "reason": "ok"
+      }
+    }
+  ],
+  "summary": {
+    "scenes": 32,
+    "scenePresenceAgreement": 32,
+    "localizedAgreement": 32,
+    "verifiedPhotoTP": 9,
+    "verifiedPhotoDenominator": 10,
+    "negativeFP": 3,
+    "negativeDenominator": 16,
+    "datasetLocalizedTP": 12,
+    "datasetPositiveDenominator": 16,
+    "minPairedIoU": 0.9905599363664077,
+    "maxConfidenceDelta": 0.03249999999999997,
+    "p50Ms": 233.4,
+    "p95Ms": 322.5
+  },
+  "errors": [],
+  "network": [],
+  "passed": true
+}

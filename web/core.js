@@ -3,7 +3,7 @@ export const EVENT_LABELS={phone:'Телефон в кадре',phone_raised:'Т
 export const DEFAULT_POLICY={dwell:2500,absence:3000,phone:900,cooldown:5000,yaw:24,pitch:18,eye:.18,retention:24,evidence:false,attention:true};
 export function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 export function validatePolicy(input={}){
- if(!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).some(k=>!(k in DEFAULT_POLICY)))throw Error('Неверный формат политики');
+ if(!input||typeof input!=='object'||Array.isArray(input)||![Object.prototype,null].includes(Object.getPrototypeOf(input))||Object.keys(input).some(k=>!Object.hasOwn(DEFAULT_POLICY,k)))throw Error('Неверный формат политики');
  const p={...DEFAULT_POLICY,...input};
  for(const [k,min,max] of [['dwell',500,15000],['absence',500,15000],['phone',300,10000],['cooldown',1000,30000],['yaw',10,60],['pitch',10,45],['eye',.05,.5],['retention',1,168]])if(!Number.isFinite(p[k])||p[k]<min||p[k]>max)throw Error('Недопустимый параметр: '+k);
  for(const k of ['attention','evidence'])if(typeof p[k]!=='boolean')throw Error('Неверный переключатель: '+k);
@@ -39,6 +39,11 @@ export function calibration(samples){
  const spread=Math.max(...valid.map(s=>Math.abs(s.pose.yaw-yaw))),pitchSpread=Math.max(...valid.map(s=>Math.abs(s.pose.pitch-pitch))),eyeX=Math.max(...valid.map(s=>Math.abs(s.eyes.x-eyes.x))),eyeY=Math.max(...valid.map(s=>Math.abs(s.eyes.y-eyes.y)));
  if(spread>12||pitchSpread>12||eyeX>.08||eyeY>.12||eyes.x<.1||eyes.x>.9||eyes.y<-.2||eyes.y>1.2)throw Error('Калибровка нестабильна. Посмотрите в центр экрана, расслабьте голову и повторите.');
  return {yaw,pitch,eyes,samples:valid.length,spread:Math.max(spread,pitchSpread),at:new Date().toISOString()};
+}
+export function replayEvents(rows,policy=DEFAULT_POLICY){
+ const engine=new EventEngine(policy),events=[];
+ for(const row of rows){for(const event of engine.ingest(row.observation,row.at,null)){event.asset=row.asset;events.push(event);}}
+ engine.reset();return events;
 }
 export function report(session){
  validateSession(session);const copy=structuredClone(session);copy.events=copy.events.map(({snapshot,...e})=>e);
