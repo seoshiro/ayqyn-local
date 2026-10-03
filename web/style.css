@@ -9,3 +9,5 @@ h1,h2,h3,p,label,button{overflow-wrap:anywhere}.evidence-panel{scroll-margin-top
 .public-provenance{margin-bottom:24px;border-left:4px solid #12665b;background:#e8f4f0;color:#254e45}.public-provenance strong,.public-provenance span{display:block}.public-provenance span{margin-top:6px;font-size:.875rem}.replay-provenance{margin-bottom:20px}.replay-provenance p{margin:7px 0 0}.empty{color:#4e6873}.privacy-line{color:#3d695e}
 
 .skip-link{position:fixed;left:12px;top:-90px;z-index:10;background:white;color:#16313a;border:2px solid #12665b;padding:12px 18px;border-radius:5px}.skip-link:focus{top:12px}h1:focus-visible{outline:3px solid #12665b;outline-offset:5px}
+
+.field-error{color:#9d302b;font-size:.875rem;margin:8px 0 14px}textarea[aria-invalid="true"]{border:2px solid #9d302b}

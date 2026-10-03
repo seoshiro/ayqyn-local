@@ -1,0 +1,8 @@
+import fs from 'node:fs/promises';import assert from 'node:assert/strict';import crypto from 'node:crypto';
+const base=process.env.AYQYN_WEB_URL||'https://seoshiro.github.io/ayqyn-local/';
+const [replay,manifest]=await Promise.all([fetch(new URL('fixtures/replay.json',base)).then(r=>{assert(r.ok);return r.json();}),fetch(new URL('PUBLIC-BUILD.json',base)).then(r=>{assert(r.ok);return r.json();})]);
+const bytes=await fs.readFile('evidence/verified-315d7d7/wasm-runtime-audit.json'),audit=JSON.parse(bytes),sourceByName=new Map(audit.results.map(r=>[r.file,r.observation])),names=new Map(manifest.files.map(r=>[r.file,r.original]));
+assert.equal(replay.provenance.type,'real_wasm_inference_repeated_stills');assert.match(replay.provenance.runtime,/ONNX Runtime Web 1\.30\.0.*MediaPipe Tasks Vision 1\.0\.1/);assert.equal(replay.observations.length,108);assert.equal(manifest.rawFixturePixels,false);
+for(const row of replay.observations){const original=names.get(row.asset.split('/').at(-1));assert(sourceByName.has(original));assert.deepEqual(row.observation,sourceByName.get(original));}
+const hash=crypto.createHash('sha256').update(bytes).digest('hex');assert(replay.provenance.methodology.includes(hash));
+const result={passed:true,publicCommit:manifest.sourceCommit,replayRuntime:replay.provenance.runtime,uniqueActualWasmOutputs:6,repeatedRows:108,referenceAuditSha256:hash,archivedReleaseBrowserScreenshots:'Historical genuine Python fixture outputs in source315; distinct from later deployed WASM replay. No claim of live video accuracy.'};await fs.mkdir('artifacts/provenance',{recursive:true});await fs.writeFile('artifacts/provenance/replay-provenance.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));

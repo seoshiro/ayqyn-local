@@ -1,4 +1,4 @@
-const {app,BrowserWindow,ipcMain,protocol,net,session}=require('electron');
+const {app,BrowserWindow,ipcMain,protocol,net,session,dialog}=require('electron');
 const path=require('node:path'),fs=require('node:fs/promises'),crypto=require('node:crypto'),{pathToFileURL}=require('node:url');
 const {SessionStore}=require('./store.cjs'),ROOT=path.resolve(__dirname,'..');
 // CPU-only CV and consistent app rendering on ordinary Windows machines.
@@ -61,7 +61,7 @@ ipcMain.on('cv-ready',e=>{if(e.sender===worker?.webContents&&e.senderFrame===wor
 ipcMain.on('cv-response',(e,r)=>{if(e.sender!==worker?.webContents||e.senderFrame!==worker.webContents.mainFrame||e.senderFrame.url!=='ayqyn://local/cv-host.html'||!r||!Number.isSafeInteger(r.id))return;const p=pending.get(r.id);if(p){pending.delete(r.id);r.ok?p.resolve(r.result):p.reject(Error(String(r.error).slice(0,300)));}});
 app.whenReady().then(async()=>{
  try{const recorded=JSON.parse(await fs.readFile(path.join(ROOT,'web','build-info.json'),'utf8'));if(/^[0-9a-f]{40}$/.test(recorded.sourceCommit))buildInfo=recorded;}catch{}
- const {validateSession,expire}=await import(pathToFileURL(path.join(ROOT,'web','core.js')).href);
+ const {validateSession,expire,report}=await import(pathToFileURL(path.join(ROOT,'web','core.js')).href);
  const {observationSchema}=await import(pathToFileURL(path.join(ROOT,'web','schema.js')).href);
  const store=new SessionStore(process.env.AYQYN_DATA_DIR||path.join(app.getPath('userData'),'sessions'),validateSession,expire);await store.initialize();
  protocol.handle('ayqyn',serveLocal);
@@ -93,6 +93,9 @@ app.whenReady().then(async()=>{
  handle('exam',({enabled,fullscreen=false}={})=>{if(typeof enabled!=='boolean'||typeof fullscreen!=='boolean')throw Error('Invalid mode');if(enabled&&(!cameraConsent||Date.now()-lastObservation>1500||!worker))throw Error('Свежие наблюдения и согласие обязательны');active=enabled;win.setFullScreen(enabled&&fullscreen);return {active};});
  handle('stop',()=>{stop();return true;});
  handle('save',s=>store.save(s));handle('load',()=>store.load());handle('delete',()=>store.delete());
+ const {ReportExporter}=require('./export.cjs');
+ const exporter=new ReportExporter({formatReport:report,directory:path.join(app.getPath('userData'),'exports'),testMode:process.env.AYQYN_TEST==='1',chooseFile:filename=>dialog.showSaveDialog(win,{title:'Сохранить отчёт AYQYN',defaultPath:filename,filters:[{name:'JSON report',extensions:['json']}],properties:process.platform==='win32'?['dontAddToRecent']:['showOverwriteConfirmation']})});
+ handle('export-report',s=>{if(active)throw Error('Завершите экзамен перед экспортом отчёта');return exporter.export(s);});
  await win.loadURL('ayqyn://local/index.html');
 }).catch(e=>{process.stderr.write('AYQYN startup failed: '+e.message+'\n');app.quit();});
 app.on('window-all-closed',()=>{stop();app.quit();});app.on('before-quit',stop);

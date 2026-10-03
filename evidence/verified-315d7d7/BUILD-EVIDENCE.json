@@ -61,8 +61,8 @@
     },
     {
       "file": "code-integrity-followup.json",
-      "bytes": 261,
-      "sha256": "971e02902a959b848790ba384efb6cc16833ce7e946ecd164196df1214c7a865"
+      "bytes": 253,
+      "sha256": "97adce9507da54077ed73c4dda944b1a4d04bba695d0e3d49a41b1c2dbbe9a2d"
     },
     {
       "file": "core-audit.txt",
@@ -194,5 +194,6 @@
     "metadataOnly": true,
     "originalManifestSha256": "7b70a38eaa1d97bae7ac46cb90d59f8e14f170b5279991dd1e278cc8fa785881",
     "note": "Licensed test photographs/virtual source, no students or private camera. Some reports had only local machine paths redacted; checks unchanged."
-  }
+  },
+  "repositoryTextNormalization": "Text evidence uses LF; source releaseZIP retains its original verified bytes."
 }

@@ -1,6 +1,6 @@
 {
   "name": "ayqyn-local",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "description": "Local proctoring observations with human review",
   "license": "AGPL-3.0-only",

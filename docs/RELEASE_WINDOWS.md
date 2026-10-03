@@ -1,4 +1,4 @@
-# Windows release 0.2.0
+# Windows release 0.2.1
 
 This unsigned prototype targets Windows x64. It was tested on the current Windows 11 machine, including a copied-folder launch with Node/Python absent from PATH. A fresh Windows installation and physical air-gap have not been verified. Do not interpret this as institution-wide compatibility or signed/approved software.
 
@@ -13,3 +13,7 @@ Some Windows/institution policies reject unsigned programs. If the program canno
 Tests demonstrate software behavior with licensed test photos and a clearly labelled file-backed virtual camera. Head/eye physical accuracy, phone raising/aim motion and event-level false-alarm rates remain unvalidated. Signals are observations for a human reviewer, not misconduct findings or student decisions. For an explicitly consented physical test see MANUAL_VALIDATION.md.
 
 Release binaries identify their source in the UI/provenance. Public replay may be a later source commit and uses stored WASM outputs with synthetic diagrams; it does not run a camera or live inference. Check both commit stamps before comparing evidence.
+
+Native export uses a validated, image-free report in the main process and a user-selected save destination. Automated fixture tests use only their isolated exports directory. Duplicate clicks share one save operation; cancel writes nothing. Exported JSON files are managed separately from the current session. Version0.2.0 used a browser download mechanism whose native completion was not verified;0.2.1 replaces it.
+
+Free standard hosted Windows CI verified checkout, frozen install, model hashes, package launch/inference and outbound denial for5a9677a. This is a fresh hosted CI image with tools preinstalled, not a bare institutional Windows installation or camera-driver test. Inspect the exact final commit workflow result.
