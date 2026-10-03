@@ -18,6 +18,7 @@ jobs:
       - run: node --test tests/*.test.mjs
       - run: node scripts/package-windows.mjs
       - run: node scripts/audit-packaged.mjs
+      - run: node scripts/audit-export-replacement.mjs
       - run: node scripts/audit-wasm.mjs
       - name: Print bounded audit reports
         if: always()
@@ -25,3 +26,4 @@ jobs:
         run: |
           Get-Content evidence/packaged-audit.json -ErrorAction SilentlyContinue
           Get-Content evidence/wasm-runtime-audit.json -ErrorAction SilentlyContinue
+          Get-Content artifacts/export-replacement/export-replacement-audit.json -ErrorAction SilentlyContinue
