@@ -16,4 +16,4 @@ Release binaries identify their source in the UI/provenance. Public replay may b
 
 Native export uses a validated, image-free report in the main process and a user-selected save destination. Automated fixture tests use only their isolated exports directory. Duplicate clicks share one save operation; cancel writes nothing. Exported JSON files are managed separately from the current session. Version0.2.0 used a browser download mechanism whose native completion was not verified;0.2.1 replaces it.
 
-Free standard hosted Windows CI verified checkout, frozen install, model hashes, package launch/inference and outbound denial for5a9677a. This is a fresh hosted CI image with tools preinstalled, not a bare institutional Windows installation or camera-driver test. Inspect the exact final commit workflow result.
+Free standard hosted Windows CI verified checkout, frozen install, model hashes, package launch/inference and outbound denial on the exact published source commit linked in release evidence. This is a fresh hosted CI image with tools preinstalled, not a bare institutional Windows installation or camera-driver test. Inspect the exact final commit workflow result.

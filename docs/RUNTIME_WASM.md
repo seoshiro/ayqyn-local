@@ -17,12 +17,12 @@ MediaPipe's geometric transformation matrix now supplies relative head orientati
 ## Verification completed
 
 - Real ONNX + Face Landmarker inference on original/derived licensed still fixtures: one face, two-face composite, visible phone, dark/blur quality gating. No camera opened.
-- 10 native end-to-end checks with the explicit file-backed virtual camera: consent, calibration, preview revocation, recovery, app copy guard, storage, CV-host crash recovery, stop and emergency exit.
+- 12 native end-to-end checks with the explicit file-backed virtual camera: consent, calibration, preview revocation, recovery, app copy guard, storage, CV-host crash recovery, stop and emergency exit.
 - Actual renderer delayed-exam-IPC regressions: Stop, revoke and navigation cannot resurrect an active exam; duplicate start is disabled and native mode is unwound.
-- 27 Node regressions including prototype-like JSON names and complete replay episode durations.
+- 33 Node regressions including prototype-like JSON names and complete replay episode durations.
 - Windows package launched from a separate copied directory with Python and Node absent from PATH. Real phone inference, local storage and deletion passed: **5 checks**.
 
-The last packaged run occurred under unchanged Windows protection. Follow-up Code Integrity inspection found no new matching loading failures during the WASM-only runs. A complete fresh-OS/VM test and physical network-disconnected run have **not** been performed. The copied-directory test is an isolation check on this machine, not a clean OS certification. The resulting executable is unsigned; compatibility with other institutional policies is not promised.
+The last packaged run occurred under unchanged Windows protection. Follow-up Code Integrity inspection found no new matching loading failures during the WASM-only runs. A free standard hosted Windows CI image also passed checkout, frozen install, asset pins, packaging, real inference and outbound-denial tests; see the exact commit run linked in release evidence. A bare institutional OS/VM, camera-driver test and physical network-disconnected run have **not** been performed. The copied-directory test is an isolation check on this machine, not a clean OS certification. The resulting executable is unsigned; compatibility with other institutional policies is not promised.
 
 ## Offline use
 
