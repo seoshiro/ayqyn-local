@@ -35,4 +35,16 @@ export class BrowserSessionStore {
       this.expected=null;
     });
   }
+  snapshot(session) {
+    return this.commit(()=>{
+      // Export only an accepted canonical revision, including after a rejected
+      // local edit. A fresh comparison token alone cannot validate dirty data.
+      if(!this.expected||JSON.stringify(session)!==this.expected) {
+        const error=Error('Отчёт не создан: решения ещё не сохранены. Повторите сохранение или обновите страницу, чтобы загрузить принятые решения.');
+        error.code='browser_export_unsaved';
+        throw error;
+      }
+      return JSON.parse(this.expected);
+    });
+  }
 }

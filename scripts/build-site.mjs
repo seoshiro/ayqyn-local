@@ -11,13 +11,14 @@ const root=path.resolve('dist');
 const entries=await fs.readdir(root);
 await fs.mkdir(path.join(root,'replay'));
 for(const entry of entries)await fs.rename(path.join(root,entry),path.join(root,'replay',entry));
-// The public replay receives concurrency-safe browser caching. The released
+// The public replay receives concurrency-safe browser caching and accepted
+// revision exports. The released
 // desktop source, package, version and download bytes stay at the frozen commit.
 const renderer=await fs.readFile(path.join(root,'replay/app.js'),'utf8');
 await fs.writeFile(path.join(root,'replay/app.js'),adaptReplayRenderer(renderer));
 await fs.copyFile('site/browser-storage.js',path.join(root,'replay/browser-storage.js'));
 const replayManifest=JSON.parse(await fs.readFile(path.join(root,'replay/PUBLIC-BUILD.json'),'utf8'));
-replayManifest.browserAdaptation={websiteCommit:process.env.GITHUB_SHA||'local-candidate',purpose:'Stale concurrent browser writes rejected under Web Locks; per-tab sessionStorage fallback without Web Locks',packagedDesktopUnchanged:true};
+replayManifest.browserAdaptation={websiteCommit:process.env.GITHUB_SHA||'local-candidate',purpose:'Stale browser writes, deletion and exports rejected under Web Locks; only accepted canonical revisions exported; per-tab sessionStorage fallback without Web Locks',packagedDesktopUnchanged:true};
 await fs.writeFile(path.join(root,'replay/PUBLIC-BUILD.json'),JSON.stringify(replayManifest,null,2)+'\n');
 for(const name of ['index.html','style.css','site.js','favicon.svg','release.json','assets'])await fs.cp(path.join('site',name),path.join(root,name),{recursive:true});
 const files=[];
