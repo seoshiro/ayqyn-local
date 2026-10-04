@@ -25,7 +25,7 @@ let hostEpoch=0,hostStarting=null,initPending=null,initialized=null;
 function stop(){
  hostEpoch++;hostReady=null;hostStarting=null;initPending=null;initialized=null;
  cameraConsent=false;active=false;lastObservation=0;lastTimestamp=-1;
- if(win&&!win.isDestroyed()){win.setKiosk(false);win.setFullScreen(false);}
+ if(win&&!win.isDestroyed()){if(win.isKiosk())win.setKiosk(false);if(win.isFullScreen())win.setFullScreen(false);}
  const owned=worker;worker=null;if(owned&&!owned.isDestroyed()){owned.ayqynReject?.(Error('CV start cancelled'));owned.destroy();}
  for(const p of pending.values())p.reject(Error('Worker stopped'));pending.clear();inFlight=false;
 }
@@ -74,6 +74,7 @@ app.whenReady().then(async()=>{
  protocol.handle('ayqyn',serveLocal);
  win=new BrowserWindow({show:false,width:1420,height:940,minWidth:800,minHeight:650,title:'AYQYN — Local',backgroundColor:'#f3f6f7',autoHideMenuBar:true,webPreferences:{preload:path.join(__dirname,'preload.cjs'),nodeIntegration:false,contextIsolation:true,sandbox:true,webSecurity:true,devTools:process.env.AYQYN_TEST==='1'}});
  win.once('ready-to-show',()=>{if(win&&!win.isDestroyed())win.show();});
+ const showFallback=setTimeout(()=>{if(win&&!win.isDestroyed())win.show();},8000);win.once('closed',()=>clearTimeout(showFallback));
  session.defaultSession.setPermissionCheckHandler((wc,permission,origin,details)=>wc===win.webContents&&localOrigin(origin)&&permission==='media'&&cameraConsent&&(!details.mediaType||details.mediaType==='video'));
  session.defaultSession.setPermissionRequestHandler((wc,permission,callback,details)=>callback(wc===win.webContents&&permission==='media'&&cameraConsent&&details.mediaTypes?.length>0&&details.mediaTypes.every(t=>t==='video')));
  win.webContents.setWindowOpenHandler(()=>({action:'deny'}));win.webContents.on('will-navigate',e=>e.preventDefault());win.webContents.on('will-attach-webview',e=>e.preventDefault());
@@ -87,6 +88,7 @@ app.whenReady().then(async()=>{
  });
  win.on('blur',()=>{if(active)win.webContents.send('guard-event','focus');});win.on('closed',()=>{win=null;stop();});
  const handle=(name,fn)=>ipcMain.handle(name,async(e,...args)=>{trusted(e);const epoch=hostEpoch;try{return await fn(...args);}catch(error){if(name==='save'||(['init','infer'].includes(name)&&epoch===hostEpoch))await diagnostics.record({stage:name,code:diagnosticCode(error,name)});throw error;}});
+ handle('ui-present',()=>{win.show();return true;});
  handle('diagnostic',entry=>{if(!diagnosticModule.validDiagnostic(entry))throw Error('Invalid diagnostic');return diagnostics.record(entry);});
  handle('capabilities',()=>({desktop:true,platform:process.platform,sourceCommit:buildInfo.sourceCommit,testSource:process.env.AYQYN_TEST==='1'?'virtual_camera':null,appBlocked:['copy','paste','navigation','new_window'],observed:['window_blur'],unsupported:['Alt+Tab','Win','PrtScn','other_processes'],managedWindows:'not_configured'}));
  handle('init',async()=>{
