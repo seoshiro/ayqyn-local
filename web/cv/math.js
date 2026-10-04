@@ -31,9 +31,19 @@ export function frameQuality(rgba,width,height){
  return {usable,brightness:Math.round(brightness*10)/10,sharpness:Math.round(sharpness*10)/10,reason:usable?'ok':'low_light_or_blur'};
 }
 export function faceGeometry(landmarks,matrix){
- if(!landmarks||landmarks.length<478)return {pose:null,eyes:null};
- const ratio=(iris,left,right,top,bottom)=>{const a=landmarks[left],b=landmarks[right],c=landmarks[top],d=landmarks[bottom],p=landmarks[iris];return [(p.x-a.x)/(b.x-a.x||1),(p.y-c.y)/(d.y-c.y||1)];},l=ratio(468,33,133,159,145),r=ratio(473,362,263,386,374);
- const eyes={x:Math.round((l[0]+r[0])*500)/1000,y:Math.round((l[1]+r[1])*500)/1000,proxy:true};let pose=null;
- if(matrix?.length===16){const m=matrix,deg=180/Math.PI;pose={yaw:Math.asin(Math.max(-1,Math.min(1,-m[2])))*deg,pitch:Math.atan2(m[6],m[10])*deg,roll:Math.atan2(m[1],m[0])*deg};}
+ // Project onto each eye's own axes: division by screen y alone explodes
+ // during blinks and roll. Unreliable iris geometry is unavailable, never zero.
+ const ratio=(iris,left,right,top,bottom)=>{
+  const points=[iris,left,right,top,bottom].map(i=>landmarks?.[i]);
+  if(points.some(p=>!p||![p.x,p.y].every(Number.isFinite)))return null;
+  const [p,a,b,c,d]=points,hx=b.x-a.x,hy=b.y-a.y,vx=d.x-c.x,vy=d.y-c.y,width2=hx*hx+hy*hy,height2=vx*vx+vy*vy;
+  // A conservative numerical guard; this is not a physical eye-closure classifier.
+  if(width2<1e-12||height2<width2*.06**2)return null;
+  const xy=[((p.x-a.x)*hx+(p.y-a.y)*hy)/width2,((p.x-c.x)*vx+(p.y-c.y)*vy)/height2];
+  return xy.every(v=>Number.isFinite(v)&&v>=-2&&v<=3)?xy:null;
+ };
+ const l=ratio(468,33,133,159,145),r=ratio(473,362,263,386,374);
+ const eyes=l&&r?{x:Math.round((l[0]+r[0])*500)/1000,y:Math.round((l[1]+r[1])*500)/1000,proxy:true}:null;let pose=null;
+ if(matrix?.length===16&&Array.from(matrix).every(Number.isFinite)&&Math.hypot(matrix[6],matrix[10])>1e-9&&Math.hypot(matrix[1],matrix[0])>1e-9){const m=matrix,deg=180/Math.PI;pose={yaw:Math.asin(Math.max(-1,Math.min(1,-m[2])))*deg,pitch:Math.atan2(m[6],m[10])*deg,roll:Math.atan2(m[1],m[0])*deg};}
  return {pose,eyes};
 }

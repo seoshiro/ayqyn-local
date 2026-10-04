@@ -3,3 +3,8 @@ allowBuilds:
   protobufjs: false
 storeDir: .pnpm-store
 packageImportMethod: copy
+overrides:
+  http-cache-semantics: 4.2.0
+patchedDependencies:
+  extract-zip@2.0.1: patches/extract-zip@2.0.1.patch
+  http-cache-semantics@4.2.0: patches/http-cache-semantics@4.2.0.patch

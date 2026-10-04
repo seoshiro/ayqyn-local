@@ -18,7 +18,7 @@
         ]
       }
     ],
-    "initMs": 618.3999999761581,
+    "initMs": 613.7000000476837,
     "provenance": {
       "type": "local-wasm-v0.2",
       "runtime": "ONNX Runtime Web 1.30.0 + MediaPipe Tasks Vision 1.0.1; source development",
@@ -52,8 +52,8 @@
           "roll": -3.49
         },
         "eyes": {
-          "x": 0.478,
-          "y": 0.523,
+          "x": 0.476,
+          "y": 0.546,
           "proxy": true
         },
         "phones": [],
@@ -63,7 +63,7 @@
           "sharpness": 861.9,
           "reason": "ok"
         },
-        "latencyMs": 471.1,
+        "latencyMs": 451.8,
         "timestamp": 1000,
         "source": "real_inference",
         "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
@@ -71,7 +71,7 @@
           512,
           512
         ],
-        "observationAgeMs": 556
+        "observationAgeMs": 528.3
       }
     },
     {
@@ -88,7 +88,7 @@
           "sharpness": 105.1,
           "reason": "ok"
         },
-        "latencyMs": 247.3,
+        "latencyMs": 250.1,
         "timestamp": 1200,
         "source": "real_inference",
         "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
@@ -96,7 +96,7 @@
           960,
           640
         ],
-        "observationAgeMs": 281
+        "observationAgeMs": 283.3
       }
     },
     {
@@ -126,7 +126,7 @@
           "sharpness": 608.4,
           "reason": "ok"
         },
-        "latencyMs": 237.6,
+        "latencyMs": 252,
         "timestamp": 1400,
         "source": "real_inference",
         "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
@@ -134,7 +134,7 @@
           960,
           640
         ],
-        "observationAgeMs": 272.9
+        "observationAgeMs": 290.1
       }
     },
     {
@@ -172,7 +172,7 @@
           640,
           480
         ],
-        "observationAgeMs": 302.5
+        "observationAgeMs": 304.3
       }
     },
     {
@@ -189,7 +189,7 @@
           "sharpness": 12.8,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 320.8,
+        "latencyMs": 309.1,
         "timestamp": 1800,
         "source": "real_inference",
         "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
@@ -197,7 +197,7 @@
           512,
           512
         ],
-        "observationAgeMs": 347.7
+        "observationAgeMs": 336.3
       }
     },
     {
@@ -214,7 +214,7 @@
           "sharpness": 1.9,
           "reason": "low_light_or_blur"
         },
-        "latencyMs": 299.3,
+        "latencyMs": 274.3,
         "timestamp": 2000,
         "source": "real_inference",
         "model": "YOLO11n ONNX + MediaPipe Face Landmarker WASM",
@@ -222,7 +222,7 @@
           512,
           512
         ],
-        "observationAgeMs": 322.8
+        "observationAgeMs": 295
       }
     }
   ],

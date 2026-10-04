@@ -1,0 +1,9 @@
+const fs=require('node:fs/promises'),path=require('node:path');
+// Max 64 sanitized entries and 24 hours. No frames, answers, paths, IDs or raw errors.
+class DiagnosticStore{
+ constructor(directory,valid,io=fs,now=()=>Date.now()){this.file=path.join(directory,'technical-diagnostics.json');this.valid=valid;this.io=io;this.now=now;this.entries=[];this.queue=Promise.resolve();}
+ async initialize(){try{const stat=await this.io.stat(this.file);if(stat.size>16384){await this.io.rm(this.file,{force:true});return;}const data=JSON.parse(await this.io.readFile(this.file,'utf8'));if(!Array.isArray(data))throw Error('Invalid diagnostics');this.entries=data.filter(e=>e&&Object.keys(e).length===3&&Number.isSafeInteger(e.at)&&this.valid({stage:e.stage,code:e.code})&&e.at<=this.now()&&e.at>this.now()-86400000).slice(-64);if(JSON.stringify(this.entries)!==JSON.stringify(data)){await this.io.writeFile(this.file+'.tmp',JSON.stringify(this.entries),{mode:0o600});await this.io.rename(this.file+'.tmp',this.file);}}catch{await this.io.rm(this.file,{force:true}).catch(()=>{});}}
+ record(input){if(!this.valid(input))return Promise.resolve(false);const entry={at:this.now(),stage:input.stage,code:input.code};const task=this.queue.then(async()=>{this.entries=this.entries.filter(e=>e.at>this.now()-86400000);this.entries.push(entry);this.entries=this.entries.slice(-64);await this.io.mkdir(path.dirname(this.file),{recursive:true});await this.io.writeFile(this.file+'.tmp',JSON.stringify(this.entries),{mode:0o600});await this.io.rename(this.file+'.tmp',this.file);return true;}).catch(()=>false);this.queue=task;return task;}
+ clear(){const task=this.queue.then(async()=>{this.entries=[];await this.io.rm(this.file,{force:true});await this.io.rm(this.file+'.tmp',{force:true});return true;}).catch(()=>false);this.queue=task;return task;}
+}
+module.exports={DiagnosticStore};

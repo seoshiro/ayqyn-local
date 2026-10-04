@@ -12,8 +12,12 @@ if(process.env.AYQYN_TEST==='1'){
  if(process.env.AYQYN_TEST_VIDEO)app.commandLine.appendSwitch('use-file-for-fake-video-capture',process.env.AYQYN_TEST_VIDEO);
 }
 protocol.registerSchemesAsPrivileged([{scheme:'ayqyn',privileges:{standard:true,secure:true,supportFetchAPI:true,stream:true}}]);
+// One writer per userData profile; a second launch focuses the existing window.
+const primaryInstance=app.requestSingleInstanceLock();if(!primaryInstance)app.quit();
 let win,worker,seq=0,active=false,cameraConsent=false,inFlight=false,lastObservation=0,lastTimestamp=-1,buildInfo={sourceCommit:'development'};
+let diagnostics,diagnosticCode=()=> 'unknown';
 const pending=new Map();
+app.on('second-instance',()=>{if(win&&!win.isDestroyed()){if(win.isMinimized())win.restore();win.show();win.focus();}});
 if(process.env.AYQYN_TEST==='1')app.on('ayqyn-test-crash-worker',()=>worker?.destroy());
 function localOrigin(value){try{const url=new URL(value);return url.protocol==='ayqyn:'&&url.host==='local';}catch{return false;}}
 function trusted(e){if(e.sender!==win?.webContents||e.senderFrame!==win.webContents.mainFrame||!localOrigin(e.senderFrame.url))throw Error('Untrusted sender');}
@@ -25,7 +29,7 @@ function stop(){
  const owned=worker;worker=null;if(owned&&!owned.isDestroyed()){owned.ayqynReject?.(Error('CV start cancelled'));owned.destroy();}
  for(const p of pending.values())p.reject(Error('Worker stopped'));pending.clear();inFlight=false;
 }
-function failure(e){process.stderr.write('AYQYN sensor diagnostic: '+e.message+'\n');stop();win?.webContents.send('sensor-error','Наблюдение остановлено. Камера выключена. Подтвердите согласие и включите её снова.');}
+function failure(e){const code=diagnosticCode(e,'worker');diagnostics?.record({stage:'worker',code});stop();win?.webContents.send('sensor-error','Наблюдение остановлено. Камера выключена. Подтвердите согласие и включите её снова. Код: '+code+' (worker).');}
 async function verifyRuntime(){
  const manifestBytes=await fs.readFile(path.join(ROOT,'web','runtime-manifest.json')),manifest=JSON.parse(manifestBytes.toString('utf8'));
  if(manifest.schema!==1||!Array.isArray(manifest.assets)||manifest.assets.length>30)throw Error('Invalid runtime manifest');
@@ -60,15 +64,20 @@ async function request(op,payload={}){
 ipcMain.on('cv-ready',e=>{if(e.sender===worker?.webContents&&e.senderFrame===worker.webContents.mainFrame&&e.senderFrame.url==='ayqyn://local/cv-host.html')worker.ayqynReady?.();});
 ipcMain.on('cv-response',(e,r)=>{if(e.sender!==worker?.webContents||e.senderFrame!==worker.webContents.mainFrame||e.senderFrame.url!=='ayqyn://local/cv-host.html'||!r||!Number.isSafeInteger(r.id))return;const p=pending.get(r.id);if(p){pending.delete(r.id);r.ok?p.resolve(r.result):p.reject(Error(String(r.error).slice(0,300)));}});
 app.whenReady().then(async()=>{
+ if(!primaryInstance)return;
  try{const recorded=JSON.parse(await fs.readFile(path.join(ROOT,'web','build-info.json'),'utf8'));if(/^[0-9a-f]{40}$/.test(recorded.sourceCommit))buildInfo=recorded;}catch{}
  const {validateSession,expire,report}=await import(pathToFileURL(path.join(ROOT,'web','core.js')).href);
  const {observationSchema}=await import(pathToFileURL(path.join(ROOT,'web','schema.js')).href);
+ const diagnosticModule=await import(pathToFileURL(path.join(ROOT,'web','diagnostics.js')).href);diagnosticCode=diagnosticModule.diagnosticCode;
+ const {DiagnosticStore}=require('./diagnostics.cjs');diagnostics=new DiagnosticStore(app.getPath('userData'),diagnosticModule.validDiagnostic);await diagnostics.initialize();
  const store=new SessionStore(process.env.AYQYN_DATA_DIR||path.join(app.getPath('userData'),'sessions'),validateSession,expire);await store.initialize();
  protocol.handle('ayqyn',serveLocal);
  win=new BrowserWindow({width:1420,height:940,minWidth:800,minHeight:650,title:'AYQYN — Local',backgroundColor:'#f3f6f7',autoHideMenuBar:true,webPreferences:{preload:path.join(__dirname,'preload.cjs'),nodeIntegration:false,contextIsolation:true,sandbox:true,webSecurity:true,devTools:process.env.AYQYN_TEST==='1'}});
  session.defaultSession.setPermissionCheckHandler((wc,permission,origin,details)=>wc===win.webContents&&localOrigin(origin)&&permission==='media'&&cameraConsent&&(!details.mediaType||details.mediaType==='video'));
  session.defaultSession.setPermissionRequestHandler((wc,permission,callback,details)=>callback(wc===win.webContents&&permission==='media'&&cameraConsent&&details.mediaTypes?.length>0&&details.mediaTypes.every(t=>t==='video')));
  win.webContents.setWindowOpenHandler(()=>({action:'deny'}));win.webContents.on('will-navigate',e=>e.preventDefault());win.webContents.on('will-attach-webview',e=>e.preventDefault());
+ win.webContents.on('did-start-navigation',details=>{if(details.isMainFrame&&!details.isSameDocument)stop();});
+ win.webContents.on('render-process-gone',()=>{diagnostics.record({stage:'render',code:'worker_exit'});stop();});
  session.defaultSession.webRequest.onBeforeRequest({urls:['*://*/*']},(details,callback)=>callback({cancel:!details.url.startsWith('ayqyn://local/')}));
  win.webContents.on('before-input-event',(event,input)=>{
   if(input.type!=='keyDown')return;
@@ -76,7 +85,8 @@ app.whenReady().then(async()=>{
   if(active&&(input.control||input.meta)&&['c','v','x','t','n','r','l','p','w'].includes(input.key.toLowerCase())){event.preventDefault();win.webContents.send('guard-event',['c','v','x'].includes(input.key.toLowerCase())?'clipboard':'navigation');}
  });
  win.on('blur',()=>{if(active)win.webContents.send('guard-event','focus');});win.on('closed',()=>{win=null;stop();});
- const handle=(name,fn)=>ipcMain.handle(name,(e,...args)=>{trusted(e);return fn(...args);});
+ const handle=(name,fn)=>ipcMain.handle(name,async(e,...args)=>{trusted(e);try{return await fn(...args);}catch(error){if(['init','infer','save'].includes(name))await diagnostics.record({stage:name,code:diagnosticCode(error,name)});throw error;}});
+ handle('diagnostic',entry=>{if(!diagnosticModule.validDiagnostic(entry))throw Error('Invalid diagnostic');return diagnostics.record(entry);});
  handle('capabilities',()=>({desktop:true,platform:process.platform,sourceCommit:buildInfo.sourceCommit,testSource:process.env.AYQYN_TEST==='1'?'virtual_camera':null,appBlocked:['copy','paste','navigation','new_window'],observed:['window_blur'],unsupported:['Alt+Tab','Win','PrtScn','other_processes'],managedWindows:'not_configured'}));
  handle('init',async()=>{
   if(initialized)return initialized;if(initPending)return initPending;
@@ -92,7 +102,7 @@ app.whenReady().then(async()=>{
  });
  handle('exam',({enabled,fullscreen=false}={})=>{if(typeof enabled!=='boolean'||typeof fullscreen!=='boolean')throw Error('Invalid mode');if(enabled&&(!cameraConsent||Date.now()-lastObservation>1500||!worker))throw Error('Свежие наблюдения и согласие обязательны');active=enabled;win.setFullScreen(enabled&&fullscreen);return {active};});
  handle('stop',()=>{stop();return true;});
- handle('save',s=>store.save(s));handle('load',()=>store.load());handle('delete',()=>store.delete());
+ handle('save',s=>store.save(s));handle('load',()=>store.load());handle('delete',async()=>{await store.delete();await diagnostics.clear();return true;});
  const {ReportExporter}=require('./export.cjs');
  const exporter=new ReportExporter({formatReport:report,directory:path.join(app.getPath('userData'),'exports'),testMode:process.env.AYQYN_TEST==='1',chooseFile:filename=>dialog.showSaveDialog(win,{title:'Сохранить отчёт AYQYN',defaultPath:filename,filters:[{name:'JSON report',extensions:['json']}],properties:process.platform==='win32'?['dontAddToRecent']:['showOverwriteConfirmation']})});
  handle('export-report',s=>{if(active)throw Error('Завершите экзамен перед экспортом отчёта');return exporter.export(s);});

@@ -1,3 +1,17 @@
+# Current security/privacy verification — v0.2.2 candidate
+
+The runtime is Electron plus official ONNX Runtime Web/MediaPipe WASM in an isolated renderer. No Python, server, authentication provider or student identity database runs in the app. Main/frame IPC checks, bounded schemas, pinned asset hashes, sandbox/context isolation, consented video-only capture and denied outbound requests define the local boundary. App input guards do not block OS-wide Alt+Tab, Win, PrtScn or other processes.
+
+Local session data is atomic but unsigned and not encrypted. The OS account/administrator and bundled code are trusted. Observations require human contextual review and cannot establish intent or disciplinary outcomes. Snapshot consent is separate; report export excludes raw images.
+
+New repair validation: 48 Node tests include private-diagnostic retention/disk failure, finite blink/roll/degenerate geometry and seven build-dependency mitigation cases. Isolated native tests verify capture revocation, reload/crash cleanup and retained answers. Technical diagnostics contain only time/stage/code, at most64 entries;24-hour pruning occurs on opening/writing, deletion clears the file. They are not sent automatically. Raw exception text, names, session IDs, paths, answers and camera frames are excluded.
+
+Known dependency warnings and precise mitigation status are in [BUILD_DEPENDENCY_MITIGATIONS.md](BUILD_DEPENDENCY_MITIGATIONS.md). Bare-OS installation, independent full native/assistive-technology review and physical gaze/device-event accuracy are separate outstanding checks; fixture success does not satisfy them. The user's earlier generic live camera failure has no retained exception, so its exact cause remains uncertain.
+
+## Historical development checkpoint
+
+The following material is retained for provenance; its Python-worker descriptions apply to earlier development, not current runtime.
+
 # Security and privacy audit — checkpoint
 
 Trust boundary: the OS account, administrator, bundled source and pinned models are trusted. Camera images are untrusted data. Python decodes bounded JPEG input, checks dimensions, never opens devices, uses CPU inference and outputs bounded structured observations. Runtime is configured offline; dependencies still need a network-denied run to prove no accidental outbound traffic.

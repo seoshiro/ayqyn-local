@@ -1,0 +1,42 @@
+diff --git a/index.js b/index.js
+index 23384ea16bb848616886f356d8d69f94325535bf..8698e9aa78fd28e87227f8907781ecffc08340fa 100644
+--- a/index.js
++++ b/index.js
+@@ -1,7 +1,6 @@
+ const debug = require('debug')('extract-zip')
+ // eslint-disable-next-line node/no-unsupported-features/node-builtins
+ const { createWriteStream, promises: fs } = require('fs')
+-const getStream = require('get-stream')
+ const path = require('path')
+ const { promisify } = require('util')
+ const stream = require('stream')
+@@ -94,6 +93,14 @@ class Extractor {
+     const IFDIR = 16384
+     const IFLNK = 40960
+     const symlink = (mode & IFMT) === IFLNK
++    // AYQYN build-only mitigation: Windows Electron archives need no symlinks.
++    // Reject links before creating them, including repeated-name link/file attacks.
++    if (symlink) throw new Error('AYQYN build rejects ZIP symlink entries')
++    try {
++      if ((await fs.lstat(dest)).isSymbolicLink()) throw new Error('AYQYN build rejects existing symbolic links')
++    } catch (error) {
++      if (error.code !== 'ENOENT') throw error
++    }
+     let isDir = (mode & IFMT) === IFDIR
+ 
+     // Failsafe, borrowed from jsZip
+@@ -124,13 +131,7 @@ class Extractor {
+     debug('opening read stream', dest)
+     const readStream = await promisify(this.zipfile.openReadStream.bind(this.zipfile))(entry)
+ 
+-    if (symlink) {
+-      const link = await getStream(readStream)
+-      debug('creating symlink', link, dest)
+-      await fs.symlink(link, dest)
+-    } else {
+-      await pipeline(readStream, createWriteStream(dest, { mode: procMode }))
+-    }
++    await pipeline(readStream, createWriteStream(dest, { mode: procMode }))
+   }
+ 
+   getExtractedMode (entryMode, isDir) {

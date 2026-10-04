@@ -15,6 +15,7 @@ jobs:
       - run: npm install --global pnpm@11.19.0
       - run: pnpm install --frozen-lockfile
       - run: pnpm setup:assets
+      - run: pnpm lint
       - run: node --test tests/*.test.mjs
       - run: node scripts/package-windows.mjs
       - run: node scripts/audit-packaged.mjs
