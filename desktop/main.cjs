@@ -85,7 +85,7 @@ app.whenReady().then(async()=>{
   if(active&&(input.control||input.meta)&&['c','v','x','t','n','r','l','p','w'].includes(input.key.toLowerCase())){event.preventDefault();win.webContents.send('guard-event',['c','v','x'].includes(input.key.toLowerCase())?'clipboard':'navigation');}
  });
  win.on('blur',()=>{if(active)win.webContents.send('guard-event','focus');});win.on('closed',()=>{win=null;stop();});
- const handle=(name,fn)=>ipcMain.handle(name,async(e,...args)=>{trusted(e);try{return await fn(...args);}catch(error){if(['init','infer','save'].includes(name))await diagnostics.record({stage:name,code:diagnosticCode(error,name)});throw error;}});
+ const handle=(name,fn)=>ipcMain.handle(name,async(e,...args)=>{trusted(e);const epoch=hostEpoch;try{return await fn(...args);}catch(error){if(name==='save'||(['init','infer'].includes(name)&&epoch===hostEpoch))await diagnostics.record({stage:name,code:diagnosticCode(error,name)});throw error;}});
  handle('diagnostic',entry=>{if(!diagnosticModule.validDiagnostic(entry))throw Error('Invalid diagnostic');return diagnostics.record(entry);});
  handle('capabilities',()=>({desktop:true,platform:process.platform,sourceCommit:buildInfo.sourceCommit,testSource:process.env.AYQYN_TEST==='1'?'virtual_camera':null,appBlocked:['copy','paste','navigation','new_window'],observed:['window_blur'],unsupported:['Alt+Tab','Win','PrtScn','other_processes'],managedWindows:'not_configured'}));
  handle('init',async()=>{
