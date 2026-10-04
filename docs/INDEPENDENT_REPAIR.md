@@ -1,0 +1,16 @@
+# Independent desktop review repairs — v0.2.3 candidate
+
+Two new unique findings from the independent reviewer are tracked here, without duplicating the ten live-repair findings. Release remains subject to exact-package checks and independent retest.
+
+| ID | Severity | Evidence / cause | Repair and verification |
+|---|---|---|---|
+| AYQYN-IND-001 | HIGH | f6d8da4 ordinary native launches can show only the window background and title, without useful controls. Reviewer screenshots 37/38 and a separate native launch reproduce it. The same byte-identical journal opens in fresh/copied-cache profiles under Playwright; twelve instrumented close/reopen cycles succeed. The original reviewer window later painted without journal mutation. Data corruption is excluded for this fixture. | Create the main window hidden and explicitly show it after its first-render `ready-to-show` event. Native source A/B capture before any accessibility warm-up shows the complete UI after this lifecycle change. Add initial visible loading content and a bounded module bootstrap with a real retry path. Repeated native process starts/pixel checks and production persistence/recovery tests are required on the candidate. |
+| AYQYN-IND-002 | LOW | All four blank numeric policy values pass HTML optional-field checks, become zero via Number(''), then raise generic schema dwell text with no affected-field focus. | Required numeric inputs, Russian inline feedback associated with each field, affected-field focus, finite/range/step checks and keyboard submission. Four E2E groups cover empty fields, individual correction, range/step failures and title/Enter. |
+
+The first-render lifecycle is the verified application-level repair. The exact underlying Chromium/Windows painting trigger in the reviewer's original delayed incident is not proven. No hidden data deletion or exact live-CV root cause is inferred. [Electron's primary documentation](https://www.electronjs.org/docs/latest/api/browser-window#using-the-ready-to-show-event) defines the first-render event and explicit window show sequence.
+
+Preserved original reviewer journal SHA256: `2957b9533bca3abe7f32c9c52e16a8799d9da662572af609031dd2cd31094c74`. Private before/after material is in ignored local artifacts; no camera was activated for these repairs. Original PID18888/profile and earlier PID61240 remain separate.
+
+Total unique repair findings across the two ledgers: **12 — CRITICAL 0, HIGH 5, MEDIUM 5, LOW 2**. The real Save gap is closed by independent physical-keyboard selection and verified 695-byte JSON; unreliable helper filename setting is a test-driver limitation, not a product defect. It is not counted again.
+
+The native-start audit creates a schema-validated synthetic session before launching an uninstrumented production EXE. It samples actual captured body pixels before accessibility warm-up, normally closes each owned window, and verifies journal bytes across relaunches. It does not enable a debugger, camera, key hook, lock mode or OS setting. The separate instrumented test verifies actual UI creation and retained answer/review fields. A bootstrap test makes one frontend module genuinely unavailable in an owned copy, then restores it and activates the real retry button.

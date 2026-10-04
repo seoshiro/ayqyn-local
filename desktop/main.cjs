@@ -72,7 +72,8 @@ app.whenReady().then(async()=>{
  const {DiagnosticStore}=require('./diagnostics.cjs');diagnostics=new DiagnosticStore(app.getPath('userData'),diagnosticModule.validDiagnostic);await diagnostics.initialize();
  const store=new SessionStore(process.env.AYQYN_DATA_DIR||path.join(app.getPath('userData'),'sessions'),validateSession,expire);await store.initialize();
  protocol.handle('ayqyn',serveLocal);
- win=new BrowserWindow({width:1420,height:940,minWidth:800,minHeight:650,title:'AYQYN — Local',backgroundColor:'#f3f6f7',autoHideMenuBar:true,webPreferences:{preload:path.join(__dirname,'preload.cjs'),nodeIntegration:false,contextIsolation:true,sandbox:true,webSecurity:true,devTools:process.env.AYQYN_TEST==='1'}});
+ win=new BrowserWindow({show:false,width:1420,height:940,minWidth:800,minHeight:650,title:'AYQYN — Local',backgroundColor:'#f3f6f7',autoHideMenuBar:true,webPreferences:{preload:path.join(__dirname,'preload.cjs'),nodeIntegration:false,contextIsolation:true,sandbox:true,webSecurity:true,devTools:process.env.AYQYN_TEST==='1'}});
+ win.once('ready-to-show',()=>{if(win&&!win.isDestroyed())win.show();});
  session.defaultSession.setPermissionCheckHandler((wc,permission,origin,details)=>wc===win.webContents&&localOrigin(origin)&&permission==='media'&&cameraConsent&&(!details.mediaType||details.mediaType==='video'));
  session.defaultSession.setPermissionRequestHandler((wc,permission,callback,details)=>callback(wc===win.webContents&&permission==='media'&&cameraConsent&&details.mediaTypes?.length>0&&details.mediaTypes.every(t=>t==='video')));
  win.webContents.setWindowOpenHandler(()=>({action:'deny'}));win.webContents.on('will-navigate',e=>e.preventDefault());win.webContents.on('will-attach-webview',e=>e.preventDefault());

@@ -1,5 +1,5 @@
 export const DIAGNOSTIC_STAGES=Object.freeze(['startup','init','infer','capture','rules','render','save','worker','health']);
-export const DIAGNOSTIC_CODES=Object.freeze(['eye_geometry','observation_invalid','init_timeout','infer_timeout','worker_exit','capture_failed','storage_failed','consent_denied','frame_invalid','runtime_failed','unknown']);
+export const DIAGNOSTIC_CODES=Object.freeze(['eye_geometry','observation_invalid','init_timeout','infer_timeout','worker_exit','capture_failed','storage_failed','consent_denied','frame_invalid','runtime_failed','ui_startup_failed','unknown']);
 // Error text is classified in memory only. Never send messages, stacks or inputs to disk.
 export function diagnosticCode(error,stage){
  const message=typeof error?.message==='string'?error.message:'';

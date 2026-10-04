@@ -21,6 +21,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - run: npm install --global pnpm@11.19.0
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
       - run: node --test tests/*.test.mjs
       - run: node scripts/build-demo.mjs
       - run: node scripts/audit-public-demo.mjs

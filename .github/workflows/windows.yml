@@ -20,6 +20,22 @@ jobs:
       - run: node scripts/package-windows.mjs
       - run: node scripts/audit-packaged.mjs
       - run: node scripts/audit-export-replacement.mjs
+      - name: Repeated startup, policy and recoverable module checks
+        env:
+          AYQYN_PACKAGE_DIR: release/AYQYN-win32-x64
+          AYQYN_EXECUTABLE: release/AYQYN-win32-x64/AYQYN.exe
+          AYQYN_EVIDENCE_DIR: artifacts/independent-ci
+        run: |
+          node scripts/audit-policy.mjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node scripts/audit-startup.mjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node scripts/audit-bootstrap.mjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node scripts/audit-cancel-inference.mjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          powershell.exe -NoProfile -File scripts/audit-native-start.ps1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - run: node scripts/audit-wasm.mjs
       - name: Print bounded audit reports
         if: always()

@@ -11,3 +11,5 @@ h1,h2,h3,p,label,button{overflow-wrap:anywhere}.evidence-panel{scroll-margin-top
 .skip-link{position:fixed;left:12px;top:-90px;z-index:10;background:white;color:#16313a;border:2px solid #12665b;padding:12px 18px;border-radius:5px}.skip-link:focus{top:12px}h1:focus-visible{outline:3px solid #12665b;outline-offset:5px}
 
 .field-error{color:#9d302b;font-size:.875rem;margin:8px 0 14px}textarea[aria-invalid="true"]{border:2px solid #9d302b}
+
+.boot-panel{max-width:640px;min-height:0;margin:12vh auto;padding:32px}.field-error{display:block}input[aria-invalid="true"]{border:2px solid #9d302b}
