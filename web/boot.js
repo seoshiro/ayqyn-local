@@ -7,7 +7,7 @@ function unavailable(){
  root.replaceChildren();const panel=document.createElement('main');panel.className='boot-panel';
  const title=document.createElement('h1');title.textContent='Не удалось открыть интерфейс';
  const text=document.createElement('p');text.textContent='Повторите открытие интерфейса. Это действие не изменяет сохранённую сессию. Камера не включается автоматически.';
- const retry=document.createElement('button');retry.className='primary';retry.textContent='Повторить открытие';retry.addEventListener('click',()=>location.reload());
+ const retry=document.createElement('button');retry.className='primary';retry.textContent='Повторить открытие';retry.addEventListener('click',()=>{if(window.ayqyn?.retryUi)window.ayqyn.retryUi().catch(()=>{});else location.reload();});
  panel.append(title,text,retry);panel.setAttribute('role','alert');root.append(panel);
  present();
  window.ayqyn?.diagnostic?.({stage:'startup',code:'ui_startup_failed'}).catch(()=>{});

@@ -89,6 +89,7 @@ app.whenReady().then(async()=>{
  win.on('blur',()=>{if(active)win.webContents.send('guard-event','focus');});win.on('closed',()=>{win=null;stop();});
  const handle=(name,fn)=>ipcMain.handle(name,async(e,...args)=>{trusted(e);const epoch=hostEpoch;try{return await fn(...args);}catch(error){if(name==='save'||(['init','infer'].includes(name)&&epoch===hostEpoch))await diagnostics.record({stage:name,code:diagnosticCode(error,name)});throw error;}});
  handle('ui-present',()=>{showMain();return true;});
+ handle('retry-ui',()=>{if(active)throw Error('Завершите экзамен перед повторным открытием');stop();win.webContents.reload();return true;});
  handle('diagnostic',entry=>{if(!diagnosticModule.validDiagnostic(entry))throw Error('Invalid diagnostic');return diagnostics.record(entry);});
  handle('capabilities',()=>({desktop:true,platform:process.platform,sourceCommit:buildInfo.sourceCommit,testSource:process.env.AYQYN_TEST==='1'?'virtual_camera':null,appBlocked:['copy','paste','navigation','new_window'],observed:['window_blur'],unsupported:['Alt+Tab','Win','PrtScn','other_processes'],managedWindows:'not_configured'}));
  handle('init',async()=>{
