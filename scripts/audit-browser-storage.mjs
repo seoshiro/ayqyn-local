@@ -1,6 +1,8 @@
 import {chromium,expect} from '@playwright/test';import fs from 'node:fs/promises';
 const root=process.env.AYQYN_SITE_URL||'http://127.0.0.1:4176/ayqyn-local/',base=new URL('replay/',root).href,out=process.env.AYQYN_SITE_EVIDENCE||'artifacts/website-candidate';await fs.mkdir(out,{recursive:true});
-const browser=await chromium.launch({channel:process.platform==='win32'?'msedge':undefined,headless:true,chromiumSandbox:true}),checks=[],errors=[];
+// Hosted Ubuntu's installed Chrome has a usable sandbox profile; downloaded
+// headless-shell is restricted by the runner's AppArmor policy. Keep sandbox on.
+const browser=await chromium.launch({channel:process.platform==='win32'?'msedge':'chrome',headless:true,chromiumSandbox:true}),checks=[],errors=[];
 const context=await browser.newContext(),a=await context.newPage(),b=await context.newPage();for(const page of [a,b])page.on('pageerror',e=>errors.push(e.message));
 try {
   await a.goto(base);await a.locator('[data-action=demo]').first().click();await expect(a.locator('#storage-status')).toContainText('Сохранено');await b.goto(base);await b.locator('[data-action=nav-review]').first().click();await b.locator('.event').nth(1).click();await b.locator('#reason').fill('Вторая вкладка: тест контекста.');
