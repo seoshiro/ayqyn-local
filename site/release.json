@@ -1,0 +1,12 @@
+{
+  "version": "0.2.3",
+  "platform": "Windows x64",
+  "filename": "AYQYN-Windows-v0.2.3.zip",
+  "bytes": 194021562,
+  "sha256": "d3ab1b6b9ff93a59619e59380627cb84a3d338298520b2945493b21a10716013",
+  "url": "https://github.com/seoshiro/ayqyn-local/releases/download/v0.2.3/AYQYN-Windows-v0.2.3.zip",
+  "applicationSourceCommit": "d65abf9c9c64bf81a9db162fbe9b89e4a899f94a",
+  "correspondingSourceSha256": "bfe697353e6818eec163c4da71444bd2295a24d97f36f0ba0415b524869c3d43",
+  "signed": false,
+  "portable": true
+}

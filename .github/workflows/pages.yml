@@ -1,4 +1,4 @@
-name: Public replay demo
+name: Public AYQYN website
 on:
   push:
     branches: [main]
@@ -24,13 +24,14 @@ jobs:
       - run: npm install --global pnpm@11.19.0
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
+      - run: pnpm exec eslint site --max-warnings 0
       - run: node --test tests/*.test.mjs
-      - run: node scripts/build-demo.mjs
-      - run: node scripts/audit-public-demo.mjs
+      - run: node scripts/build-site.mjs
+      - run: node scripts/audit-site-build.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist
-      - name: Deploy public replay
+      - name: Deploy public website and separate replay
         id: deployment
         uses: actions/deploy-pages@v4

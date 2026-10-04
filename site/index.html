@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f5f0">
+  <meta name="description" content="AYQYN — локальный прокторинг для Windows. Наблюдения с камеры остаются на устройстве, каждое событие проверяет человек. Открытый прототип 0.2.3.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>AYQYN — экзамен локально, решение за человеком</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="./assets/onest-variable.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Перейти к содержимому</a>
+  <header class="header wrap">
+    <a class="brand" href="#main" aria-label="AYQYN — в начало"><svg aria-hidden="true" viewBox="0 0 32 32"><path d="m4 27 12-22 12 22M10 17h12"/></svg><span>AYQYN</span></a>
+    <nav aria-label="Основная навигация"><a href="#inside">Как это работает</a><a href="#boundaries">Возможности</a></nav>
+    <a class="header-download" href="#download">Для Windows <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-top"><span class="eyebrow"><span class="dot"></span> Локальный прокторинг</span><span class="edition">Открытый прототип / 0.2.3</span></div>
+      <div class="hero-grid">
+        <h1 id="hero-title">Экзамен —<br>локально.<br><span>Решение —<br>за человеком.</span></h1>
+        <div class="hero-side">
+          <p class="lead">AYQYN замечает события в кадре и собирает их в понятный журнал. Проверяющий видит контекст и объясняет своё решение.</p>
+          <a class="button primary" data-download href="https://github.com/seoshiro/ayqyn-local/releases/download/v0.2.3/AYQYN-Windows-v0.2.3.zip">Скачать приложение <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg></a>
+          <p class="release-meta">Windows x64 <span>·</span> v0.2.3 <span>·</span> ZIP 194 МБ</p>
+          <a class="text-link" href="./replay/">Посмотреть демо в браузере <span aria-hidden="true">↗</span></a>
+          <p class="small hero-note">Браузерное демо — воспроизведение тестовых наблюдений. Камера и модели работают в приложении.</p>
+        </div>
+      </div>
+      <figure class="hero-product">
+        <div class="product-label"><span><span class="dot"></span> От наблюдения к проверке</span><span>Приложение AYQYN / Windows</span></div>
+        <a class="product-image" href="./assets/review.png" target="_blank" rel="noopener" aria-label="Открыть настоящий снимок экрана проверки событий в полном размере, в новой вкладке"><img src="./assets/review.png" width="1800" height="1200" alt="Журнал AYQYN: телефон в кадре, второе лицо и проверка события с контекстом. На экране отмечен виртуальный тестовый источник." fetchpriority="high"></a>
+        <figcaption><span>Настоящий интерфейс версии 0.2.3. На снимке — повторяемые тестовые фото, не данные участников.</span><a href="./assets/review.png" target="_blank" rel="noopener">Полный размер <span aria-hidden="true">↗</span></a></figcaption>
+      </figure>
+    </section>
+
+    <section class="principle wrap" aria-labelledby="principle-title">
+      <span class="eyebrow section-index">01 / Принцип</span>
+      <div><h2 id="principle-title">Событие — повод<br>посмотреть внимательнее.</h2><p>Телефон в кадре, поворот головы или второе лицо могут иметь обычное объяснение. AYQYN сохраняет наблюдение; человек подтверждает или отклоняет его с причиной. Флаг сам по себе не влияет на оценку.</p></div>
+      <div class="principle-foot"><span>Наблюдение</span><span aria-hidden="true">→</span><span>Контекст</span><span aria-hidden="true">→</span><span>Решение человека</span></div>
+    </section>
+
+    <section class="walkthrough" id="inside" aria-labelledby="inside-title">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">02 / Внутри приложения</span><h2 id="inside-title">Понятный путь<br>от согласия до отчёта.</h2></div>
+        <div class="walk-layout">
+          <div class="steps" aria-label="Этапы работы">
+            <button class="step" id="step-consent" aria-controls="panel-consent"><span class="step-number">01</span><span><strong>Согласие и настройка</strong><span class="step-summary">Камера включается по вашему действию.</span></span><span class="step-arrow" aria-hidden="true">↗</span></button>
+            <button class="step" id="step-exam" aria-controls="panel-exam"><span class="step-number">02</span><span><strong>Локальный экзамен</strong><span class="step-summary">Наблюдения с временем и задержкой.</span></span><span class="step-arrow" aria-hidden="true">↗</span></button>
+            <button class="step" id="step-review" aria-controls="panel-review"><span class="step-number">03</span><span><strong>Проверка и отчёт</strong><span class="step-summary">Контекст, причина и экспорт без кадров.</span></span><span class="step-arrow" aria-hidden="true">↗</span></button>
+          </div>
+          <div class="panels">
+            <section class="panel" id="panel-consent" aria-labelledby="step-consent">
+              <div class="panel-heading"><span class="eyebrow">Сначала — условия</span><p>Отдельное согласие на камеру и на локальные снимки. Калибровка под положение участника; пороги и задержки задаёт проверяющий. Микрофон не используется.</p></div>
+              <a class="screen-link" href="./assets/consent.png" target="_blank" rel="noopener" aria-label="Открыть полный снимок экрана согласия, в новой вкладке"><img src="./assets/consent.png" width="1800" height="1200" loading="lazy" alt="Экран согласия AYQYN: камера выключена, обе галочки согласия не выбраны, доступна калибровка."></a>
+            </section>
+            <section class="panel" id="panel-exam" aria-labelledby="step-exam">
+              <div class="panel-heading"><span class="eyebrow">Во время экзамена</span><p>Модели обрабатывают кадры на компьютере. Короткие движения учитываются с задержкой. Ответы и журнал сохраняются локально; экзамен можно прервать.</p></div>
+              <a class="screen-link" href="./assets/exam.png" target="_blank" rel="noopener" aria-label="Открыть полный снимок экрана тестового экзамена, в новой вкладке"><img src="./assets/exam.png" width="1800" height="1200" loading="lazy" alt="Настоящий экран тестового экзамена AYQYN с ответами и наблюдением: два лица на повторяемом тестовом фото, источник явно подписан."></a>
+            </section>
+            <section class="panel" id="panel-review" aria-labelledby="step-review">
+              <div class="panel-heading"><span class="eyebrow">После — проверка</span><p>Каждое событие можно подтвердить или отклонить только с объяснением. Отчёт JSON содержит время, параметры и причины. Исходные кадры в него не входят.</p></div>
+              <a class="screen-link" href="./assets/review.png" target="_blank" rel="noopener" aria-label="Открыть полный снимок экрана журнала событий, в новой вкладке"><img src="./assets/review.png" width="1800" height="1200" loading="lazy" alt="Экран проверки событий AYQYN: журнал времени, контекст телефона из тестового фото и сообщение об экспорте отчёта."></a>
+            </section>
+            <p class="small fixture-note">Все экраны сняты в изолированной тестовой сессии v0.2.3. Фото повторяются; это не проверка точности на движущихся участниках. Нажмите на экран, чтобы рассмотреть детали.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="boundaries wrap" id="boundaries" aria-labelledby="boundaries-title">
+      <div class="section-head"><span class="eyebrow">03 / Возможности и границы</span><h2 id="boundaries-title">Что видит приложение.<br>Что решает человек.</h2></div>
+      <div class="capability-table">
+        <div class="capability-row"><span class="row-index">01</span><h3>Камера и внимание</h3><div><p>Телефон в кадре и в его верхней части, отсутствие или второе лицо, длительное отклонение головы и приблизительного направления взгляда.</p><p class="small">Положение телефона не доказывает, куда он направлен. Геометрическая оценка взгляда не устанавливает намерение; освещение, очки и ракурс влияют на наблюдения.</p></div><span class="capability-tag">Локальное CV</span></div>
+        <div class="capability-row"><span class="row-index">02</span><h3>Среда экзамена</h3><div><p>Ограничения навигации и копирования внутри приложения, наблюдение за потерей фокуса, добровольный полноэкранный режим и аварийный выход.</p><p class="small">Alt+Tab, Win и PrtScn остаются под контролем ОС. Прототип не блокирует другие окна во всей системе. Управляемый режим Windows не активирован.</p></div><span class="capability-tag">Уровень приложения</span></div>
+        <div class="capability-row"><span class="row-index">03</span><h3>Приватность</h3><div><p>Кадры остаются на устройстве. Камера и снимки выключены до согласия; есть удаление сессии и срок хранения. После подготовки моделей экзамен работает без интернета.</p><p class="small">Нет аудио, базы идентификации, оценки эмоций или автоматического наказания. Этот сайт не обращается к камере и не собирает аналитику.</p></div><span class="capability-tag">На вашем устройстве</span></div>
+      </div>
+      <div class="evidence-link"><p>Возможности прототипа проверены на тестовых данных. Точность на реальном экзамене ещё предстоит оценить.</p><a class="text-link" href="https://github.com/seoshiro/ayqyn-local/releases/download/v0.2.3/QA-REPORT-v0.2.3-r1.pdf">Открыть отчёт проверок <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="download-section" id="download" aria-labelledby="download-title">
+      <div class="wrap download-grid">
+        <div class="download-intro"><span class="eyebrow">04 / Попробовать локально</span><h2 id="download-title">Ваш компьютер.<br>Ваши данные.</h2><p>Переносная сборка с моделями внутри. Для работы не нужны Python, аккаунт или платный сервис.</p><a class="button light" data-download href="https://github.com/seoshiro/ayqyn-local/releases/download/v0.2.3/AYQYN-Windows-v0.2.3.zip">Скачать для Windows <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg></a><p class="release-meta">Windows x64 <span>·</span> v0.2.3 <span>·</span> ZIP 194 МБ</p></div>
+        <div class="download-details"><ol class="install-steps"><li><span>Скачайте ZIP</span><p>Файл AYQYN-Windows-v0.2.3.zip, 194 021 562 байта. Ссылка ведёт на опубликованный релиз GitHub.</p></li><li><span>Распакуйте всю папку</span><p>Запускайте AYQYN.exe рядом с resources и остальными файлами сборки.</p></li><li><span>Выберите режим</span><p>Начните с воспроизведения тестовых данных или включите свою камеру после отдельного согласия в приложении.</p></li></ol><p class="unsigned-note">Сборка не подписана цифровым сертификатом. Windows может показать предупреждение. Если запуск ограничен политикой устройства, обратитесь к его администратору.</p></div>
+        <div class="checksum"><div><span class="eyebrow">Проверка загрузки / SHA-256</span><code id="release-sha">d3ab1b6b9ff93a59619e59380627cb84a3d338298520b2945493b21a10716013</code></div><button id="copy-sha" type="button" hidden>Скопировать хеш <span aria-hidden="true">↗</span></button><a href="https://github.com/seoshiro/ayqyn-local/releases/download/v0.2.3/SHA256SUMS-v0.2.3.txt">Все контрольные суммы <span aria-hidden="true">↗</span></a><p id="copy-status" class="copy-status" role="status" aria-live="polite"></p></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="#main" aria-label="AYQYN — в начало"><svg aria-hidden="true" viewBox="0 0 32 32"><path d="m4 27 12-22 12 22M10 17h12"/></svg><span>AYQYN</span></a><p>Qostanai AI Industry Hackathon 2026<br>Кейс 03 · Локальный прокторинг</p><nav aria-label="Дополнительные ссылки"><a href="https://github.com/seoshiro/ayqyn-local/tree/d65abf9c9c64bf81a9db162fbe9b89e4a899f94a">Исходный код приложения ↗</a><a href="./replay/">Браузерное демо ↗</a><a href="https://github.com/seoshiro/ayqyn-local/releases/tag/v0.2.3">Релиз и лицензии ↗</a></nav><span class="footer-stamp">Приложение 0.2.3 / d65abf9</span></footer>
+</body>
+</html>

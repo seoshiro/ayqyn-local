@@ -1,0 +1,43 @@
+{
+  "applicationSourceCommit": "d65abf9c9c64bf81a9db162fbe9b89e4a899f94a",
+  "screenshots": "Unmodified public v0.2.3 screenshots of isolated virtual-camera public-photo fixtures. Repeated stills; not real students or a motion/intent accuracy evaluation.",
+  "fonts": "Onest, SIL Open Font License 1.1; self-hosted, no remote font request.",
+  "files": [
+    {
+      "file": "onest-variable.ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/onest/Onest%5Bwght%5D.ttf",
+      "bytes": 193056,
+      "sha256": "966c5c29b4755da84b6854d5c21dd4eaa2420225d0e9874de602de176d4a9f31"
+    },
+    {
+      "file": "OFL-Onest.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/onest/OFL.txt",
+      "bytes": 4384,
+      "sha256": "071195d8806e226faeee60259c28ca67b458227af5195a73f5cfcab06e3003bc"
+    },
+    {
+      "file": "review.png",
+      "url": "https://github.com/seoshiro/ayqyn-local/releases/download/v0.2.3/AYQYN-review-v0.2.3.png",
+      "bytes": 306769,
+      "sha256": "1c419494938f9d0f1e337e1b0ec91846db58e7ad97a8cc7122ebc72647d0556a"
+    },
+    {
+      "file": "exam.png",
+      "url": "https://github.com/seoshiro/ayqyn-local/releases/download/v0.2.3/AYQYN-exam-v0.2.3.png",
+      "bytes": 259005,
+      "sha256": "e9c71d31654430d4928a26634472b6b72dfbe5cb7412c4af8b0d6c3c2b076121"
+    },
+    {
+      "file": "consent.png",
+      "url": "https://github.com/seoshiro/ayqyn-local/releases/download/v0.2.3/AYQYN-consent-v0.2.3.png",
+      "bytes": 139831,
+      "sha256": "951e892f5f1ccdc7e6055ffbfff5109d739a6b02e9bac4043aed238b662df4ad"
+    },
+    {
+      "file": "capabilities.png",
+      "url": "https://github.com/seoshiro/ayqyn-local/releases/download/v0.2.3/AYQYN-capabilities-v0.2.3.png",
+      "bytes": 155719,
+      "sha256": "bd256ffa4eaf8da848a0bb89fc9df2868055562224a13d1eae587f537b806462"
+    }
+  ]
+}

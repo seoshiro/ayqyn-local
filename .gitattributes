@@ -6,3 +6,4 @@
 *.onnx -text
 *.task -text
 *.wasm -text
+*.ttf -text
