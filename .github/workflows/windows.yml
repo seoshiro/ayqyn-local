@@ -16,6 +16,8 @@ jobs:
           node-version: '24'
       - run: npm install --global pnpm@11.19.0
       - run: pnpm install --frozen-lockfile
+      - name: Install video encoder for the browser audit
+        run: pnpm exec playwright install ffmpeg
       - run: pnpm setup:assets
       - run: pnpm lint
       - run: pnpm typecheck

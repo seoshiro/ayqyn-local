@@ -42,7 +42,7 @@ export async function setLanguage(value,{persist=true,announceChange=true}={}){
 }
 export async function startLocalization(){
  if(started)return;started=true;let stored=null,fallback=false;try{stored=localStorage.getItem(KEY);fallback=stored!==null&&!validLanguage(stored);}catch{}
- try{const native=await window.ayqyn?.getLanguage?.();if(native?.fallback)fallback=true;if(native?.found){stored=native.language;fallback=native.fallback===true||!validLanguage(stored);}}catch{}
+ try{const native=await window.ayqyn?.getLanguage?.();if(native?.found||native?.fallback){stored=native.language;fallback=native.fallback===true||!validLanguage(stored);}}catch{}
  language=normalizeLanguage(stored);translateDOM();
  observer=new MutationObserver(records=>{for(const record of records){if(record.type==='characterData')translateNode(record.target);else if(record.type==='attributes')translateAttributes(record.target);else for(const added of record.addedNodes)translateDOM(added);}});
  observer.observe(document.documentElement,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['title','aria-label','placeholder','alt','content']});
