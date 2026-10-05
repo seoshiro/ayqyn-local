@@ -16,9 +16,12 @@ public static class AyqynOwnedWindows {
  [DllImport("user32.dll",CharSet=CharSet.Unicode)]static extern int GetClassName(IntPtr h,StringBuilder b,int n);
  [DllImport("user32.dll")]static extern IntPtr GetDlgItem(IntPtr h,int id);
  [DllImport("user32.dll",CharSet=CharSet.Unicode,EntryPoint="SendMessageW")]static extern IntPtr SetText(IntPtr h,uint m,IntPtr w,string text);
+ [DllImport("user32.dll",CharSet=CharSet.Unicode,EntryPoint="SendMessageW")]static extern IntPtr ReadText(IntPtr h,uint m,IntPtr w,StringBuilder text);
  [DllImport("user32.dll",EntryPoint="SendMessageW")]static extern IntPtr SendButton(IntPtr h,uint m,IntPtr w,IntPtr l);
  static string Guard(IntPtr h,int pid){uint owner;GetWindowThreadProcessId(h,out owner);if(h==IntPtr.Zero||owner!=(uint)pid)throw new InvalidOperationException("Native control is not owned by AYQYN");var cls=new StringBuilder(128);GetClassName(h,cls,cls.Capacity);return cls.ToString();}
- public static string SetFileName(long handle,int pid,string text){var h=new IntPtr(handle);var cls=Guard(h,pid);if(cls!="Edit"&&cls!="ComboBox")throw new InvalidOperationException("Expected owned filename Edit/ComboBox");SetText(h,12,IntPtr.Zero,text);var value=new StringBuilder(4096);GetWindowText(h,value,value.Capacity);if(value.ToString()!=text)throw new InvalidOperationException("Native filename text mismatch");return value.ToString();}
+ // GetWindowText cannot read another process's Edit contents: use owned WM_GETTEXT.
+ // https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getwindowtextw
+ public static string SetFileName(long handle,int pid,string text){var h=new IntPtr(handle);var cls=Guard(h,pid);if(cls!="Edit"&&cls!="ComboBox")throw new InvalidOperationException("Expected owned filename Edit/ComboBox");SetText(h,12,IntPtr.Zero,text);var value=new StringBuilder(4096);ReadText(h,13,new IntPtr(value.Capacity),value);if(value.ToString()!=text)throw new InvalidOperationException("Native filename text mismatch");return value.ToString();}
  public static void Click(long dialog,int pid,int id,string name){var h=GetDlgItem(new IntPtr(dialog),id);if(Guard(h,pid)!="Button")throw new InvalidOperationException("Expected owned native Button");var text=new StringBuilder(128);GetWindowText(h,text,text.Capacity);if(text.ToString().Replace("&","")!=name)throw new InvalidOperationException("Native button caption mismatch");SendButton(h,245,IntPtr.Zero,IntPtr.Zero);}
  public static List<AyqynOwnedWindow> Read(int pid){var result=new List<AyqynOwnedWindow>();EnumWindows((h,p)=>{uint owner;GetWindowThreadProcessId(h,out owner);if(owner==(uint)pid){var title=new StringBuilder(1024);var cls=new StringBuilder(128);GetWindowText(h,title,title.Capacity);GetClassName(h,cls,cls.Capacity);result.Add(new AyqynOwnedWindow{Handle=h,Title=title.ToString(),Class=cls.ToString()});}return true;},IntPtr.Zero);return result;}
  public static AyqynOwnedWindow Popup(long main,int pid){var h=GetLastActivePopup(new IntPtr(main));uint owner;GetWindowThreadProcessId(h,out owner);if(owner!=(uint)pid)return null;var title=new StringBuilder(1024);var cls=new StringBuilder(128);GetWindowText(h,title,title.Capacity);GetClassName(h,cls,cls.Capacity);return new AyqynOwnedWindow{Handle=h,Title=title.ToString(),Class=cls.ToString()};}
@@ -36,7 +39,7 @@ do{
 }while(!$taskDialog-and$taskWatch.ElapsedMilliseconds-lt15000)
 if(!$taskDialog){throw ('Owned native save dialog with exact translated title was not found. Owned windows: '+($taskOwned|ConvertTo-Json -Depth 3 -Compress))}
 $taskControls=$taskDialog.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)
-$taskReceipt=@{method='Real production Windows file dialog, Microsoft UI Automation ValuePattern/InvokePattern; only the explicit AYQYN PID; no dialog mock, camera, microphone, clipboard or system policy change';ownerPid=$TaskProcessId;title=$taskDialog.Current.Name;action=$TaskAction;controls=@()}
+$taskReceipt=@{method='Real production Windows dialog: UI Automation or scoped native control messages, verified explicit AYQYN PID and class/caption; no dialog mock, camera, microphone, clipboard or system policy change';ownerPid=$TaskProcessId;title=$taskDialog.Current.Name;action=$TaskAction;controls=@()}
 foreach($taskControl in $taskControls){$taskReceipt.controls+=@{id=$taskControl.Current.AutomationId;name=$taskControl.Current.Name;type=$taskControl.Current.ControlType.ProgrammaticName;class=$taskControl.Current.ClassName}}
 if($TaskAction-eq'save'){
  $taskWorkspace=[IO.Path]::GetFullPath((Get-Location).Path)
@@ -54,7 +57,7 @@ if($TaskAction-eq'save'){
   $taskReceipt.filenameMethod='Scoped UI Automation ValuePattern'
  }else{
   [void][AyqynOwnedWindows]::SetFileName($taskEdit.Current.NativeWindowHandle,$TaskProcessId,$taskAbsolute)
-  $taskReceipt.filenameMethod='Scoped owned native Edit/ComboBox WM_SETTEXT with exact value verification'
+  $taskReceipt.filenameMethod='Scoped owned native Edit/ComboBox WM_SETTEXT and WM_GETTEXT with exact value verification'
  }
  $taskReceipt.destination=$taskAbsolute
  $taskButtonId='1'
