@@ -14,6 +14,12 @@ public static class AyqynOwnedWindows {
  [DllImport("user32.dll")]static extern IntPtr GetLastActivePopup(IntPtr h);
  [DllImport("user32.dll",CharSet=CharSet.Unicode)]static extern int GetWindowText(IntPtr h,StringBuilder b,int n);
  [DllImport("user32.dll",CharSet=CharSet.Unicode)]static extern int GetClassName(IntPtr h,StringBuilder b,int n);
+ [DllImport("user32.dll")]static extern IntPtr GetDlgItem(IntPtr h,int id);
+ [DllImport("user32.dll",CharSet=CharSet.Unicode,EntryPoint="SendMessageW")]static extern IntPtr SetText(IntPtr h,uint m,IntPtr w,string text);
+ [DllImport("user32.dll",EntryPoint="SendMessageW")]static extern IntPtr SendButton(IntPtr h,uint m,IntPtr w,IntPtr l);
+ static string Guard(IntPtr h,int pid){uint owner;GetWindowThreadProcessId(h,out owner);if(h==IntPtr.Zero||owner!=(uint)pid)throw new InvalidOperationException("Native control is not owned by AYQYN");var cls=new StringBuilder(128);GetClassName(h,cls,cls.Capacity);return cls.ToString();}
+ public static string SetFileName(long handle,int pid,string text){var h=new IntPtr(handle);var cls=Guard(h,pid);if(cls!="Edit"&&cls!="ComboBox")throw new InvalidOperationException("Expected owned filename Edit/ComboBox");SetText(h,12,IntPtr.Zero,text);var value=new StringBuilder(4096);GetWindowText(h,value,value.Capacity);if(value.ToString()!=text)throw new InvalidOperationException("Native filename text mismatch");return value.ToString();}
+ public static void Click(long dialog,int pid,int id,string name){var h=GetDlgItem(new IntPtr(dialog),id);if(Guard(h,pid)!="Button")throw new InvalidOperationException("Expected owned native Button");var text=new StringBuilder(128);GetWindowText(h,text,text.Capacity);if(text.ToString().Replace("&","")!=name)throw new InvalidOperationException("Native button caption mismatch");SendButton(h,245,IntPtr.Zero,IntPtr.Zero);}
  public static List<AyqynOwnedWindow> Read(int pid){var result=new List<AyqynOwnedWindow>();EnumWindows((h,p)=>{uint owner;GetWindowThreadProcessId(h,out owner);if(owner==(uint)pid){var title=new StringBuilder(1024);var cls=new StringBuilder(128);GetWindowText(h,title,title.Capacity);GetClassName(h,cls,cls.Capacity);result.Add(new AyqynOwnedWindow{Handle=h,Title=title.ToString(),Class=cls.ToString()});}return true;},IntPtr.Zero);return result;}
  public static AyqynOwnedWindow Popup(long main,int pid){var h=GetLastActivePopup(new IntPtr(main));uint owner;GetWindowThreadProcessId(h,out owner);if(owner!=(uint)pid)return null;var title=new StringBuilder(1024);var cls=new StringBuilder(128);GetWindowText(h,title,title.Capacity);GetClassName(h,cls,cls.Capacity);return new AyqynOwnedWindow{Handle=h,Title=title.ToString(),Class=cls.ToString()};}
 }
@@ -31,23 +37,37 @@ do{
 if(!$taskDialog){throw ('Owned native save dialog with exact translated title was not found. Owned windows: '+($taskOwned|ConvertTo-Json -Depth 3 -Compress))}
 $taskControls=$taskDialog.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)
 $taskReceipt=@{method='Real production Windows file dialog, Microsoft UI Automation ValuePattern/InvokePattern; only the explicit AYQYN PID; no dialog mock, camera, microphone, clipboard or system policy change';ownerPid=$TaskProcessId;title=$taskDialog.Current.Name;action=$TaskAction;controls=@()}
-foreach($taskControl in $taskControls){$taskReceipt.controls+=@{id=$taskControl.Current.AutomationId;name=$taskControl.Current.Name;type=$taskControl.Current.ControlType.ProgrammaticName}}
+foreach($taskControl in $taskControls){$taskReceipt.controls+=@{id=$taskControl.Current.AutomationId;name=$taskControl.Current.Name;type=$taskControl.Current.ControlType.ProgrammaticName;class=$taskControl.Current.ClassName}}
 if($TaskAction-eq'save'){
  $taskWorkspace=[IO.Path]::GetFullPath((Get-Location).Path)
  $taskAbsolute=[IO.Path]::GetFullPath($TaskDestination)
  if(!$taskAbsolute.StartsWith((Join-Path $taskWorkspace 'artifacts')+[IO.Path]::DirectorySeparatorChar)){throw 'Destination must stay in owned CI artifacts'}
  if(Test-Path -LiteralPath $taskAbsolute){throw 'Dialog destination already exists'}
- $taskEdit=$null
- foreach($taskControl in $taskControls){if($taskControl.Current.ControlType-eq[System.Windows.Automation.ControlType]::Edit-and$taskControl.Current.AutomationId-in@('1001','1148')){$taskEdit=$taskControl;break}}
+ $taskFileHost=$taskDialog.FindFirst([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.PropertyCondition]::new([System.Windows.Automation.AutomationElement]::AutomationIdProperty,'FileNameControlHost'))
+ if(!$taskFileHost){throw 'Native filename control host was not found'}
+ $taskEdit=$taskFileHost.FindFirst([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.PropertyCondition]::new([System.Windows.Automation.AutomationElement]::AutomationIdProperty,'1001'))
  if(!$taskEdit){throw 'Native filename edit was not found; do not fall back to global keys'}
- $taskValue=$taskEdit.GetCurrentPattern([System.Windows.Automation.ValuePattern]::Pattern)
- $taskValue.SetValue($taskAbsolute)
- if($taskValue.Current.Value-ne$taskAbsolute){throw 'Native filename edit did not retain exact owned destination'}
+ $taskValue=$null
+ if($taskEdit.TryGetCurrentPattern([System.Windows.Automation.ValuePattern]::Pattern,[ref]$taskValue)){
+  $taskValue.SetValue($taskAbsolute)
+  if($taskValue.Current.Value-ne$taskAbsolute){throw 'Native filename edit did not retain exact owned destination'}
+  $taskReceipt.filenameMethod='Scoped UI Automation ValuePattern'
+ }else{
+  [void][AyqynOwnedWindows]::SetFileName($taskEdit.Current.NativeWindowHandle,$TaskProcessId,$taskAbsolute)
+  $taskReceipt.filenameMethod='Scoped owned native Edit/ComboBox WM_SETTEXT with exact value verification'
+ }
  $taskReceipt.destination=$taskAbsolute
  $taskButtonId='1'
-}else{$taskButtonId='2'}
-$taskButton=$taskDialog.FindFirst([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.PropertyCondition]::new([System.Windows.Automation.AutomationElement]::AutomationIdProperty,$taskButtonId))
+ $taskButtonName='Save'
+}else{$taskButtonId='2';$taskButtonName='Cancel'}
+# The hosted Windows runner is English; ids repeat in the file list and address bar.
+$taskButtonCondition=[System.Windows.Automation.AndCondition]::new([System.Windows.Automation.PropertyCondition]::new([System.Windows.Automation.AutomationElement]::AutomationIdProperty,$taskButtonId),[System.Windows.Automation.PropertyCondition]::new([System.Windows.Automation.AutomationElement]::NameProperty,$taskButtonName))
+$taskButtons=$taskDialog.FindAll([System.Windows.Automation.TreeScope]::Descendants,$taskButtonCondition)
+if($taskButtons.Count-ne1){throw 'Expected exactly one owned native Save/Cancel named control'}
+$taskButton=$taskButtons.Item(0)
 if(!$taskButton-or!$taskButton.Current.IsEnabled){throw 'Expected native Save/Cancel button unavailable'}
 $taskReceipt.buttonName=$taskButton.Current.Name
-$taskButton.GetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern).Invoke()
+$taskInvoke=$null
+if($taskButton.TryGetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern,[ref]$taskInvoke)){$taskInvoke.Invoke();$taskReceipt.buttonMethod='Scoped UI Automation InvokePattern'}
+else{[AyqynOwnedWindows]::Click($taskDialog.Current.NativeWindowHandle,$TaskProcessId,[int]$taskButtonId,$taskButtonName);$taskReceipt.buttonMethod='Scoped owned native Button BM_CLICK with exact caption verification'}
 $taskReceipt|ConvertTo-Json -Depth 6 -Compress
