@@ -9,6 +9,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -45,6 +47,11 @@ jobs:
         run: |
           $taskServer = Start-Process node -ArgumentList 'scripts/serve.mjs' -WindowStyle Hidden -PassThru
           try {
+            $taskServerReady = $false
+            for ($taskAttempt = 0; $taskAttempt -lt 30; $taskAttempt++) {
+              try { Invoke-WebRequest 'http://127.0.0.1:4173/' -TimeoutSec 1 | Out-Null; $taskServerReady = $true; break } catch { Start-Sleep -Milliseconds 200 }
+            }
+            if (!$taskServerReady) { throw 'Owned fixture server did not start' }
             node scripts/make-virtual-fixture.mjs
             if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
             $env:AYQYN_QA_ELECTRON = Join-Path (Get-Location) 'node_modules/electron/dist/electron.exe'
