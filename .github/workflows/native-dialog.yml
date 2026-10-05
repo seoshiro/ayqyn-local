@@ -1,0 +1,29 @@
+name: Native dialog diagnostic
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  actual-dialog:
+    runs-on: windows-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --global pnpm@11.19.0
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm setup:assets
+      - run: node scripts/package-windows.mjs
+      - name: Actual production Save, Cancel, disk preferences and restart
+        run: node scripts/audit-native-save-cancel.mjs
+      - name: Preserve bounded diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-dialog-${{ github.sha }}
+          path: artifacts/native-save-cancel/
+          retention-days: 7
