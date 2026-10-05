@@ -25,6 +25,8 @@ jobs:
       - run: node scripts/package-windows.mjs
       - run: node scripts/audit-packaged.mjs
       - run: node scripts/audit-export-replacement.mjs
+      - name: Actual production native Save, Cancel and language restart
+        run: node scripts/audit-native-save-cancel.mjs
       - name: Repeated startup, policy and recoverable module checks
         env:
           AYQYN_PACKAGE_DIR: release/AYQYN-win32-x64
@@ -73,6 +75,7 @@ jobs:
             artifacts/localization-regression/
             artifacts/localization-native/
             artifacts/independent-ci/
+            artifacts/native-save-cancel/
             evidence/packaged-audit.json
             evidence/wasm-runtime-audit.json
           retention-days: 7

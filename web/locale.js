@@ -1,6 +1,6 @@
 import {LANGUAGES,LANGUAGE_NAMES,normalizeLanguage,translateText,validLanguage,hasTranslation} from './messages.js';
 const KEY='ayqyn-language';
-let language='ru',started=false,observer,pendingAnnouncement='';
+let language='ru',started=false,observer,pendingAnnouncement='',pendingWarning=false;
 const textState=new WeakMap(),attributeState=new WeakMap(),untranslated=new Set();
 const skip=element=>!element||Boolean(element.closest('[data-l10n-ignore],script,style,textarea,input,option,pre,code'));
 const skipAttributes=element=>!element||Boolean(element.closest('[data-l10n-ignore],script,style,option,pre,code'));
@@ -31,14 +31,15 @@ export function translateDOM(root=document.documentElement){
  document.documentElement.lang=language;const control=document.getElementById('language-select');if(control instanceof HTMLSelectElement)control.value=language;
  for(const field of document.querySelectorAll('[data-l10n-validity]'))if(field instanceof HTMLInputElement)field.setCustomValidity(translateText(field.getAttribute('data-l10n-validity')||'',language));
  for(const element of document.querySelectorAll('[data-l10n-date]')){const value=element.getAttribute('data-l10n-date');if(value&&Number.isFinite(Date.parse(value))){const output=new Date(value).toLocaleDateString(language==='kk'?'kk-KZ':language==='en'?'en-GB':'ru-RU');if(element.textContent!==output)element.textContent=output;}}
- const status=document.getElementById('language-status'),notice=language!=='ru'&&untranslated.size?'Часть текста показана на русском: перевод пока недоступен.':pendingAnnouncement;if(status){status.setAttribute('data-l10n-ignore','');if(notice){const output=translateText(notice,language);if(status.textContent!==output)status.textContent=output;}}
+ const status=document.getElementById('language-status'),notice=pendingWarning?pendingAnnouncement:language!=='ru'&&untranslated.size?'Часть текста показана на русском: перевод пока недоступен.':pendingAnnouncement;if(status){status.setAttribute('data-l10n-ignore','');status.setAttribute('data-l10n-warning',String(pendingWarning));if(notice){const output=translateText(notice,language);if(status.textContent!==output)status.textContent=output;}}
 }
-function announce(source){pendingAnnouncement=source;const status=document.getElementById('language-status');if(status){status.textContent=source;translateDOM(status);}}
+function announce(source,warning=false){pendingAnnouncement=source;pendingWarning=warning;const status=document.getElementById('language-status');if(status){status.textContent=source;translateDOM(status);}}
 export async function setLanguage(value,{persist=true,announceChange=true}={}){
  const accepted=validLanguage(value);language=normalizeLanguage(value);untranslated.clear();translateDOM();
- let browserSaved=false,nativeSaved=false;if(persist){try{localStorage.setItem(KEY,language);browserSaved=true;}catch{}try{if(window.ayqyn?.setLanguage){const result=await window.ayqyn.setLanguage(language);nativeSaved=result.saved===true;}}catch{}}
- if(!accepted)announce('Неизвестный язык. Используется русский.');else if(announceChange)announce(!persist||browserSaved||nativeSaved?'Язык изменён.':'Язык изменён для этого окна. Сохранить настройку не удалось.');
- return {language,saved:browserSaved||nativeSaved,accepted};
+ const nativeAuthority=typeof window.ayqyn?.setLanguage==='function';let browserSaved=false,nativeSaved=false;if(persist){try{localStorage.setItem(KEY,language);browserSaved=true;}catch{}try{if(nativeAuthority){const result=await window.ayqyn.setLanguage(language);nativeSaved=result.saved===true;}}catch{}}
+ const saved=nativeAuthority?nativeSaved:browserSaved;
+ if(!accepted)announce('Неизвестный язык. Используется русский.',true);else if(announceChange)announce(!persist||saved?'Язык изменён.':'Язык изменён для этого окна. Сохранить настройку не удалось.',persist&&!saved);
+ return {language,saved,accepted};
 }
 export async function startLocalization(){
  if(started)return;started=true;let stored=null,fallback=false;try{stored=localStorage.getItem(KEY);fallback=stored!==null&&!validLanguage(stored);}catch{}
@@ -46,7 +47,7 @@ export async function startLocalization(){
  language=normalizeLanguage(stored);translateDOM();
  observer=new MutationObserver(records=>{for(const record of records){if(record.type==='characterData')translateNode(record.target);else if(record.type==='attributes')translateAttributes(record.target);else for(const added of record.addedNodes)translateDOM(added);}});
  observer.observe(document.documentElement,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['title','aria-label','placeholder','alt','content']});
- document.addEventListener('change',event=>{if(event.target instanceof HTMLSelectElement&&event.target.id==='language-select')setLanguage(event.target.value).catch(()=>announce('Язык изменён для этого окна. Сохранить настройку не удалось.'));});
+ document.addEventListener('change',event=>{if(event.target instanceof HTMLSelectElement&&event.target.id==='language-select')setLanguage(event.target.value).catch(()=>announce('Язык изменён для этого окна. Сохранить настройку не удалось.',true));});
  addEventListener('storage',event=>{if(event.key===KEY)setLanguage(event.newValue,{persist:false,announceChange:false}).catch(()=>{});});
- if(fallback)announce('Неизвестный язык. Используется русский.');
+ if(fallback)announce('Неизвестный язык. Используется русский.',true);
 }
