@@ -24,7 +24,10 @@ public static class AyqynOwnedWindows {
  static string Guard(IntPtr h,int pid){uint owner;GetWindowThreadProcessId(h,out owner);if(h==IntPtr.Zero||owner!=(uint)pid)throw new InvalidOperationException("Native control is not owned by AYQYN");var cls=new StringBuilder(128);GetClassName(h,cls,cls.Capacity);return cls.ToString();}
  // GetWindowText cannot read another process's Edit contents: use owned WM_GETTEXT.
  // https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getwindowtextw
- public static string SetFileName(long handle,int pid,string text){var h=new IntPtr(handle);var cls=Guard(h,pid);if(cls!="Edit"&&cls!="ComboBox")throw new InvalidOperationException("Expected owned filename Edit/ComboBox");SetText(h,12,IntPtr.Zero,text);var value=new StringBuilder(4096);ReadText(h,13,new IntPtr(value.Capacity),value);if(value.ToString()!=text)throw new InvalidOperationException("Native filename text mismatch");return value.ToString();}
+ // Editing messages notify the shell of a change; merely replacing its display buffer
+ // via WM_SETTEXT let the real dialog return the original suggested filename in CI.
+ // https://learn.microsoft.com/en-us/windows/win32/controls/about-edit-controls
+ public static string SetFileName(long handle,int pid,string text){var h=new IntPtr(handle);if(Guard(h,pid)!="Edit"||text.Length>=4096)throw new InvalidOperationException("Expected owned filename Edit and bounded destination");SendButton(h,177,IntPtr.Zero,new IntPtr(-1));foreach(char c in text)SendButton(h,258,new IntPtr(c),new IntPtr(1));var value=new StringBuilder(4096);ReadText(h,13,new IntPtr(value.Capacity),value);if(value.ToString()!=text)throw new InvalidOperationException("Native filename text mismatch");return value.ToString();}
  // BM_CLICK can fail on an inactive dialog. Activate only the validated CI-owned dialog.
  // https://learn.microsoft.com/en-us/windows/win32/controls/bm-click
  public static bool Activate(long dialog,int pid){var h=new IntPtr(dialog);if(Guard(h,pid)!="#32770")throw new InvalidOperationException("Expected owned native dialog");SetForegroundWindow(h);return GetForegroundWindow()==h;}
@@ -67,7 +70,7 @@ if($TaskAction-eq'save'){
   $taskReceipt.filenameMethod='Scoped UI Automation ValuePattern'
  }else{
   [void][AyqynOwnedWindows]::SetFileName($taskEdit.Current.NativeWindowHandle,$TaskProcessId,$taskAbsolute)
-  $taskReceipt.filenameMethod='Scoped owned native Edit/ComboBox WM_SETTEXT and WM_GETTEXT with exact value verification'
+  $taskReceipt.filenameMethod='Scoped owned native Edit EM_SETSEL + Unicode WM_CHAR notifications and WM_GETTEXT exact value verification; no global keystrokes'
  }
  $taskReceipt.destination=$taskAbsolute
  $taskButtonId='1'
