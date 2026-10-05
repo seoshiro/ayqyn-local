@@ -1,6 +1,11 @@
 name: Windows local runtime
 on:
   workflow_dispatch:
+    inputs:
+      native_dialog_only:
+        description: 'Focused native dialog diagnostic; cannot satisfy the full release gate'
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -43,8 +48,10 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - run: node scripts/audit-wasm.mjs
       - name: Full source and browser localization regression
+        if: ${{ !inputs.native_dialog_only }}
         run: node scripts/regression-localization.mjs
       - name: Native languages and restart with licensed file fixture
+        if: ${{ !inputs.native_dialog_only }}
         shell: pwsh
         run: |
           $taskServer = Start-Process node -ArgumentList 'scripts/serve.mjs' -WindowStyle Hidden -PassThru
