@@ -18,12 +18,15 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
       - run: npm install --global pnpm@11.19.0
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
+      - run: pnpm typecheck
       - run: pnpm exec eslint site --max-warnings 0
       - run: node --test tests/*.test.mjs
       - run: node scripts/build-site.mjs

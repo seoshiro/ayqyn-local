@@ -1,21 +1,33 @@
 name: Windows local runtime
 on:
   workflow_dispatch:
+    inputs:
+      native_dialog_only:
+        description: 'Focused native dialog diagnostic; cannot satisfy the full release gate'
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
   packaged-cv:
     runs-on: windows-latest
     timeout-minutes: 15
+    env:
+      AYQYN_BROWSER_CHANNEL: bundled
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
       - run: npm install --global pnpm@11.19.0
       - run: pnpm install --frozen-lockfile
+      - name: Install verified Playwright browser and video encoder for the audit
+        run: pnpm exec playwright install chromium ffmpeg
       - run: pnpm setup:assets
       - run: pnpm lint
+      - run: pnpm typecheck
       - run: node --test tests/*.test.mjs
       - run: node scripts/package-windows.mjs
       - run: node scripts/audit-packaged.mjs
@@ -37,6 +49,46 @@ jobs:
           powershell.exe -NoProfile -File scripts/audit-native-start.ps1
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - run: node scripts/audit-wasm.mjs
+      - name: Full source and browser localization regression
+        if: ${{ !inputs.native_dialog_only }}
+        run: node scripts/regression-localization.mjs
+      - name: Native languages and restart with licensed file fixture
+        if: ${{ !inputs.native_dialog_only }}
+        shell: pwsh
+        run: |
+          $taskServer = Start-Process node -ArgumentList 'scripts/serve.mjs' -WindowStyle Hidden -PassThru
+          try {
+            $taskServerReady = $false
+            for ($taskAttempt = 0; $taskAttempt -lt 30; $taskAttempt++) {
+              try { Invoke-WebRequest 'http://127.0.0.1:4173/' -TimeoutSec 1 | Out-Null; $taskServerReady = $true; break } catch { Start-Sleep -Milliseconds 200 }
+            }
+            if (!$taskServerReady) { throw 'Owned fixture server did not start' }
+            node scripts/make-virtual-fixture.mjs
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            $env:AYQYN_QA_ELECTRON = Join-Path (Get-Location) 'node_modules/electron/dist/electron.exe'
+            $env:AYQYN_QA_MAIN = Join-Path (Get-Location) 'release/AYQYN-win32-x64/resources/app/desktop/main.cjs'
+            $env:AYQYN_TEST_VIDEO = Join-Path (Get-Location) 'evidence/virtual-camera.y4m'
+            node scripts/audit-native-localization.mjs
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          } finally {
+            if ($taskServer -and !$taskServer.HasExited) { Stop-Process -Id $taskServer.Id }
+          }
+      - name: Actual production native Save, Cancel and language restart
+        if: always()
+        run: node scripts/audit-native-save-cancel.mjs
+      - name: Upload exact-commit audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ayqyn-localization-${{ github.sha }}
+          path: |
+            artifacts/localization-regression/
+            artifacts/localization-native/
+            artifacts/independent-ci/
+            artifacts/native-save-cancel/
+            evidence/packaged-audit.json
+            evidence/wasm-runtime-audit.json
+          retention-days: 7
       - name: Print bounded audit reports
         if: always()
         shell: pwsh

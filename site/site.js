@@ -1,4 +1,6 @@
-// Progressive enhancement only: no camera, analytics, storage, or remote requests.
+// Progressive enhancement: only the language preference is stored; no camera, analytics or remote requests.
+import {startLocalization} from './locale.js';
+await startLocalization();
 const steps=document.querySelector('.steps');
 const tabs=[...document.querySelectorAll('.step')];
 const panels=[...document.querySelectorAll('.panel')];

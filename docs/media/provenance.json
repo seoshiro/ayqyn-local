@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "version": "0.2.4 candidate",
+  "capturedAt": "2026-10-05T11:38:23.878Z",
+  "method": "Actual Electron main/renderer in an isolated test profile. Supported hidden-window capture/repaint APIs. PNGs are unaltered page screenshots; GIF is 2 fps, resized to 960px and palette-compressed from actual frames. No generated UI, physical camera/microphone, participant data or raw student frames. Replay uses repeated licensed test photos and stored WASM observations, not live inference or a video accuracy test.",
+  "mediaCalls": 0,
+  "sourceHashes": [
+    {
+      "path": "web/app.js",
+      "sha256": "f7be5469628d3add5a762f3ca6205a86d8d5fc4eea846fcd464bb4f83cb23fee"
+    },
+    {
+      "path": "web/locale.js",
+      "sha256": "20dc9b836c12554c62d393dceb04c98d7ad4eb1feb28b005407997c2d4a22ade"
+    },
+    {
+      "path": "web/messages.js",
+      "sha256": "ad4e7d52afa8a7df58686e3690de00ec7e6b72045f0eef0c06ed58c98c21c7b5"
+    },
+    {
+      "path": "web/site-messages.js",
+      "sha256": "4db3695ca82b577a872abd397e2fd616887e6271018b03312c1869a431729ff3"
+    },
+    {
+      "path": "desktop/main.cjs",
+      "sha256": "92aea8bc34aa7950f84c198200d54a6fffee469167afe0fdea881593f45984a2"
+    }
+  ],
+  "files": [
+    {
+      "file": "ayqyn-overview-ru-v024.png",
+      "bytes": 134644,
+      "sha256": "4cabfb7d04681477a735ae41445f390ed5ad9f981cb88ffab9d5df15c57bdf12"
+    },
+    {
+      "file": "ayqyn-consent-ru-v024.png",
+      "bytes": 130989,
+      "sha256": "37ec8a72afa915cb7939cdc0dad8f8ba542f9fd7d0f30f65e0e527ba39236e68"
+    },
+    {
+      "file": "ayqyn-review-ru-v024.png",
+      "bytes": 485847,
+      "sha256": "3fed4b2a83d676aacac148bbc614ff568f5927cb97af2eb0cec27743e688a930"
+    },
+    {
+      "file": "ayqyn-review-kk-v024.png",
+      "bytes": 484142,
+      "sha256": "560804a2fb92cc66bca63293aad282ca1fb84f68adb9475d6b5e88ad014e6912"
+    },
+    {
+      "file": "ayqyn-review-en-v024.png",
+      "bytes": 470844,
+      "sha256": "f6f622c4a8e2171ab9804c682e5638f056d7f92c73e194d3a283514c66ede735"
+    },
+    {
+      "file": "ayqyn-review-flow-v024.gif",
+      "bytes": 1518521,
+      "sha256": "7b85cb2b79d303a81191c64aab3507ad33e7d8a228b6be82c7e633b357cac3e6",
+      "sampledFrames": 22,
+      "frameDelayMs": 500,
+      "width": 960
+    }
+  ],
+  "fixtureAttribution": "../../web/fixtures/attribution.json"
+}
