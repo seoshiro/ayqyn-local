@@ -16,6 +16,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm setup:assets
       - run: pnpm lint
+      - run: pnpm typecheck
       - run: node --test tests/*.test.mjs
       - run: node scripts/package-windows.mjs
       - run: node scripts/audit-packaged.mjs
@@ -37,6 +38,35 @@ jobs:
           powershell.exe -NoProfile -File scripts/audit-native-start.ps1
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - run: node scripts/audit-wasm.mjs
+      - name: Full source and browser localization regression
+        run: node scripts/regression-localization.mjs
+      - name: Native languages and restart with licensed file fixture
+        shell: pwsh
+        run: |
+          $taskServer = Start-Process node -ArgumentList 'scripts/serve.mjs' -WindowStyle Hidden -PassThru
+          try {
+            node scripts/make-virtual-fixture.mjs
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            $env:AYQYN_QA_ELECTRON = Join-Path (Get-Location) 'node_modules/electron/dist/electron.exe'
+            $env:AYQYN_QA_MAIN = Join-Path (Get-Location) 'release/AYQYN-win32-x64/resources/app/desktop/main.cjs'
+            $env:AYQYN_TEST_VIDEO = Join-Path (Get-Location) 'evidence/virtual-camera.y4m'
+            node scripts/audit-native-localization.mjs
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          } finally {
+            if ($taskServer -and !$taskServer.HasExited) { Stop-Process -Id $taskServer.Id }
+          }
+      - name: Upload exact-commit audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ayqyn-localization-${{ github.sha }}
+          path: |
+            artifacts/localization-regression/
+            artifacts/localization-native/
+            artifacts/independent-ci/
+            evidence/packaged-audit.json
+            evidence/wasm-runtime-audit.json
+          retention-days: 7
       - name: Print bounded audit reports
         if: always()
         shell: pwsh

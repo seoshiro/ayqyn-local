@@ -1,6 +1,7 @@
 const {app,BrowserWindow,ipcMain,protocol,net,session,dialog}=require('electron');
 const path=require('node:path'),fs=require('node:fs/promises'),crypto=require('node:crypto'),{pathToFileURL}=require('node:url');
 const {SessionStore}=require('./store.cjs'),ROOT=path.resolve(__dirname,'..');
+const {Preferences}=require('./preferences.cjs');
 // CPU-only CV and consistent app rendering on ordinary Windows machines.
 app.disableHardwareAcceleration();
 if(process.env.AYQYN_DATA_DIR){app.setPath('userData',process.env.AYQYN_DATA_DIR);app.setPath('sessionData',process.env.AYQYN_DATA_DIR);}
@@ -69,6 +70,8 @@ app.whenReady().then(async()=>{
  const {validateSession,expire,report}=await import(pathToFileURL(path.join(ROOT,'web','core.js')).href);
  const {observationSchema}=await import(pathToFileURL(path.join(ROOT,'web','schema.js')).href);
  const diagnosticModule=await import(pathToFileURL(path.join(ROOT,'web','diagnostics.js')).href);diagnosticCode=diagnosticModule.diagnosticCode;
+ const preferences=new Preferences(app.getPath('userData'));await preferences.initialize();
+ const {translateText}=await import(pathToFileURL(path.join(ROOT,'web','messages.js')).href);
  const {DiagnosticStore}=require('./diagnostics.cjs');diagnostics=new DiagnosticStore(app.getPath('userData'),diagnosticModule.validDiagnostic);await diagnostics.initialize();
  const store=new SessionStore(process.env.AYQYN_DATA_DIR||path.join(app.getPath('userData'),'sessions'),validateSession,expire);await store.initialize();
  protocol.handle('ayqyn',serveLocal);
@@ -89,6 +92,7 @@ app.whenReady().then(async()=>{
  win.on('blur',()=>{if(active)win.webContents.send('guard-event','focus');});win.on('closed',()=>{win=null;stop();});
  const handle=(name,fn)=>ipcMain.handle(name,async(e,...args)=>{trusted(e);const epoch=hostEpoch;try{return await fn(...args);}catch(error){if(name==='save'||(['init','infer'].includes(name)&&epoch===hostEpoch))await diagnostics.record({stage:name,code:diagnosticCode(error,name)});throw error;}});
  handle('ui-present',()=>{showMain();return true;});
+ handle('locale-get',()=>preferences.read());handle('locale-set',value=>preferences.set(value));
  handle('retry-ui',()=>{if(active)throw Error('Завершите экзамен перед повторным открытием');stop();win.webContents.reload();return true;});
  handle('diagnostic',entry=>{if(!diagnosticModule.validDiagnostic(entry))throw Error('Invalid diagnostic');return diagnostics.record(entry);});
  handle('capabilities',()=>({desktop:true,platform:process.platform,sourceCommit:buildInfo.sourceCommit,testSource:process.env.AYQYN_TEST==='1'?'virtual_camera':null,appBlocked:['copy','paste','navigation','new_window'],observed:['window_blur'],unsupported:['Alt+Tab','Win','PrtScn','other_processes'],managedWindows:'not_configured'}));
@@ -108,9 +112,8 @@ app.whenReady().then(async()=>{
  handle('stop',()=>{stop();return true;});
  handle('save',s=>store.save(s));handle('load',()=>store.load());handle('delete',async()=>{await store.delete();await diagnostics.clear();return true;});
  const {ReportExporter}=require('./export.cjs');
- const exporter=new ReportExporter({formatReport:report,directory:path.join(app.getPath('userData'),'exports'),testMode:process.env.AYQYN_TEST==='1',chooseFile:filename=>dialog.showSaveDialog(win,{title:'Сохранить отчёт AYQYN',defaultPath:filename,filters:[{name:'JSON report',extensions:['json']}],properties:process.platform==='win32'?['dontAddToRecent']:['showOverwriteConfirmation']})});
+ const exporter=new ReportExporter({formatReport:report,directory:path.join(app.getPath('userData'),'exports'),testMode:process.env.AYQYN_TEST==='1',chooseFile:filename=>dialog.showSaveDialog(win,{title:translateText('Сохранить отчёт AYQYN',preferences.language),defaultPath:filename,filters:[{name:translateText('Отчёт JSON',preferences.language),extensions:['json']}],properties:process.platform==='win32'?['dontAddToRecent']:['showOverwriteConfirmation']})});
  handle('export-report',s=>{if(active)throw Error('Завершите экзамен перед экспортом отчёта');return exporter.export(s);});
  await win.loadURL('ayqyn://local/index.html');
 }).catch(e=>{process.stderr.write('AYQYN startup failed: '+e.message+'\n');app.quit();});
 app.on('window-all-closed',()=>{stop();app.quit();});app.on('before-quit',stop);
-

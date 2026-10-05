@@ -1,6 +1,6 @@
 {
   "name": "ayqyn-local",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "private": true,
   "description": "Local proctoring observations with human review",
   "license": "AGPL-3.0-only",
@@ -14,13 +14,18 @@
     "build:demo": "node scripts/build-demo.mjs",
     "package": "node scripts/package-windows.mjs",
     "setup:assets": "node scripts/download-runtime-models.mjs && node scripts/prepare-runtime.mjs",
-    "lint": "eslint web desktop scripts tests eslint.config.mjs --max-warnings 0"
+    "lint": "eslint web desktop scripts tests site eslint.config.mjs --max-warnings 0",
+    "typecheck": "tsc --project tsconfig.localization.json"
   },
   "devDependencies": {
     "@electron/packager": "18.4.4",
     "@playwright/test": "1.63.0",
+    "@types/node": "26.6.4",
     "electron": "44.5.1",
-    "eslint": "10.12.0"
+    "eslint": "10.12.0",
+    "gifenc": "1.0.3",
+    "pngjs": "7.0.0",
+    "typescript": "7.0.2"
   },
   "dependencies": {
     "@mediapipe/tasks-vision": "1.0.1",

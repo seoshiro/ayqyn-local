@@ -13,7 +13,7 @@ for(const row of manifest.files){assert.equal(hash(await fs.readFile(path.join(r
 const assets=JSON.parse(await fs.readFile('site/assets/provenance.json','utf8'));
 for(const row of assets.files)assert.equal(hash(await fs.readFile(path.join(root,'assets',row.file))),row.sha256,`Published asset ${row.file}`);
 const replay=JSON.parse(await fs.readFile(path.join(root,'replay/PUBLIC-BUILD.json'),'utf8'));
-assert.equal(replay.sourceCommit,release.applicationSourceCommit);
+assert.equal(replay.sourceCommit,manifest.websiteCommit);
 assert.equal(replay.camera,false);assert.equal(replay.localCV,false);assert.equal(replay.rawFixturePixels,false);
 const html=await fs.readFile(path.join(root,'index.html'),'utf8');
 assert(html.includes('<html lang="ru">'));
@@ -23,5 +23,5 @@ for(const target of targets){if(target.startsWith('https:')){assert(target.start
 const script=await fs.readFile(path.join(root,'site.js'),'utf8');assert(!/\bfetch\s*\(|getUserMedia|localStorage|sessionStorage|sendBeacon|WebSocket/.test(script));
 const source=await fs.readFile('web/app.js','utf8');assert.equal(hash(await fs.readFile(path.join(root,'replay/app.js'))),hash(Buffer.from(adaptReplayRenderer(source))));
 assert.equal(hash(await fs.readFile(path.join(root,'replay/browser-storage.js'))),hash(await fs.readFile('site/browser-storage.js')));
-assert.equal(replay.browserAdaptation.packagedDesktopUnchanged,true);
+assert.equal(replay.browserAdaptation.releasedV023Unchanged,true);
 console.log(JSON.stringify({passed:true,publishedFiles:manifest.files.length+1,protectedApplicationCommit:release.applicationSourceCommit,replaySeparated:true,approvedScreenshotHashes:assets.files.filter(r=>r.file.endsWith('.png')).length,relativeAssets:true,downloadBytes:release.bytes,downloadSha256:release.sha256}));

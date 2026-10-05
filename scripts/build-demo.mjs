@@ -3,7 +3,7 @@ import fs from 'node:fs/promises';import path from 'node:path';import zlib from 
 const workspace=path.resolve('.'),root=path.join(workspace,'web'),out=path.join(workspace,'dist');
 if(out!==path.join(workspace,'dist')||!out.startsWith(workspace+path.sep))throw Error('Unsafe build directory');
 await fs.rm(out,{recursive:true,force:true});await fs.mkdir(path.join(out,'fixtures'),{recursive:true});
-for(const file of ['index.html','app.js','core.js','schema.js','sensor.js','diagnostics.js','boot.js','style.css','favicon.svg'])await fs.copyFile(path.join(root,file),path.join(out,file));
+for(const file of ['index.html','app.js','core.js','schema.js','sensor.js','diagnostics.js','boot.js','locale.js','messages.js','site-messages.js','style.css','favicon.svg'])await fs.copyFile(path.join(root,file),path.join(out,file));
 const replay=JSON.parse(await fs.readFile(path.join(root,'fixtures/replay.json'),'utf8'));
 if(replay.provenance.type!=='real_wasm_inference_repeated_stills')throw Error('Public build requires explicitly attributed current WASM replay');
 const crc32=bytes=>{let c=0xffffffff;for(const b of bytes){c^=b;for(let j=0;j<8;j++)c=(c>>>1)^((c&1)?0xedb88320:0);}return (c^0xffffffff)>>>0;};

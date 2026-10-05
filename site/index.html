@@ -11,7 +11,7 @@
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="preload" href="./assets/onest-variable.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="./style.css">
-  <script src="./site.js" defer></script>
+  <script type="module" src="./site.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">Перейти к содержимому</a>
@@ -19,6 +19,7 @@
     <a class="brand" href="#main" aria-label="AYQYN — в начало"><svg aria-hidden="true" viewBox="0 0 32 32"><path d="m4 27 12-22 12 22M10 17h12"/></svg><span>AYQYN</span></a>
     <nav aria-label="Основная навигация"><a href="#inside">Как это работает</a><a href="#boundaries">Возможности</a></nav>
     <a class="header-download" href="#download">Для Windows <span aria-hidden="true">↗</span></a>
+    <label class="language-control" for="language-select"><span>Язык</span><select id="language-select" aria-label="Язык интерфейса"><option value="ru">Русский</option><option value="kk">Қазақша</option><option value="en">English</option></select></label><span id="language-status" class="sr-only" role="status" aria-live="polite"></span>
   </header>
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">
