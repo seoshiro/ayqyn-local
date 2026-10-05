@@ -15,6 +15,9 @@ public static class AyqynOwnedWindows {
  [DllImport("user32.dll",CharSet=CharSet.Unicode)]static extern int GetWindowText(IntPtr h,StringBuilder b,int n);
  [DllImport("user32.dll",CharSet=CharSet.Unicode)]static extern int GetClassName(IntPtr h,StringBuilder b,int n);
  [DllImport("user32.dll")]static extern IntPtr GetDlgItem(IntPtr h,int id);
+ [DllImport("user32.dll")]static extern bool SetForegroundWindow(IntPtr h);
+ [DllImport("user32.dll")]static extern IntPtr GetForegroundWindow();
+ [DllImport("user32.dll")]static extern bool IsWindow(IntPtr h);
  [DllImport("user32.dll",CharSet=CharSet.Unicode,EntryPoint="SendMessageW")]static extern IntPtr SetText(IntPtr h,uint m,IntPtr w,string text);
  [DllImport("user32.dll",CharSet=CharSet.Unicode,EntryPoint="SendMessageW")]static extern IntPtr ReadText(IntPtr h,uint m,IntPtr w,StringBuilder text);
  [DllImport("user32.dll",EntryPoint="SendMessageW")]static extern IntPtr SendButton(IntPtr h,uint m,IntPtr w,IntPtr l);
@@ -22,7 +25,11 @@ public static class AyqynOwnedWindows {
  // GetWindowText cannot read another process's Edit contents: use owned WM_GETTEXT.
  // https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getwindowtextw
  public static string SetFileName(long handle,int pid,string text){var h=new IntPtr(handle);var cls=Guard(h,pid);if(cls!="Edit"&&cls!="ComboBox")throw new InvalidOperationException("Expected owned filename Edit/ComboBox");SetText(h,12,IntPtr.Zero,text);var value=new StringBuilder(4096);ReadText(h,13,new IntPtr(value.Capacity),value);if(value.ToString()!=text)throw new InvalidOperationException("Native filename text mismatch");return value.ToString();}
- public static void Click(long dialog,int pid,int id,string name){var h=GetDlgItem(new IntPtr(dialog),id);if(Guard(h,pid)!="Button")throw new InvalidOperationException("Expected owned native Button");var text=new StringBuilder(128);GetWindowText(h,text,text.Capacity);if(text.ToString().Replace("&","")!=name)throw new InvalidOperationException("Native button caption mismatch");SendButton(h,245,IntPtr.Zero,IntPtr.Zero);}
+ // BM_CLICK can fail on an inactive dialog. Activate only the validated CI-owned dialog.
+ // https://learn.microsoft.com/en-us/windows/win32/controls/bm-click
+ public static bool Activate(long dialog,int pid){var h=new IntPtr(dialog);if(Guard(h,pid)!="#32770")throw new InvalidOperationException("Expected owned native dialog");SetForegroundWindow(h);return GetForegroundWindow()==h;}
+ public static bool Open(long dialog){return IsWindow(new IntPtr(dialog));}
+ public static void Click(long dialog,int pid,int id,string name){var d=new IntPtr(dialog);if(Guard(d,pid)!="#32770"||GetForegroundWindow()!=d)throw new InvalidOperationException("Expected active owned native dialog");var h=GetDlgItem(d,id);if(Guard(h,pid)!="Button")throw new InvalidOperationException("Expected owned native Button");var text=new StringBuilder(128);GetWindowText(h,text,text.Capacity);if(text.ToString().Replace("&","")!=name)throw new InvalidOperationException("Native button caption mismatch");SendButton(h,245,IntPtr.Zero,IntPtr.Zero);}
  public static List<AyqynOwnedWindow> Read(int pid){var result=new List<AyqynOwnedWindow>();EnumWindows((h,p)=>{uint owner;GetWindowThreadProcessId(h,out owner);if(owner==(uint)pid){var title=new StringBuilder(1024);var cls=new StringBuilder(128);GetWindowText(h,title,title.Capacity);GetClassName(h,cls,cls.Capacity);result.Add(new AyqynOwnedWindow{Handle=h,Title=title.ToString(),Class=cls.ToString()});}return true;},IntPtr.Zero);return result;}
  public static AyqynOwnedWindow Popup(long main,int pid){var h=GetLastActivePopup(new IntPtr(main));uint owner;GetWindowThreadProcessId(h,out owner);if(owner!=(uint)pid)return null;var title=new StringBuilder(1024);var cls=new StringBuilder(128);GetWindowText(h,title,title.Capacity);GetClassName(h,cls,cls.Capacity);return new AyqynOwnedWindow{Handle=h,Title=title.ToString(),Class=cls.ToString()};}
 }
@@ -40,6 +47,9 @@ do{
 if(!$taskDialog){throw ('Owned native save dialog with exact translated title was not found. Owned windows: '+($taskOwned|ConvertTo-Json -Depth 3 -Compress))}
 $taskControls=$taskDialog.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)
 $taskReceipt=@{method='Real production Windows dialog: UI Automation or scoped native control messages, verified explicit AYQYN PID and class/caption; no dialog mock, camera, microphone, clipboard or system policy change';ownerPid=$TaskProcessId;title=$taskDialog.Current.Name;action=$TaskAction;controls=@()}
+$taskDialogHandle=$taskDialog.Current.NativeWindowHandle
+$taskReceipt.dialogActivated=[AyqynOwnedWindows]::Activate($taskDialogHandle,$TaskProcessId)
+if(!$taskReceipt.dialogActivated){throw 'Owned CI dialog could not become active; no keys or policy workaround is permitted'}
 foreach($taskControl in $taskControls){$taskReceipt.controls+=@{id=$taskControl.Current.AutomationId;name=$taskControl.Current.Name;type=$taskControl.Current.ControlType.ProgrammaticName;class=$taskControl.Current.ClassName}}
 if($TaskAction-eq'save'){
  $taskWorkspace=[IO.Path]::GetFullPath((Get-Location).Path)
@@ -73,4 +83,8 @@ $taskReceipt.buttonName=$taskButton.Current.Name
 $taskInvoke=$null
 if($taskButton.TryGetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern,[ref]$taskInvoke)){$taskInvoke.Invoke();$taskReceipt.buttonMethod='Scoped UI Automation InvokePattern'}
 else{[AyqynOwnedWindows]::Click($taskDialog.Current.NativeWindowHandle,$TaskProcessId,[int]$taskButtonId,$taskButtonName);$taskReceipt.buttonMethod='Scoped owned native Button BM_CLICK with exact caption verification'}
+$taskCloseWatch=[Diagnostics.Stopwatch]::StartNew()
+while([AyqynOwnedWindows]::Open($taskDialogHandle)-and$taskCloseWatch.ElapsedMilliseconds-lt5000){Start-Sleep -Milliseconds 100}
+$taskReceipt.dialogClosed=![AyqynOwnedWindows]::Open($taskDialogHandle)
+if(!$taskReceipt.dialogClosed){$taskReceipt.remainingOwnedWindows=@([AyqynOwnedWindows]::Read($TaskProcessId)|ForEach-Object{@{title=$_.Title;class=$_.Class}})}
 $taskReceipt|ConvertTo-Json -Depth 6 -Compress
