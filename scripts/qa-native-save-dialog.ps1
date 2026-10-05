@@ -4,17 +4,27 @@ $ErrorActionPreference='Stop'
 if($env:CI-ne'true'){throw 'Native dialog automation is confined to the isolated CI Windows runner'}
 if($TaskProcessId-le0){throw 'Explicit owned application PID required'}
 Add-Type -AssemblyName UIAutomationClient,UIAutomationTypes
-$taskOwner=[System.Windows.Automation.PropertyCondition]::new([System.Windows.Automation.AutomationElement]::ProcessIdProperty,$TaskProcessId)
-$taskClass=[System.Windows.Automation.PropertyCondition]::new([System.Windows.Automation.AutomationElement]::ClassNameProperty,'#32770')
-$taskCondition=[System.Windows.Automation.AndCondition]::new($taskOwner,$taskClass)
+Add-Type -TypeDefinition @'
+using System;using System.Collections.Generic;using System.Runtime.InteropServices;using System.Text;
+public class AyqynOwnedWindow {public IntPtr Handle;public string Title;public string Class;}
+public static class AyqynOwnedWindows {
+ delegate bool Visitor(IntPtr h,IntPtr p);
+ [DllImport("user32.dll")]static extern bool EnumWindows(Visitor v,IntPtr p);
+ [DllImport("user32.dll")]static extern uint GetWindowThreadProcessId(IntPtr h,out uint p);
+ [DllImport("user32.dll",CharSet=CharSet.Unicode)]static extern int GetWindowText(IntPtr h,StringBuilder b,int n);
+ [DllImport("user32.dll",CharSet=CharSet.Unicode)]static extern int GetClassName(IntPtr h,StringBuilder b,int n);
+ public static List<AyqynOwnedWindow> Read(int pid){var result=new List<AyqynOwnedWindow>();EnumWindows((h,p)=>{uint owner;GetWindowThreadProcessId(h,out owner);if(owner==(uint)pid){var title=new StringBuilder(1024);var cls=new StringBuilder(128);GetWindowText(h,title,title.Capacity);GetClassName(h,cls,cls.Capacity);result.Add(new AyqynOwnedWindow{Handle=h,Title=title.ToString(),Class=cls.ToString()});}return true;},IntPtr.Zero);return result;}
+}
+'@
 $taskDialog=$null
+$taskOwned=@()
 $taskWatch=[Diagnostics.Stopwatch]::StartNew()
 do{
- $taskMatches=[System.Windows.Automation.AutomationElement]::RootElement.FindAll([System.Windows.Automation.TreeScope]::Children,$taskCondition)
- foreach($taskMatch in $taskMatches){if($taskMatch.Current.Name-eq$TaskTitle){$taskDialog=$taskMatch;break}}
+ $taskOwned=[AyqynOwnedWindows]::Read($TaskProcessId)
+ foreach($taskMatch in $taskOwned){if($taskMatch.Title-eq$TaskTitle-and$taskMatch.Class-eq'#32770'){$taskDialog=[System.Windows.Automation.AutomationElement]::FromHandle($taskMatch.Handle);break}}
  if(!$taskDialog){Start-Sleep -Milliseconds 150}
 }while(!$taskDialog-and$taskWatch.ElapsedMilliseconds-lt15000)
-if(!$taskDialog){throw 'Owned native save dialog with exact translated title was not found'}
+if(!$taskDialog){throw ('Owned native save dialog with exact translated title was not found. Owned windows: '+($taskOwned|ConvertTo-Json -Depth 3 -Compress))}
 $taskControls=$taskDialog.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition)
 $taskReceipt=@{method='Real production Windows file dialog, Microsoft UI Automation ValuePattern/InvokePattern; only the explicit AYQYN PID; no dialog mock, camera, microphone, clipboard or system policy change';ownerPid=$TaskProcessId;title=$taskDialog.Current.Name;action=$TaskAction;controls=@()}
 foreach($taskControl in $taskControls){$taskReceipt.controls+=@{id=$taskControl.Current.AutomationId;name=$taskControl.Current.Name;type=$taskControl.Current.ControlType.ProgrammaticName}}
