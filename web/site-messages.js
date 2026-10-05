@@ -1,19 +1,19 @@
 /** Landing-page copy; product identifiers, hashes and release URLs are never translated. */
 export const SITE_MESSAGES=[
-['AYQYN — локальный прокторинг для Windows. Наблюдения с камеры остаются на устройстве, каждое событие проверяет человек. Открытый прототип 0.2.3.','AYQYN — Windows үшін жергілікті прокторинг. Камера бақылаулары құрылғыда қалады, әр оқиғаны адам тексереді. Ашық прототип 0.2.3.','AYQYN is local proctoring for Windows. Camera observations stay on the device and a human reviews every event. Open prototype 0.2.3.'],
+['AYQYN — локальный прокторинг для Windows. Наблюдения с камеры остаются на устройстве, каждое событие проверяет человек. Открытый прототип 0.2.4.','AYQYN — Windows үшін жергілікті прокторинг. Камера бақылаулары құрылғыда қалады, әр оқиғаны адам тексереді. Ашық прототип 0.2.4.','AYQYN is local proctoring for Windows. Camera observations stay on the device and a human reviews every event. Open prototype 0.2.4.'],
 ['AYQYN — экзамен локально, решение за человеком','AYQYN — емтихан жергілікті, шешімді адам қабылдайды','AYQYN — local exams, human decisions'],
 ['AYQYN — в начало','AYQYN — басына өту','AYQYN — back to top'],
 ['Как это работает','Қалай жұмыс істейді','How it works'],
 ['Возможности','Мүмкіндіктер','Capabilities'],
 ['Для Windows','Windows үшін','For Windows'],
-['Открытый прототип / 0.2.3','Ашық прототип / 0.2.3','Open prototype / 0.2.3'],
+['Открытый прототип / 0.2.4','Ашық прототип / 0.2.4','Open prototype / 0.2.4'],
 ['Экзамен —','Емтихан —','Exams —'],
 ['локально.','жергілікті.','local.'],
 ['Решение —','Шешім —','Decisions —'],
 ['за человеком.','адамда.','human.'],
 ['AYQYN замечает события в кадре и собирает их в понятный журнал. Проверяющий видит контекст и объясняет своё решение.','AYQYN кадрдағы оқиғаларды байқап, түсінікті журналға жинайды. Тексеруші мән-жайды көріп, шешімін түсіндіреді.','AYQYN records observable events in a clear timeline. The reviewer sees context and explains their decision.'],
 ['Скачать приложение','Қолданбаны жүктеу','Download the app'],
-['ZIP 194 МБ','ZIP 194 МБ','ZIP 194 MB'],
+['ZIP 207 МБ','ZIP 207 МБ','ZIP 207 MB'],
 ['Посмотреть демо в браузере','Браузердегі демоны көру','Explore the browser demo'],
 ['Браузерное демо — воспроизведение тестовых наблюдений. Камера и модели работают в приложении.','Браузердегі демо тест бақылауларын қайта ойнатады. Камера мен модельдер қолданбада жұмыс істейді.','The browser demo replays test observations. Camera capture and models run in the app.'],
 ['От наблюдения к проверке','Бақылаудан тексеруге','From observation to review'],
@@ -75,7 +75,7 @@ export const SITE_MESSAGES=[
 ['Переносная сборка с моделями внутри. Для работы не нужны Python, аккаунт или платный сервис.','Ішінде модельдері бар тасымалды жинақ. Python, тіркелгі немесе ақылы қызмет қажет емес.','A portable build with models included. No Python, account or paid service required.'],
 ['Скачать для Windows','Windows үшін жүктеу','Download for Windows'],
 ['Скачайте ZIP','ZIP жүктеңіз','Download the ZIP'],
-['Файл AYQYN-Windows-v0.2.3.zip, 194 021 562 байта. Ссылка ведёт на опубликованный релиз GitHub.','AYQYN-Windows-v0.2.3.zip файлы, 194 021 562 байт. Сілтеме жарияланған GitHub релизіне апарады.','AYQYN-Windows-v0.2.3.zip, 194,021,562 bytes. The link opens the published GitHub release.'],
+['Файл AYQYN-Windows-v0.2.4.zip, 206 559 113 байт. Ссылка ведёт на опубликованный релиз GitHub.','AYQYN-Windows-v0.2.4.zip файлы, 206 559 113 байт. Сілтеме жарияланған GitHub релизіне апарады.','AYQYN-Windows-v0.2.4.zip, 206,559,113 bytes. The link opens the published GitHub release.'],
 ['Распакуйте всю папку','Бүкіл буманы ашыңыз','Extract the entire folder'],
 ['Запускайте AYQYN.exe рядом с resources и остальными файлами сборки.','AYQYN.exe файлын resources және жинақтың басқа файлдарымен бірге іске қосыңыз.','Run AYQYN.exe alongside resources and the other build files.'],
 ['Выберите режим','Режимді таңдаңыз','Choose a mode'],
@@ -89,5 +89,5 @@ export const SITE_MESSAGES=[
 ['Исходный код приложения ↗','Қолданбаның бастапқы коды ↗','App source code ↗'],
 ['Браузерное демо ↗','Браузердегі демо ↗','Browser demo ↗'],
 ['Релиз и лицензии ↗','Релиз және лицензиялар ↗','Release and licences ↗'],
-['Приложение 0.2.3 / d65abf9','Қолданба 0.2.3 / d65abf9','App 0.2.3 / d65abf9']
+['Приложение 0.2.4 / f9fc842','Қолданба 0.2.4 / f9fc842','App 0.2.4 / f9fc842']
 ];
