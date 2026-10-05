@@ -1,6 +1,6 @@
 const output=process.env.AYQYN_EVIDENCE_DIR||'artifacts/renderer-regression';
 import {chromium,expect} from '@playwright/test';import fs from 'node:fs/promises';
-await fs.mkdir(output,{recursive:true});const browser=await chromium.launch({channel:'msedge',headless:true}),results=[],errors=[];
+await fs.mkdir(output,{recursive:true});const browser=await chromium.launch({channel:process.env.AYQYN_BROWSER_CHANNEL==='bundled'?undefined:'msedge',headless:true}),results=[],errors=[];
 try{for(const scenario of ['loading-permission','denied','no-frames','frozen','snapshots-off','snapshots-on']){
  const page=await browser.newPage({viewport:{width:1440,height:1100}});page.on('pageerror',e=>errors.push(e.message));await page.addInitScript(scenario=>{
   const s=window.__readiness={scenario,consent:false,active:false,saved:null,stream:null,resolveInit:null,resolveMedia:null,mode:'moving',mediaRequests:0};

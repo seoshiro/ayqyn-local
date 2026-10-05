@@ -1,8 +1,10 @@
 const output=process.env.AYQYN_EVIDENCE_DIR||'artifacts/renderer-regression';
 import {chromium,expect} from '@playwright/test';import fs from 'node:fs/promises';
-await fs.mkdir(output,{recursive:true});const browser=await chromium.launch({channel:'msedge',headless:true}),results=[],errors=[];
+await fs.mkdir(output,{recursive:true});const browser=await chromium.launch({channel:process.env.AYQYN_BROWSER_CHANNEL==='bundled'?undefined:'msedge',headless:true}),results=[],errors=[];
+let currentPage;
 try{for(const cancellation of ['stop','revoke','navigation']){
  const page=await browser.newPage();page.on('pageerror',e=>errors.push(e.message));
+ currentPage=page;
  await page.addInitScript(()=>{
   const state=window.__test={active:false,consent:false,examCalls:0,saved:null,resolveExam:null,stream:null};
   window.ayqyn={capabilities:async()=>({desktop:true,platform:'renderer-mock-test',testSource:'virtual_camera',appBlocked:[],unsupported:[]}),init:async()=>({ready:true}),consent:async value=>{state.consent=value;return value;},stop:async()=>{state.active=false;state.consent=false;return true;},infer:async(_frame,timestamp)=>({faces:1,phones:[],quality:{usable:true},pose:{yaw:0,pitch:0},eyes:{x:.5,y:.5},timestamp,latencyMs:0,source:'rule_fixture',model:'UI lifecycle test fixture; no CV inference'}),exam:async({enabled})=>{state.active=enabled;if(enabled){state.examCalls++;await new Promise(resolve=>state.resolveExam=resolve);}return {active:state.active};},save:async s=>{state.saved=s;},load:async()=>null,delete:async()=>{},onGuard(){},onEmergency(){},onSensorError(){}};
@@ -14,6 +16,12 @@ try{for(const cancellation of ['stop','revoke','navigation']){
  const result=await page.evaluate(()=>({active:window.__test.active,consent:window.__test.consent,stream:window.__test.stream.active,calls:window.__test.examCalls,status:window.__test.saved?.status,examVisible:document.querySelector('#answer-note')!==null}));
  if(result.active||result.consent||result.stream||result.examVisible||result.status==='active'||result.calls!==1)throw Error('Late exam reply resurrected '+cancellation+': '+JSON.stringify(result));
  results.push({cancellation,...result});await page.close();
-}}finally{await browser.close();await fs.writeFile(output+'/renderer-lifecycle-audit.json',JSON.stringify({schema:1,method:'Actual app.js in headless browser with synthetic canvas stream and delayed mocked IPC. No CV accuracy claimed.',results,errors,passed:results.length===3&&errors.length===0},null,2));}
+}}catch(error){
+ errors.push(error.message);
+ if(currentPage&&!currentPage.isClosed()){
+  try{await fs.writeFile(output+'/failure-state.json',JSON.stringify(await currentPage.evaluate(()=>({url:location.href,language:document.documentElement.lang,body:document.body.innerText.slice(0,8000)})),null,2));}catch{}
+  try{await currentPage.screenshot({path:output+'/failure.png',fullPage:true,timeout:5000});}catch{}
+ }
+ throw error;
+}finally{await browser.close();await fs.writeFile(output+'/renderer-lifecycle-audit.json',JSON.stringify({schema:1,method:'Actual app.js in headless browser with synthetic canvas stream and delayed mocked IPC. No CV accuracy claimed.',results,errors,passed:results.length===3&&errors.length===0},null,2));}
 console.log(JSON.stringify(results));
-

@@ -3,7 +3,7 @@ import {chromium,expect} from '@playwright/test';import assert from 'node:assert
 import path from 'node:path';import {createRequire} from 'node:module';import {translateText} from '../web/messages.js';
 const {Preferences}=createRequire(import.meta.url)('../desktop/preferences.cjs');
 const appURL=process.env.AYQYN_WEB_URL||'http://127.0.0.1:4173',siteURL=process.env.AYQYN_SITE_URL,out=process.env.AYQYN_EVIDENCE_DIR||'artifacts/localization-browser';
-await fs.mkdir(out,{recursive:true});const browser=await chromium.launch({channel:process.platform==='win32'?'msedge':undefined,headless:true}),checks=[],errors=[],missing={},network=[];
+await fs.mkdir(out,{recursive:true});const browser=await chromium.launch({channel:process.env.AYQYN_BROWSER_CHANNEL==='bundled'?undefined:process.platform==='win32'?'msedge':undefined,headless:true}),checks=[],errors=[],missing={},network=[];
 const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});page.on('pageerror',e=>errors.push(e.message));
 async function coverage(target,key){await target.waitForTimeout(80);const value=await target.evaluate(async()=>{const module=await import(new URL('locale.js',location.href));return module.untranslatedMessages();});missing[key]=value;assert.deepEqual(value,[],key+' untranslated UI');}
 async function language(target,code){await target.locator('#language-select').selectOption(code);await expect(target.locator('html')).toHaveAttribute('lang',code);}

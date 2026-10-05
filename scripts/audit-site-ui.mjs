@@ -5,7 +5,7 @@ const release=JSON.parse(await fs.readFile('site/release.json','utf8'));
 const base=process.env.AYQYN_SITE_URL||'http://127.0.0.1:4176/ayqyn-local/';
 const out=process.env.AYQYN_SITE_EVIDENCE||'artifacts/website-candidate';
 await fs.mkdir(out,{recursive:true});
-const browser=await chromium.launch({channel:process.platform==='win32'?'msedge':undefined,headless:true});
+const browser=await chromium.launch({channel:process.env.AYQYN_BROWSER_CHANNEL==='bundled'?undefined:process.platform==='win32'?'msedge':undefined,headless:true});
 const checks=[],failures=[],consoleErrors=[],badResponses=[],externalRequests=[],axe=[];
 const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
 const page=await context.newPage();
